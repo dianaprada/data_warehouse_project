@@ -1,0 +1,786 @@
+/* 
+========================================================================== */
+/* FONT
+==========================================================================
+ */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+/* 
+========================================================================== */
+/* Variables Datawarehouse
+==========================================================================
+ */
+/* 
+========================================================================== */
+/* Variables y Mixins GIFOS Revisar y Borrar
+==========================================================================
+ */
+/* 
+========================================================================== */
+/* Root
+==========================================================================
+ */
+:root {
+  font-size: 16px;
+}
+
+/* 
+  ========================================================================== */
+/* Hide
+  ==========================================================================
+   */
+.hidden {
+  display: none;
+}
+
+/* 
+========================================================================== */
+/* Content
+==========================================================================
+ */
+.content {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* 
+  ========================================================================== */
+/* HEADER
+  ==========================================================================
+   */
+/*   MENU    */
+.header__navbar {
+  width: 100%;
+  height: 4em;
+  background-color: #1D72C2;
+}
+
+.header__navbar--logo {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  width: 84px;
+  height: 50px;
+  background-image: url(../assets/logo_2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.header__navbar--menu {
+  height: auto;
+  position: absolute;
+  -webkit-transition: none;
+  transition: none;
+  overflow: visible;
+  top: -10px;
+  width: 25%;
+  left: unset;
+  right: 5%;
+}
+
+.header__navbar--menu .list {
+  margin: 0;
+  padding: 10px 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 64px;
+  text-decoration: none;
+  list-style: none;
+}
+
+.header__navbar--menu .list .list__item a {
+  font-size: 0.8em;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  list-style: none;
+}
+
+.header__navbar--menu .list .list__item a:hover {
+  border-bottom: 2px solid #fff;
+}
+
+.header__navbar--menu .list .list__item a:active {
+  color: #9CAFC3;
+  border-bottom: none;
+}
+
+.current_link {
+  color: #9CAFC3;
+}
+
+/* 
+  ========================================================================== */
+/* SEARCH
+  ==========================================================================
+   */
+.searchSection {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-x: hidden;
+  margin: 1em;
+  left: 3%;
+  right: 3%;
+}
+
+.search__tittle {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2em;
+  color: black;
+  letter-spacing: 0;
+  line-height: 25px;
+  font-weight: bold;
+}
+
+/*   Input Search   */
+.search {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*   Input Search   */
+  /*   Carret down button   */
+  /*   search button   */
+}
+
+.search__bar {
+  margin: 0;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.search__input {
+  border: 1px solid #CCCCCC;
+  border-radius: 3.5px;
+  color: #1D72C2;
+  width: 31.375em;
+  height: 2.75em;
+  margin-right: 0.3em;
+}
+
+.search__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.search__carret-down {
+  border: 0em;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.54);
+  position: absolute;
+  left: 92%;
+  top: 25%;
+  font-size: 20px;
+  outline: none;
+  cursor: pointer;
+}
+
+.search__submit {
+  border: 1px solid #CCCCCC;
+  border-radius: 3.5px;
+  background-color: transparent;
+  color: #1D72C2;
+  width: 3em;
+  height: 3em;
+  cursor: pointer;
+}
+
+.search__submit:hover {
+  color: #0683f9;
+}
+
+/*   Buttons - buttons to the right of the search bar */
+.btns {
+  margin-right: 9%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btns__import {
+  height: 3em;
+  border-radius: 3.5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #1D72C2;
+  background-color: transparent;
+  width: 3em;
+  margin-right: 0.3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btns__import--img {
+  width: 1.2em;
+  height: 1.2em;
+  margin-left: 0.2em;
+}
+
+.btns__export {
+  height: 3em;
+  border-radius: 3.5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #1D72C2;
+  background-color: transparent;
+  color: #1D72C2;
+  width: 11em;
+  margin-right: 0.3em;
+}
+
+.btns__export:hover {
+  color: #0683f9;
+}
+
+.btns__export:active {
+  position: relative;
+  top: 1px;
+}
+
+.btns__new {
+  height: 3em;
+  border-radius: 3.5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #1D72C2;
+  background-color: #1D72C2;
+  color: #fff;
+  width: 11em;
+}
+
+.btns__new:hover {
+  background-color: #0683f9;
+}
+
+.btns__new:active {
+  position: relative;
+  top: 1px;
+}
+
+.uploadImage {
+  height: 1.2em;
+  width: 1.2em;
+  z-index: 1;
+}
+
+/*   Font Awesome   */
+.fas {
+  color: #1D72C2;
+}
+
+.inactiveBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* 
+  ========================================================================== */
+/* Selects
+  ==========================================================================
+   */
+/*   Select Disabled */
+.divSelect {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 13em;
+  height: 2em;
+  line-height: 2;
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  border-radius: 3.5px;
+  /* Arrow */
+  /* Transition */
+}
+
+.divSelect::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  transition: .25s all ease;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.divSelect:hover::after {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.selectDisabled {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #C6CACC;
+  background: rgba(0, 0, 0, 0.1);
+  background-image: none;
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0 .5em;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  cursor: pointer;
+  width: 13em;
+}
+
+/*   Select Enabled */
+.divSelectEnabled {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 13em;
+  height: 2em;
+  line-height: 2;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 3.5px;
+  border: 1px solid #C6CACC;
+  /* Arrow */
+  /* Transition */
+}
+
+.divSelectEnabled::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0  1em;
+  background: #fff;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  transition: .25s all ease;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.divSelectEnabled:hover::after {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+}
+
+.selectEnabled {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: #fff;
+  background-image: none;
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0 .5em;
+  color: rgba(0, 0, 0, 0.8);
+  border: 0;
+  background-color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  cursor: pointer;
+  width: 13em;
+}
+
+/* 
+  ========================================================================== */
+/* New User
+  ==========================================================================
+   */
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+
+.newUserContent {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100vw;
+  max-height: 36.0625em;
+}
+
+.newUserHeader {
+  position: relative;
+  width: 100vw;
+  height: 8.75em;
+  background-color: #1D72C2;
+  padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  z-index: 1;
+}
+
+.newUserHeader__tittle {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2em;
+  color: black;
+  letter-spacing: 0;
+  line-height: 25px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.newUserHeader__close {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2em;
+  color: black;
+  letter-spacing: 0;
+  line-height: 25px;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 6%;
+  cursor: pointer;
+  width: 1.2em;
+  height: 1.2em;
+  border: 0em;
+  background-color: transparent;
+}
+
+.newUser__Form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  z-index: 1;
+  -webkit-transform: translate(2%, -35%);
+          transform: translate(2%, -35%);
+  width: 95%;
+}
+
+.divBorderBlue {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 3px solid #0683f9;
+  background-color: #fff;
+  border-radius: 6.5px;
+  padding: 0.5em;
+  height: 8.2em;
+}
+
+.divBorderBlue__input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 12em;
+  height: 3.65em;
+  margin-right: 2em;
+}
+
+.divBorderBlue__imgBtn {
+  position: relative;
+  border: 0em;
+  background-color: transparent;
+  width: 5.25em;
+  height: 5.25em;
+  margin-right: 2em;
+}
+
+.divBorderBlue__imgBtn--userImg {
+  width: 5.25em;
+  height: 5.25em;
+}
+
+.divBorderBlue__selects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 2em;
+}
+
+.newUser__selects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-right: 2em;
+  margin-top: 1.5em;
+  margin-left: 1em;
+}
+
+/* New User Inputs y Selects */
+.input__input {
+  border: 1px solid #CCCCCC;
+  border-radius: 3.5px;
+  width: 13em;
+  height: 2.5em;
+}
+
+.input__input:required:focus {
+  border: 1px solid red;
+  outline: none;
+}
+
+.input__label {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  color: black;
+  letter-spacing: 0;
+  line-height: 25px;
+}
+
+.input__required {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  color: black;
+  letter-spacing: 0;
+  line-height: 25px;
+  color: red;
+  font-style: oblique;
+  font-size: 1em;
+  margin-left: 0.5em;
+}
+
+/* New User Buttons Cancel y Save */
+.divFormButtons {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-right: 2em;
+  margin-top: 5em;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.btns__cancel {
+  height: 3em;
+  border-radius: 3.5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  border: 0em;
+  color: rgba(0, 0, 0, 0.25);
+  opacity: 0.8;
+  background-color: transparent;
+}
+
+.btns__cancelEnabled {
+  height: 3em;
+  border-radius: 3.5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  border: 0em;
+  color: red;
+  opacity: 0.8;
+  background-color: transparent;
+}
+
+.btns__save {
+  height: 3em;
+  border-radius: 3.5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 2em;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 11em;
+  color: #fff;
+}
+
+.btns__saveEnabled {
+  height: 3em;
+  border-radius: 3.5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 2em;
+  background: #429C41;
+  border-radius: 2px;
+  border: #429C41;
+  width: 11em;
+  color: #fff;
+}
+
+/* 
+  ========================================================================== */
+/* Edit User
+  ==========================================================================
+   */
+.divBorderBlue__frame {
+  position: absolute;
+  border: 0em;
+  background-color: transparent;
+  width: 5.25em;
+  height: 5.25em;
+  margin-right: 2em;
+}
+
+.divBorderBlue__frame--img {
+  border: 0em;
+  background-color: transparent;
+  width: 5.2em;
+  height: 5.2em;
+  margin-right: 2em;
+}
+
+.btnsEdit__cancel {
+  height: 3em;
+  border-radius: 3.5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  border: 0em;
+  color: red;
+  opacity: 0.8;
+  background-color: transparent;
+}
+
+.btnsEdit__save {
+  height: 3em;
+  border-radius: 3.5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 2em;
+  background: #429C41;
+  border-radius: 2px;
+  border: #429C41;
+  width: 11em;
+  color: #fff;
+}
+/*# sourceMappingURL=styles.css.map */

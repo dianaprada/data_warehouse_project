@@ -1,0 +1,195 @@
+/* 
+  ========================================================================== */
+/* New User
+  ==========================================================================
+   */
+
+
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+
+.newUserContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100vw;
+  max-height: 36.0625em;
+}
+
+.newUserHeader {
+  position: relative;
+  width: 100vw;
+  height: 8.75em;
+  background-color: $blue;
+  padding: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 1;
+
+  &__tittle {
+    @include h2();
+    color: $white;
+  }
+
+  &__close {
+    @include h2();
+    color: $white;
+    margin-right: 6%;
+    cursor: pointer;
+    width: 1.2em;
+    height: 1.2em;
+    border: 0em;
+    background-color: transparent;
+  }
+}
+
+.newUser__Form {
+  //position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between ;
+  z-index: 1;
+  transform: translate(2%, -35%);
+  width: 95%;
+}
+
+.divBorderBlue {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 3px solid #0683f9;
+  background-color: $white;
+  border-radius: 6.5px;
+  padding: 0.5em;
+  height: 8.2em;
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    width: 12em;
+    height: 3.65em;
+    margin-right: 2em;
+  }
+
+  &__imgBtn {
+    position: relative;
+    border: 0em;
+    background-color: transparent;
+    width: 5.25em;
+    height: 5.25em;
+    margin-right: 2em;
+  }
+
+  &__imgBtn--userImg {
+    width: 5.25em;
+    height: 5.25em;
+  }
+
+  &__selects {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2em;
+    
+  }
+
+}
+
+
+.newUser__selects {
+    display: flex;
+    flex-direction: row;
+    margin-right: 2em;
+    margin-top: 1.5em;
+    margin-left: 1em;
+}
+
+ /* New User Inputs y Selects */
+  
+.input {
+  &__input {
+    @include inputs();
+    width: 13em;
+    height: 2.5em;
+  }
+
+  &__input:required:focus {
+    border: 1px solid red;
+    outline: none;
+  }
+
+  &__label {
+    @include labels();
+  }
+
+  &__required {
+    @include labels();
+    color: red;
+    font-style: oblique;
+    font-size: 1em;
+    margin-left: 0.5em;
+  }
+
+}
+
+
+/* New User Buttons Cancel y Save */
+
+.divFormButtons {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 2em;
+  margin-top: 5em;
+  flex-flow: row wrap;
+  align-items: flex-end;
+
+}
+
+
+.btns__cancel {
+  @include buttons();
+  border: 0em;
+  color:  rgba(0,0,0,0.25);
+  opacity: 0.8;
+  background-color: transparent;
+  
+}
+
+.btns__cancelEnabled {
+  @include buttons();
+  border: 0em;
+  color:  red;
+  opacity: 0.8;
+  background-color: transparent;
+
+ }
+
+.btns__save {
+  @include buttons();
+  margin-left: 2em;
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.1);
+  width: 11em;
+  color: $white;
+ 
+}
+
+.btns__saveEnabled {
+  @include buttons();
+  margin-left: 2em;
+  background:  $green;
+  border-radius: 2px;
+  border: $green;
+  width: 11em;
+  color: $white;
+ 
+}

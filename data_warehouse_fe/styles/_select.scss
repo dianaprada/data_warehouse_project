@@ -1,0 +1,96 @@
+/* 
+  ========================================================================== */
+/* Selects
+  ==========================================================================
+   */
+
+/*   Select Disabled */
+
+
+.divSelect {
+  position: relative;
+  display: flex;
+  width: 13em;
+  height: 2em;
+  line-height: 2;
+  background:  rgba(0,0,0,0);
+  overflow: hidden;
+  border-radius: 3.5px;
+  
+
+  /* Arrow */
+  &::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: rgba(0,0,0,0);
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+    color: rgba(0,0,0,0.50);
+    
+  }
+
+  /* Transition */
+  &:hover::after {
+    color: rgba(0,0,0,0.50);
+    
+  }
+
+}
+
+.selectDisabled {
+
+  @include selectDisabled();
+  width: 13em;
+  
+}
+
+
+/*   Select Enabled */
+
+.divSelectEnabled {
+  position: relative;
+  display: flex;
+  width: 13em;
+  height: 2em;
+  line-height: 2;
+  background: $white;
+  overflow: hidden;
+  border-radius: 3.5px;
+  border: 1px solid #C6CACC;
+  
+ 
+  /* Arrow */
+  &::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0  1em;
+    background: $white;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+    color: rgba(0,0,0,0.50);
+    
+  }
+
+  /* Transition */
+  &:hover::after {
+    color: rgba(0,0,0,0.50);
+    background-color: $white;
+  
+  }
+
+}
+
+.selectEnabled {
+
+  @include selectEnabled();
+  width: 13em;
+   
+}
+
