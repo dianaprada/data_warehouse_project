@@ -1,7 +1,7 @@
 {
   "name": "data_warehouse_be",
   "version": "1.0.0",
-  "description": "Data Warehouse Project - Code Your Future scholarship Globant - Acámica.",
+  "description": "Data Warehouse Project - Code Your Future Globant - Acámica.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,12 +24,16 @@
     "helmet": "^4.4.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.5.0",
+    "sequelize": "^6.6.2",
     "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7",
     "prettier": "2.2.1",
     "sequelize-cli": "^6.2.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/dianaprada/data_warehouse_project/issues"
+  },
+  "homepage": "https://github.com/dianaprada/data_warehouse_project#readme"
 }

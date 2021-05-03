@@ -1,104 +1,735 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Data Warehouse Acámica Project - DianaP3</title>
-    <meta name="title" content="Data Warehouse Acámica Project">
-    <meta name="description" content="Data Warehouse Acámica Project">
 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="icon" sizes="32x32" href="../assets/logo_icon.png" type="image/svg+xml">
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-    <link rel="icon" sizes="32x32" href="./assets/data-storage-svgrepo-com.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <!-- END Scripts -->
+    <title>Data Warehouse Acámica Project - DianaP3</title>
 
 </head>
-  <body>
-    
-    <div class="content">
 
-      <!-- HEADER - NAV -->
-
-      <header class="header" id="header">
-        <nav class="header__navbar">
-            <a href="#" class="header__navbar--logo"> </a>
-            <div class="header__navbar--menu">
-                <ul class="list">
-                  <li class="list__item"><a href="contacts.html">Contactos</a></li>
-                    <li class="list__item"><a href="companies.html">Compañías</a></li>
-                    <li class="list__item"><a href="users.html">Usuarios</a></li>
-                    <li class="list__item"><a href="region.html">Región/Ciudad</a></li>
-                </ul>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-0">
+        <a class="navbar-brand" href="#">
+            <img class="ml-4" src="./assets/logo.png" width="100" height="59" alt="Data Warehouse Logo" loading="lazy">
+        </a>
+        <div class="collapse navbar-collapse justify-content-end" id="navBar">
+            <div class="navbar-nav">
+                <a class="nav-link mx-1 active" href="#">Contactos<span class="sr-only">(current)</span></a>
+                <a class="nav-link mx-1" href="./companies.html">Compañías</a>
+                <a class="nav-link mx-1 d-none users-tab" href="./users.html">Usuarios</a>
+                <a class="nav-link mx-1" href="./region-city.html">Región / Ciudad</a>
             </div>
-        </nav>
-    </header>
-
-    <!-- MAIN -->
-
-    <main>
-
-
-
-      <section class="searchSection" id="search">
-        
-        <h2 class="search__tittle">Usuarios</h2>
-        <!-- SEARCH + BUTTONS-->
-        <div class="search">
-          <!-- Input search-->
-          <div class="search__container">
-            
-            <div class="search__bar">
-              <form action="#" name="search_form" id="search_form">
-                <input class="search__input" id="searchInput" type="text" name="search_input" tabindex="1">
-              </form>
-              <button class="search__carret-down" id="searchCarret-down" value="Filter">
-                <i class="fas fa-caret-down"></i></button>
-            </div>
-             <!-- Filter Search-->
-            <div class="search__filter"> 
-              
-
-            </div>
-             <!-- Filter Search-->
-            <button class="search__submit" id="searchBtn" value="Search">
-              <i class="fas fa-search"></i> </button>
-                
-
         </div>
-        
-        <!-- End Input search-->
+    </nav>
 
-          <!-- Buttons - Add User -->
-        <div class="btns">
-          <button class="btns__import" id="importBtn" value="Import">
-            <img src="../assets/up_arrow.png" class="btns__import--img" />
+    <main class="main mx-4">
+        <section>
+            <h1 class="title mt-5 mb-3">Contactos</h1>
 
-          </button>
-         
-          <button class="btns__export" id="exportBtn" value="Export">
-            Exportar Usuarios </button>
-       
-          <button class="btns__new" id="newBtn" value="Add">
-            Agregar Usuario </button>
+            <!-- Search Bar and filter-->
+            <div class="d-flex flex-row justify-content-between">
+                <div class="d-flex flex-row">
+                    <div class="input-group filter mr-2">
+                        <input type="text" class="form-control filter-input"
+                            aria-label="Text input with dropdown button">
+                        <div class="input-group-append">
+                            <!-- Button Carret Down -->
+                            <button class="btn dropdown-toggle btnFilterSearch" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"></button>
 
-          </div>
-          <!-- End Buttons - Add User -->
+                            <!-- Dropdown Filter -->
+                            <div class="dropdown-form dropdown-menu filter-menu p-3" id="filter-form">
+                                <div class="form-group mt-1 pb-2 row">
+                                    <label for="nameFilter" class="col-md-4 col-form-label col-form-label-sm">Nombre del
+                                        contacto</label>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                            class="form-control form-control-plaintext form-control-sm border-bottom"
+                                            id="contacNameFilter" name="nameFilter"
+                                            placeholder="Introduce el nombre del contacto">
+                                    </div>
+                                </div>
+                                <div class="form-group py-2 row">
+                                    <label for="positionFilter"
+                                        class="col-md-4 col-form-label col-form-label-sm">Cargo</label>
+                                    <div class="col-md-8">
+                                        <input type="text"
+                                            class="form-control form-control-plaintext form-control-sm border-bottom"
+                                            id="contacPositionFilter" name="positionFilter"
+                                            placeholder="Introduce el cargo del contacto">
+                                    </div>
+                                </div>
+                                <div class="form-group py-2 row">
+                                    <label for="cityFilter"
+                                        class="col-md-4 col-form-label col-form-label-sm">Ciudad</label>
+                                    <div class="col-md-5">
+                                        <select name="cityFilter" class="form-control form-control-sm"
+                                            id="contactCityFilter">
+                                            <option value="null">Todos</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group py-2 row">
+                                    <label for="CompanyFilter"
+                                        class="col-md-4 col-form-label col-form-label-sm">Compañía</label>
+                                    <div class="col-md-5">
+                                        <select name="CompanyFilter" class="form-control form-control-sm"
+                                            id="contactCompanyFilter">
+                                            <option value="null">Todas</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group py-2 row">
+                                    <label for="favoriteChannelFilter"
+                                        class="col-md-4 col-form-label col-form-label-sm">Canal favorito</label>
+                                    <div class="col-md-5">
+                                        <select name="favoriteChannelFilter" class="form-control form-control-sm"
+                                            id="contactFavoriteChanelFilter">
+                                            <option value="null">Cualquiera</option>
+                                            <option value="tel">Teléfono</option>
+                                            <option value="email">Email</option>
+                                            <option value="whatsapp">Whatsapp</option>
+                                            <option value="linkedin">Linkedin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group pt-2 mb-1 row">
+                                    <label for="interesFilter"
+                                        class="col-md-4 col-form-label col-form-label-sm">Interés</label>
+                                    <div class="col-md-5">
+                                        <select name="interesFilter" class="form-control form-control-sm"
+                                            id="contactInterestFilter">
+                                            <option value="null">Cualquiera</option>
+                                            <option value="0">0%</option>
+                                            <option value="25">25%</option>
+                                            <option value="50">50%</option>
+                                            <option value="75">75%</option>
+                                            <option value="100">100%</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END Dropdown Filter -->
+                        </div>
+                    </div>
+                    <!-- Button Search -->
+                    <button type="button" class="btn btn-outline-secondary btn-search"><i class="fa fa-search"
+                            aria-hidden="true"></i></button>
 
-        </div>
-        <!-- END SEARCH + BUTTONS-->  
-      </section>
+                </div>
+                <!-- New Contact Button -->
+                <div class="d-flex flex-row justify-content-end">
+                    <button type="button" class="btn btn-primary btn-size" data-toggle="modal"
+                        data-target="#newContactModal">Agregar contacto</button>
+                </div>
+                <!-- END New Contact Button -->
+            </div>
 
+            <!-- END Search Bar and Filter -->
 
+            <div class="selected-contacts d-flex justify-content-between align-items-center mt-4 mb-1">
+                <button type="button" class="btn btn-xsm btn-tag disable contacts-selected d-none"> </button>
+                <button type="button" class="btn btn-outline-primary btn-size border-0 delete-contacts d-none"
+                    data-toggle="modal" data-target="#deleteContactModal"><i class="fa fa-trash" aria-hidden="true"></i>
+                    Eliminar contactos</button>
+            </div>
+
+            <!-- Contacts Grid -->
+
+            <table class="table table-borderless table-bordered table-responsive-lg table-hover">
+                <thead>
+                    <tr class="table-bordered">
+                        <th class="align-middle" scope="col"><input class="ml-3 all-checkbox" type="checkbox"
+                                name="checkAllContacts"></th>
+                        <th class="align-middle" scope="col">Contacto <button type="button"
+                                class="btn btn-link asc-sort" data-field="contactName" data-index='0'><i class="fa fa-sort"
+                                    aria-hidden="true"></i></button><button type="button"
+                                class="btn btn-link desc-sort d-none" data-field="contactName" data-index='0'><i
+                                    class="fa fa-sort" aria-hidden="true"></i></button></th>
+                        <th class="align-middle" scope="col">País/Región <button type="button"
+                                class="btn btn-link asc-sort" data-field="contactCountry" data-index='1'><i class="fa fa-sort"
+                                    aria-hidden="true"></i></button><button type="button"
+                                class="btn btn-link desc-sort d-none" data-field="contactCountry" data-index='1'><i
+                                    class="fa fa-sort" aria-hidden="true"></i></button></th>
+                        <th class="align-middle" scope="col">Compañía <button type="button"
+                                class="btn btn-link asc-sort" data-field="contactCompany" data-index='2'><i class="fa fa-sort"
+                                    aria-hidden="true"></i></button><button type="button"
+                                class="btn btn-link desc-sort d-none" data-field="contactCompany" data-index='2'><i
+                                    class="fa fa-sort" aria-hidden="true"></i></button></th>
+                        <th class="align-middle" scope="col">Cargo <button type="button" class="btn btn-link asc-sort"
+                                data-field="contactPosition" data-index='3'><i class="fa fa-sort"
+                                    aria-hidden="true"></i></button><button type="button"
+                                class="btn btn-link desc-sort d-none" data-field="contactPosition" data-index='3'><i
+                                    class="fa fa-sort" aria-hidden="true"></i></button></th>
+                        <th class="align-middle" scope="col">Interés <button type="button" class="btn btn-link asc-sort"
+                                data-field="contactInterest" data-index='4'><i class="fa fa-sort"
+                                    aria-hidden="true"></i></button><button type="button"
+                                class="btn btn-link desc-sort d-none" data-field="contactInterest" data-index='4'><i
+                                    class="fa fa-sort" aria-hidden="true"></i></button></th>
+                        <th class="align-middle text-center" scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="contactsBodyTable">
+
+                </tbody>
+            </table>
+            <!-- END Contacts Grid -->
+
+        </section>
     </main>
 
+    <!-- Import Contacts Modal -->
 
-
+    <div class="modal fade" id="import-contacts-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-body text-center mt-1">
+                    <img src="../assets/import.png" alt="Import logo">
+                    <p class="pt-4">Selecciona el archivo de tu ordenador para importar tus contactos.</p>
+                </div>
+                <div class="modal-footer border-top-0 justify-content-around">
+                    <button type="button" class="btn btn-outline-primary btn-lg modal-button"
+                        data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary btn-lg modal-button">Importar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    
-  </body>
+    <!-- END Import Contacts Modal-->
+
+    <!-- Delete Contacts Modal -->
+
+    <div class="modal fade" id="deleteContactModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-body text-center mt-1">
+                    <img src="./assets/user_not_found.png" alt="Delete logo">
+                    <p class="pt-4">¿Seguro que deseas eliminar los contactos seleccionados?</p>
+                </div>
+                <div class="modal-footer border-top-0 justify-content-around">
+                    <button type="button" class="btn btn-outline-primary btn-lg modal-button"
+                        data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger btn-lg modal-button delete"
+                        data-dismiss="modal">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END Delete Contacts Modal -->
+
+    <!-- NEW Contacts Modal -->
+
+    <div class="modal fade" id="newContactModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary new-contact-modal-header">
+                    <h1 class="title m-0 text-white">Nuevo contacto</h1>
+                    <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="new-contact-form">
+                        <div class="form-group form-row border py-4 px-2 borders-new-user-modal bg-white">
+                            <div class="col- position-relative ml-2 mr-3">
+                                <button class="imgBtnAddPic">
+                                    <img src="./assets/avatar_add_photo.png" alt="Agregar Imagen"
+                                        class="imgBtnAddPic__userImg" />
+                                </button>
+                            </div>
+                            <div class="col">
+                                <label for="name" class="col-form-label col-form-label-sm">Nombre<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-sm" id="name" name="name">
+                            </div>
+                            <div class="col">
+                                <label for="lastname" class="col-form-label col-form-label-sm">Apellido<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-sm" id="lastname" name="lastname">
+                            </div>
+                            <div class="col">
+                                <label for="position" class="col-form-label col-form-label-sm">Cargo<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-sm" id="position" name="position">
+                            </div>
+                            <div class="col">
+                                <label for="email" class="col-form-label col-form-label-sm">Email<span
+                                        class="text-danger">*</span></label>
+                                <input type="email" class="form-control form-control-sm" id="email" name="email">
+                            </div>
+                            <div class="col">
+                                <label for="company" class="col-form-label col-form-label-sm">Compañía<span
+                                        class="text-danger">*</span></label>
+                                <select type="text" class="form-control form-control-sm" id="company" name="company">
+                                    <option selected disabled value="0">Seleccionar compañía</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <div class="col">
+                                <label for="region" class="col-form-label col-form-label-sm">Region<span
+                                        class="text-danger">*</span></label>
+                                <select class="form-control form-control-sm" name="region" id="region">
+                                    <option selected selected disabled value="0">Seleccionar región</option>
+
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="country" class="col-form-label col-form-label-sm">País<span
+                                        class="text-danger">*</span></label>
+                                <select class="form-control form-control-sm" name="country" id="country" disabled>
+                                    <option selected selected disabled value="0">Seleccionar país</option>
+
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="city" class="col-form-label col-form-label-sm">Ciudad<span
+                                        class="text-danger">*</span></label>
+                                <select class="form-control form-control-sm" name="city" id="city" disabled>
+                                    <option selected selected disabled value="0">Seleccionar ciudad</option>
+
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="address" class="col-form-label col-form-label-sm">Direccion</label>
+                                <input type="text" class="form-control form-control-sm" id="address" name="address"
+                                    placeholder="Ingresa una dirección" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="interest-rage" class="col-form-label col-form-label-sm">Interés</label>
+                                <input type="range" min="0" max="100" step="25" value="0" list="interest-list"
+                                    name="interest-rage" class="form-control form-control-sm interest-range mx-3 p-0"
+                                    id="interest-rage">
+                                <datalist id="interest-list">
+                                    <option value="25">
+                                    <option value="50">
+                                    <option value="75">
+                                </datalist>
+                            </div>
+                            <div class="col-xs">
+                                <label for="interest-select"
+                                    class="col-form-label col-form-label-sm text-white">Interés</label>
+                                <select class="form-control form-control-sm interest-select" name="interest"
+                                    id="interest-select">
+                                    <option selected value="0">0%</option>
+                                    <option value="25">25%</option>
+                                    <option value="50">50%</option>
+                                    <option value="75">75%</option>
+                                    <option value="100">100%</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row contact-channel-info">
+                            <div class="col">
+                                <label for="contact-channel" class="col-form-label col-form-label-sm">Canal de
+                                    contacto</label>
+                                <select class="form-control form-control-sm" name="contactChannel"
+                                    id="contact-channel-1">
+                                    <option selected>Seleccionar canal</option>
+                                    <option value="tel">Teléfono</option>
+                                    <option value="email">Email</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                    <option value="linkedin">Linkedin</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="userAcount" class="col-form-label col-form-label-sm">Cuenta de
+                                    usuario</label>
+                                <input type="text" class="form-control form-control-sm" id="userAcount-1"
+                                    name="userAcount" placeholder="@ejemplo">
+                            </div>
+                            <div class="col">
+                                <label for="preferences" class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="preferences" id="preferences-1">
+                                    <option selected>Sin preferencia</option>
+                                    <option value="favorite">Canal favorito</option>
+                                    <option value="do not disturb">No molestar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row contact-channel-info">
+                            <div class="col">
+                                <label for="contact-channel" class="col-form-label col-form-label-sm">Canal de
+                                    contacto</label>
+                                <select class="form-control form-control-sm" name="contactChannel"
+                                    id="contact-channel-2">
+                                    <option selected>Seleccionar canal</option>
+                                    <option value="tel">Teléfono</option>
+                                    <option value="email">Email</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                    <option value="linkedin">Linkedin</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="userAcount" class="col-form-label col-form-label-sm">Cuenta de
+                                    usuario</label>
+                                <input type="text" class="form-control form-control-sm" id="userAcount-2"
+                                    name="userAcount" placeholder="@ejemplo">
+                            </div>
+                            <div class="col">
+                                <label for="preferences" class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="preferences" id="preferences-2">
+                                    <option selected>Sin preferencia</option>
+                                    <option value="favorite">Canal favorito</option>
+                                    <option value="do not disturb">No molestar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row contact-channel-info">
+                            <div class="col">
+                                <label for="contact-channel" class="col-form-label col-form-label-sm">Canal de
+                                    contacto</label>
+                                <select class="form-control form-control-sm" name="contactChannel"
+                                    id="contact-channel-3">
+                                    <option selected>Seleccionar canal</option>
+                                    <option value="tel">Teléfono</option>
+                                    <option value="email">Email</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                    <option value="linkedin">Linkedin</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="userAcount" class="col-form-label col-form-label-sm">Cuenta de
+                                    usuario</label>
+                                <input type="text" class="form-control form-control-sm" id="userAcount-3"
+                                    name="userAcount" placeholder="@ejemplo">
+                            </div>
+                            <div class="col">
+                                <label for="preferences" class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="preferences" id="preferences-3">
+                                    <option selected>Sin preferencia</option>
+                                    <option value="favorite">Canal favorito</option>
+                                    <option value="do not disturb">No molestar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row contact-channel-info">
+                            <div class="col">
+                                <label for="contact-channel" class="col-form-label col-form-label-sm">Canal de
+                                    contacto</label>
+                                <select class="form-control form-control-sm" name="contactChannel"
+                                    id="contact-channel-4">
+                                    <option selected>Seleccionar canal</option>
+                                    <option value="tel">Teléfono</option>
+                                    <option value="email">Email</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                    <option value="linkedin">Linkedin</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="userAcount" class="col-form-label col-form-label-sm">Cuenta de
+                                    usuario</label>
+                                <input type="text" class="form-control form-control-sm" id="userAcount-4"
+                                    name="userAcount" placeholder="@ejemplo">
+                            </div>
+                            <div class="col">
+                                <label for="preferences" class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="preferences" id="preferences-4">
+                                    <option selected>Sin preferencia</option>
+                                    <option value="favorite">Canal favorito</option>
+                                    <option value="do not disturb">No molestar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row mt-4 mb-0">
+                            <label class="col-form-label col-form-label-sm"><span
+                                    class="text-danger">*</span>Información requerida</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
+                        data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success btn-lg modal-button create"
+                        data-dismiss="modal">Guardar contacto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END New Contacts Modal -->
+
+    <!-- Modify Contacts Modal -->
+
+    <div class="modal fade" id="edit-contact" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary new-contact-modal-header">
+                    <h1 class="title m-0 text-white">Actualizar contacto</h1>
+                    <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="editContactForm">
+                        <div class="form-group form-row border py-4 px-2 borders-new-user-modal bg-white">
+                            <div class="col- position-relative ml-2 mr-3">
+
+                                <button class="imgBtnAddPic">
+                                    <img src="./assets/avatar_frame.png" alt="User Frame" class="imgBtnAddPic__frame" />
+                                    <img src="./assets/bono.png" alt="User Image" class="imgBtnAddPic__frame--img" />
+                                </button>
+
+                            </div>
+                            <div class="col">
+                                <label for="editName" class="col-form-label col-form-label-sm">Nombre<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-sm" id="editContactName"
+                                    name="editName">
+                            </div>
+                            <div class="col">
+                                <label for="editLastname" class="col-form-label col-form-label-sm">Apellido<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-sm" id="editContactLastName"
+                                    name="editLastname">
+                            </div>
+                            <div class="col">
+                                <label for="editPosition" class="col-form-label col-form-label-sm">Cargo<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-sm" id="editContactPosition"
+                                    name="editPosition">
+                            </div>
+                            <div class="col">
+                                <label for="editEmail" class="col-form-label col-form-label-sm">Email<span
+                                        class="text-danger">*</span></label>
+                                <input type="email" class="form-control form-control-sm" id="editContactEmail"
+                                    name="editEmail">
+                            </div>
+                            <div class="col">
+                                <label for="editCompany" class="col-form-label col-form-label-sm">Compañía<span
+                                        class="text-danger">*</span></label>
+                                <select type="text" class="form-control form-control-sm" id="editContactCompany"
+                                    name="editCompany">
+                                    <option selected disabled>Seleccionar compañía</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <div class="col">
+                                <label for="editRegion" class="col-form-label col-form-label-sm">Region<span
+                                        class="text-danger">*</span></label>
+                                <select class="form-control form-control-sm" name="editRegion" id="editContactRegion">
+                                    <option selected>Seleccionar región</option>
+
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="editCountry" class="col-form-label col-form-label-sm">País<span
+                                        class="text-danger">*</span></label>
+                                <select class="form-control form-control-sm" name="editCountry" id="editContactCountry"
+                                    disabled>
+                                    <option selected disabled>Seleccionar país</option>
+
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="editCity" class="col-form-label col-form-label-sm">Ciudad<span
+                                        class="text-danger">*</span></label>
+                                <select class="form-control form-control-sm" name="editCity" id="editContactCity"
+                                    disabled>
+                                    <option selected disabled>Seleccionar ciudad</option>
+
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="editAddress" class="col-form-label col-form-label-sm">Direccion</label>
+                                <input type="text" class="form-control form-control-sm" id="editContactAddress"
+                                    name="editAddress" placeholder="Ingresa una dirección" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="editInterestRage" class="col-form-label col-form-label-sm">Interés</label>
+                                <input type="range" min="0" max="100" step="25" value="0" list="interest-list"
+                                    name="editInterestRage" class="form-control form-control-sm interest-range mx-3 p-0"
+                                    id="editContactInterestRage">
+                                <datalist id="interest-list">
+                                    <option value="25">
+                                    <option value="50">
+                                    <option value="75">
+                                </datalist>
+                            </div>
+                            <div class="col-xs">
+                                <label for="editInterestSelect"
+                                    class="col-form-label col-form-label-sm text-white">Interés</label>
+                                <select class="form-control form-control-sm interest-select" name="editInterestSelect"
+                                    id="editContactInterestSelect">
+                                    <option selected value="0">0%</option>
+                                    <option value="25">25%</option>
+                                    <option value="50">50%</option>
+                                    <option value="75">75%</option>
+                                    <option value="100">100%</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row contact-channel-info">
+                            <div class="col">
+                                <label for="editContactChannel1" class="col-form-label col-form-label-sm">Canal de
+                                    contacto</label>
+                                <select class="form-control form-control-sm" name="editContactChannel1"
+                                    id="editContactChanel1">
+                                    <option selected>Seleccionar canal</option>
+                                    <option value="tel">Teléfono</option>
+                                    <option value="email">Email</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                    <option value="linkedin">Linkedin</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="userAcount1" class="col-form-label col-form-label-sm">Cuenta de
+                                    usuario</label>
+                                <input type="text" class="form-control form-control-sm" id="editContactAcount1"
+                                    name="userAcount1" placeholder="@ejemplo">
+                            </div>
+                            <div class="col">
+                                <label for="editPreferences1"
+                                    class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="editPreferences1"
+                                    id="editContactPreferences1">
+                                    <option selected>Sin preferencia</option>
+                                    <option value="favorite">Canal favorito</option>
+                                    <option value="do not disturb">No molestar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row contact-channel-info">
+                            <div class="col">
+                                <label for="editContactChannel2" class="col-form-label col-form-label-sm">Canal de
+                                    contacto</label>
+                                <select class="form-control form-control-sm" name="editContactChannel2"
+                                    id="editContactChanel2">
+                                    <option selected>Seleccionar canal</option>
+                                    <option value="tel">Teléfono</option>
+                                    <option value="email">Email</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                    <option value="linkedin">Linkedin</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="userAcount2" class="col-form-label col-form-label-sm">Cuenta de
+                                    usuario</label>
+                                <input type="text" class="form-control form-control-sm" id="editUserAcount2"
+                                    name="userAcount2" placeholder="@ejemplo">
+                            </div>
+                            <div class="col">
+                                <label for="editPreferences2"
+                                    class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="editPreferences2"
+                                    id="editContactPreferences2">
+                                    <option selected>Sin preferencia</option>
+                                    <option value="favorite">Canal favorito</option>
+                                    <option value="do not disturb">No molestar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row contact-channel-info">
+                            <div class="col">
+                                <label for="editContactChannel3" class="col-form-label col-form-label-sm">Canal de
+                                    contacto</label>
+                                <select class="form-control form-control-sm" name="editContactChannel3"
+                                    id="editContactChanel3">
+                                    <option selected>Seleccionar canal</option>
+                                    <option value="tel">Teléfono</option>
+                                    <option value="email">Email</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                    <option value="linkedin">Linkedin</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="userAcount3" class="col-form-label col-form-label-sm">Cuenta de
+                                    usuario</label>
+                                <input type="text" class="form-control form-control-sm" id="editUserAcount3"
+                                    name="userAcount3" placeholder="@ejemplo">
+                            </div>
+                            <div class="col">
+                                <label for="editPreferences3"
+                                    class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="editPreferences3"
+                                    id="editContactPreferences3">
+                                    <option selected>Sin preferencia</option>
+                                    <option value="favorite">Canal favorito</option>
+                                    <option value="do not disturb">No molestar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row contact-channel-info">
+                            <div class="col">
+                                <label for="editContactChannel4" class="col-form-label col-form-label-sm">Canal de
+                                    contacto</label>
+                                <select class="form-control form-control-sm" name="editContactChannel4"
+                                    id="editContactChanel4">
+                                    <option selected>Seleccionar canal</option>
+                                    <option value="tel">Teléfono</option>
+                                    <option value="email">Email</option>
+                                    <option value="whatsapp">Whatsapp</option>
+                                    <option value="linkedin">Linkedin</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="userAcount4" class="col-form-label col-form-label-sm">Cuenta de
+                                    usuario</label>
+                                <input type="text" class="form-control form-control-sm" id="editUserAcount4"
+                                    name="userAcount4" placeholder="@ejemplo">
+                            </div>
+                            <div class="col">
+                                <label for="editPreferences4"
+                                    class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="editPreferences4"
+                                    id="editContactPreferences4">
+                                    <option selected>Sin preferencia</option>
+                                    <option value="favorite">Canal favorito</option>
+                                    <option value="do not disturb">No molestar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-row mt-4 mb-0">
+                            <label class="col-form-label col-form-label-sm"><span
+                                    class="text-danger">*</span>Información requerida</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
+                        data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success btn-lg modal-button update-button"
+                        data-dismiss="modal">Actualizar contacto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END Modify Contacts Modal -->
+
+    <div class="error-msg"></div>
+
+    <!-- Scripts -->
+
+    <!-- jQuery, Popper and Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+
+    <!-- END Scripts -->
+
+</body>
+
 </html>

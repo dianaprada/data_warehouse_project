@@ -2,7 +2,7 @@
  * Imports
  */
 import api from "./main_services.js";
-import { URL_REGISTER, LOCAL_STORAGE_TOKEN, LOCAL_STORAGE_USER } from "./global_variables.js";
+import { URL_LOGIN, LOCAL_STORAGE_TOKEN, LOCAL_STORAGE_USER } from "./global_variables.js";
 import {
   saveTokenLocalStorage,
   saveUserLocalStorage,
@@ -18,8 +18,6 @@ const inputPassword = document.getElementById("password");
 const labelError = document.getElementById('labelError');
 
 let data = {};
-
-
 
 
 

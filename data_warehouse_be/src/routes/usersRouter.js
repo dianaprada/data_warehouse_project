@@ -41,5 +41,54 @@ router.post("/register", jsonParser, auth, profilePolicy.isAdmin,  usersControll
 
 
 
+/* Get Enabled Users - Only admin users consults all users */
+
+router.get("/users", auth, profilePolicy.isAdmin, usersController.getEnabledUsers);
+
+/* Get All Users - Only admin users consults all users */
+
+router.get("/allusers", auth, profilePolicy.isAdmin, usersController.getAllUsers);
+
+/* Getting User by ID - Only admin users consults users by ID */
+
+router.get(
+  "/users/:id",
+  auth,
+  profilePolicy.isAdmin,
+  usersController.findUser,
+  usersController.getOneUser
+);
+
+/* Get User by ID - Each user can see their user information */
+
+router.get(
+  "/user/:id",
+  auth,
+  usersController.findUser,
+  usersController.getOneUser
+);
+
+/* Update User - Only admin users */
+
+router.put(
+    "/user/:id",
+    jsonParser,
+    auth,
+    profilePolicy.isAdmin,
+    usersController.findUser,
+    usersController.updateUser
+  );
+
+
+/* Delete User - Only admin users */
+
+router.delete(
+    "/user/:id",
+    jsonParser,
+    auth,
+    profilePolicy.isAdmin,
+    usersController.findUser,
+    usersController.deleteUser
+  );
 
 module.exports = router;

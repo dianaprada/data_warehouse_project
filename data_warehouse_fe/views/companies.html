@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="icon" sizes="32x32" href="../assets/logo_icon.png" type="image/svg+xml">
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles/normalize.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/styles.css">
+
+    <title>Data Warehouse Acámica Project - DianaP3</title>
+
+  </head>
+  
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-0">
+        <a class="navbar-brand" href="#">
+            <img class="ml-4" src="../assets/logo.png" width="100" height="59" alt="Data Warehouse Logo" loading="lazy">
+        </a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link mx-1" href="./contacts.html">Contactos</a>
+                <a class="nav-link mx-1 active" href="#">Compañías<span class="sr-only">(current)</span></a>
+                <a class="nav-link mx-1 d-none users-tab" href="./users.html">Usuarios</a>
+                <a class="nav-link mx-1" href="./region-city.html">Región / Ciudad</a>
+            </div>
+        </div>
+    </nav>
+
+  <main class="main mx-4">
+    <section>
+      <h1 class="title mt-5 mb-3">Compañías</h1>
+        
+      <!-- Search Bar -->
+
+        <div class="d-flex flex-row justify-content-between">
+          <div class="d-flex flex-row">
+              <div class="input-group filter mr-2">
+                  <input type="text" class="form-control" aria-label="Text input with dropdown button">  
+              </div>
+              <!-- Button Search -->
+              <button type="button" class="btn btn-outline-secondary btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
+              
+          </div>
+
+          <!-- New Company Button -->       
+          <div class="d-flex flex-row justify-content-end">
+              <button type="button" class="btn btn-primary btn-size" data-toggle="modal" data-target="#newCompanyModal">Agregar Compañía</button>
+          </div>
+          <!-- END New Company Button -->
+
+      </div>
+
+        <!-- END Search Bar -->
+
+        <div class="selected-contacts d-flex justify-content-between align-items-center mt-4 mb-1">
+          <button type="button" class="btn btn-xsm btn-tag disable contacts-selected d-none"> </button>
+          <button type="button" class="btn btn-outline-primary btn-size border-0 delete-contacts d-none" data-toggle="modal" data-target="#deleteUserModal"><i class="fa fa-trash" aria-hidden="true"></i> 
+              Eliminar Compañía</button>
+      </div>
+
+      <!-- Companies Grid -->
+
+      <table class="table table-borderless table-bordered table-responsive-lg table-hover">
+          <thead>
+              <tr class="table-bordered">
+                  <th class="align-middle" scope="col">
+                    <input class="ml-3 all-checkbox" type="checkbox" name="checkAllCompanies"></th>
+                  <th class="align-middle" scope="col">Nombre
+                      <button type="button" class="btn btn-link asc-sort" data-field="companyName" data-index='0'>
+                        <i class="fa fa-sort" aria-hidden="true"></i></button>
+                      <button type="button" class="btn btn-link desc-sort d-none" data-field="companyName" data-index='0'>
+                            <i class="fa fa-sort" aria-hidden="true"></i></button></th>
+                  <th class="align-middle" scope="col">Dirección
+                        <button type="button" class="btn btn-link asc-sort" data-field="companyAddress" data-index='1'>
+                            <i class="fa fa-sort" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-link desc-sort d-none" data-field="companyAddress" data-index='1'>
+                            <i class="fa fa-sort" aria-hidden="true"></i></button></th>
+                  <th class="align-middle" scope="col">Email 
+                        <button type="button" class="btn btn-link asc-sort" data-field="companyEmail" data-index='2'>
+                            <i class="fa fa-sort" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-link desc-sort d-none" data-field="companyEmail"
+                          data-index='2'><i class="fa fa-sort" aria-hidden="true"></i></button></th>
+                  <th class="align-middle" scope="col">Teléfono
+                        <button type="button" class="btn btn-link asc-sort" data-field="contactPhone" data-index='3'>
+                            <i class="fa fa-sort" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-link desc-sort d-none" data-field="contactPhone" data-index='3'>
+                          <i class="fa fa-sort" aria-hidden="true"></i></button></th>
+                  <th class="align-middle" scope="col">Ciudad
+                        <button type="button" class="btn btn-link asc-sort" data-field="contactCity" data-index='4'>
+                            <i class="fa fa-sort" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-link desc-sort d-none" data-field="contactCity" data-index='4'>
+                            <i class="fa fa-sort" aria-hidden="true"></i></button></th>
+                  
+                  <th class="align-middle text-center" scope="col">Acciones</th>
+              </tr>
+          </thead>
+          <tbody class="companiesBodyTable" id="companiesBodyTable">
+
+        </tbody>
+      </table>
+
+      <!-- END Companies Grid -->
+
+    </section>
+  </main>
+
+
+<!-- Delete Company Modal -->
+
+<div class="modal fade" id="deleteCompanyModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+          <div class="modal-body text-center mt-1">
+              <img src="../assets/delete_bussines.png" alt="Delete Company">
+              <p class="pt-4">¿Seguro que deseas eliminar las compañías seleccionadas?</p>
+          </div>
+          <div class="modal-footer border-top-0 justify-content-around">
+              <button type="button" class="btn btn-outline-primary btn-lg modal-button" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger btn-lg modal-button delete" data-dismiss="modal">Eliminar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- END Delete Company Modal -->
+
+<!-- NEW Company Modal -->
+
+<div class="modal fade" id="newCompanyModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+          <div class="modal-header bg-primary new-contact-modal-header">
+              <h1 class="title m-0 text-white">Nueva Compañía</h1>
+              <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+              <form id="newCompanyForm">
+                  <div class="form-group form-row border py-4 px-2 borders-new-user-modal bg-white">
+                      <div class="col- position-relative ml-2 mr-3">
+                            <img src="../assets/bussines.png" alt="Company Image" class="imgBtnAddPic__userImg" />
+                        </div>
+                      <div class="col">
+                          <label for="newCompanyName" class="col-form-label col-form-label-sm">Nombre<span class="text-danger">*</span></label>
+                          <input type="text" class="form-control form-control-sm" id="newCompanyName" name="newCompanyName">
+                      </div>
+                      <div class="col">
+                          <label for="newCompanyAddress" class="col-form-label col-form-label-sm">Dirección<span class="text-danger">*</span></label>
+                          <input type="text" class="form-control form-control-sm" id="newCompanyAddress" name="newCompanyAddress">
+                      </div>
+                      <div class="col">
+                            <label for="newCompanyEmail" class="col-form-label col-form-label-sm">Email<span class="text-danger">*</span></label>
+                            <input type="email" class="form-control form-control-sm" id="newCompanyEmail" name="newCompanyEmail">
+                      </div>
+                      <div class="col">
+                        <label for="newCompanyPhone" class="col-form-label col-form-label-sm">Teléfono<span class="text-danger">*</span></label>
+                        <input type="number" class="form-control form-control-sm" id="newCompanyPhone" name="newCompanyPhone">
+                      </div>
+                      <div class="col">
+                            <label for="newCompanyCity" class="col-form-label col-form-label-sm">Ciudad<span class="text-danger">*</span></label>
+                            <select type="text" class="form-control form-control-sm" id="newCompanyCity" name="newCompanyCity">
+                                <option selected disabled value="0">Seleccionar Ciudad</option> 
+                            </select>
+                      </div>
+
+                  </div>
+                  
+                  <div class="form-group form-row mt-4 mb-0">
+                      <label class="col-form-label col-form-label-sm"><span class="text-danger">*</span>Información requerida</label>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer border-top-0">
+              <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-success btn-lg modal-button create" data-dismiss="modal">Guardar Compañía</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- END New Company Modal -->
+
+<!-- Modify Company Modal -->
+
+<div class="modal fade" id="edit-contact" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+          <div class="modal-header bg-primary new-contact-modal-header">
+              <h1 class="title m-0 text-white">Actualizar contacto</h1>
+              <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+              <form id="editContactForm">
+                  <div class="form-group form-row border py-4 px-2 borders-new-user-modal bg-white">
+                      <div class="col- position-relative ml-2 mr-3">
+                          
+                          <button class="imgBtnAddPic">
+                            <img src="./assets/avatar_frame.png" alt="User Frame" class="imgBtnAddPic__frame"/>
+                            <img src="./assets/bono.png" alt="User Image" class="imgBtnAddPic__frame--img"/>
+                          </button>
+
+                        </div>
+                      <div class="col">
+                          <label for="editName" class="col-form-label col-form-label-sm">Nombre<span class="text-danger">*</span></label>
+                          <input type="text" class="form-control form-control-sm" id="editContactName" name="editName">
+                      </div>
+                      <div class="col">
+                          <label for="editLastname" class="col-form-label col-form-label-sm">Apellido<span class="text-danger">*</span></label>
+                          <input type="text" class="form-control form-control-sm" id="editContactLastName" name="editLastname">
+                      </div>
+                      <div class="col">
+                          <label for="editPosition" class="col-form-label col-form-label-sm">Cargo<span class="text-danger">*</span></label>
+                          <input type="text" class="form-control form-control-sm" id="editContactPosition" name="editPosition">
+                      </div>
+                      <div class="col">
+                          <label for="editEmail" class="col-form-label col-form-label-sm">Email<span class="text-danger">*</span></label>
+                          <input type="email" class="form-control form-control-sm" id="editContactEmail" name="editEmail">
+                      </div>
+                      <div class="col">
+                          <label for="editCompany" class="col-form-label col-form-label-sm">Compañía<span class="text-danger">*</span></label>
+                          <select type="text" class="form-control form-control-sm" id="editContactCompany" name="editCompany">
+                              <option selected disabled>Seleccionar compañía</option>
+                          </select>
+                      </div>
+                  </div>
+                 
+                  <div class="form-group form-row mt-4 mb-0">
+                      <label class="col-form-label col-form-label-sm"><span class="text-danger">*</span>Información requerida</label>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer border-top-0">
+              <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-success btn-lg modal-button update-button" data-dismiss="modal">Actualizar contacto</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- END Modify Company Modal -->
+
+    <!-- Scripts -->
+    
+    <!-- jQuery, Popper and Bootstrap JS -->
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    
+    <script src="https://kit.fontawesome.com/7396023e43.js" crossorigin="anonymous"></script>
+    <script type="module" src="../scripts/main_userController.js"></script>
+    <!-- END Scripts -->
+
+  </body>
+</html>

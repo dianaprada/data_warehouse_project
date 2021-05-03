@@ -17,7 +17,7 @@ module.exports = {
     let { userAccount, password } = req.body;
 
     /* Find User */
-    console.log("Usuario Body UserAccount", userAccount);
+    //console.log("Usuario Body UserAccount", userAccount);
     
     User.findAll({
       where: {
@@ -33,22 +33,32 @@ module.exports = {
             let token = jwt.sign({ user: users[0] }, authConfig.secret, {
               expiresIn: authConfig.expires,
             });
-
             res.status(200).json({
               user: users[0].userProfile,
               token: token,
-              message: "",
+              status: 201,
+              ok: true,
+              title: 'Successful request',
+              message: ""
             });
           } else {
             // Unathorized Access
-            
-            res.status(401).json({ message: "Invalid username or password" });
+            res.status(401).json({ 
+              status: 401,
+              title: 'Unauthorized',
+              ok: false,
+              message: "Invalid username or password" });
           }
         }
       })
-      .catch((err) => {
-        
-        res.status(500).json({ message: err });
+      .catch((error) => {
+        res.status(500).json({
+          status: 500,
+          detail: error.message,
+          ok: false,
+          title: 'Internal Error Server',
+          message: 'Internal Error Server'
+        })
       });
   },
 
@@ -64,6 +74,10 @@ module.exports = {
       passwordLen.length > 20
     ) {
       res.status(400).json({
+        status: 400,
+        detail:err.message,
+        ok: false,
+        title: 'Bad Request',
         message: "Password must be between 8 and 20 characters in length.",
       });
     } else {
@@ -74,6 +88,7 @@ module.exports = {
       );
 
       /* Create a user */
+           
       User.create({
         userName: req.body.userName,
         userLastName: req.body.userLastName,
@@ -82,19 +97,22 @@ module.exports = {
         userPassword: hashPassword,
         userImg: req.body.userImg,
       })
-        .then((user) => {
-          /* Create Token */
-          let token = jwt.sign({ user: user }, authConfig.secret, {
-            expiresIn: authConfig.expires,
-          });
-          //res.status(201).json({ message: "User created" });
-          res.status(201).json({
-            user: user,
-            token: token,
-          });
+        .then((user) => {  
+          res.status(201).json({ 
+            user,
+            status: 201,
+            ok: true,
+            title: 'Successful request',
+            message: "Created" });
         })
         .catch((err) => {
-          res.status(400).json({ message: err.message });
+          res.status(400).json({ 
+            status: 400,
+            detail:err.message,
+            ok: false,
+            title: 'Bad Request',
+            message: 'Internal Error Server'
+           });
         });
     }
   },
@@ -104,7 +122,11 @@ module.exports = {
   findUser(req, res, next) {
     User.findOne({ where: { userID: req.params.id } }).then((user) => {
       if (!user) {
-        res.status(404).json({ msg: "User not found" });
+        res.status(404).json({ 
+          status: 404,
+          ok: false,
+          title: 'Not Found',
+          message: "User not found" });
       } else {
         req.user = user;
         next();
@@ -112,46 +134,113 @@ module.exports = {
     });
   },
 
+  /* Get Enabled Users */
+
+  getEnabledUsers(req, res) {
+    User.findAll({ where: { userStatus: "Enabled" } }).then((users) => {
+      res.status(200).json({
+        users,
+        status: 200,
+        ok: true,
+        title: 'Successful request',
+        message: 'User Found',
+      });
+    });
+  },
+
   /* Get all Users */
 
   getAllUsers(req, res) {
-    User.findAll({ where: { userStatus: "Enabled" } }).then((users) => {
-      res.status(200).json(users);
+    User.findAll().then((users) => {
+      res.status(200).json({
+        users,
+        status: 200,
+        ok: true,
+        title: 'Successful request',
+        message: 'User Found',
+      });
     });
   },
 
   /* Get User by ID */
 
   getOneUser(req, res) {
-    res.status(200).json(req.user);
+    res.status(200).json({
+      user: req.user,
+      status: 200,
+      ok: true,
+      title: 'Successful request',
+      message: 'User Found',
+    });
   },
 
   /* Update User one */
 
   updateUser(req, res) {
-    /* Encrypt password */
-    let hashNewPassword = bcrypt.hashSync(
-      req.body.password,
+    let passwordUpdated = req.body.passwordUpdated;
+    let hashNewPassword;
+    if (passwordUpdated = "Updated") {
+      /* Encrypt password */
+      hashNewPassword = bcrypt.hashSync(
+      req.body.userPassword,
       Number.parseInt(authConfig.rounds)
+      
     );
-
+    } else { 
+      hashNewPassword = req.user.userPassword; 
+    }
+    
     req.user.userName = req.body.userName;
     req.user.userLastName = req.body.userLastName;
     req.user.userEmail = req.body.userEmail;
     req.user.userProfile = req.body.userProfile;
     req.user.userPassword = hashNewPassword;
     req.user.userImg = req.body.userImg;
+    req.user.userStatus = req.body.userStatus;
 
     req.user.save().then((user) => {
-      res.status(200).json({ msg: "User has been updated.", user });
+      res.status(200).json({ 
+        user,
+        status: 200,
+        ok: true,
+        title: 'Successful request',
+        message: "Updated user" });
+    });
+  },
+
+   /* Update Password User one */
+
+   updateUserPassword(req, res) {
+    /* Encrypt password */
+    let hashNewPassword = bcrypt.hashSync(
+      req.body.userPassword,
+      Number.parseInt(authConfig.rounds)
+    );
+    req.user.userPassword = hashNewPassword;
+
+    req.user.save().then((user) => {
+      res.status(200).json({ 
+        user,
+        status: 200,
+        ok: true,
+        title: 'Successful request',
+        message: "Updated password" });
     });
   },
 
   /* Delete User */
 
   deleteUser(req, res) {
-    req.user.destroy().then(() => {
-      res.status(200).json({ msg: "User has been deleted" });
+    req.user.userStatus = "Disabled";
+
+    req.user.save().then((user) => {
+      res.status(200).json({ 
+        user,
+        status: 200,
+        ok: true,
+        title: 'Successful request',
+        message: "Disabled user" });
     });
-  },
+  }
+
 };

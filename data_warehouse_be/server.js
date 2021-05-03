@@ -33,8 +33,11 @@ const { errorHandler } = require("./src/middlewares/errorHandler");
 
 const indexRouter = require("./src/routes/index");
 const usersRouter = require("./src/routes/usersRouter");
-
-
+const regionsRouter = require("./src/routes/regionsRouter");
+const countriesRouter = require("./src/routes/countriesRouter");
+const citiesRouter = require("./src/routes/citiesRouter");
+const companiesRouter = require("./src/routes/companiesRouter");
+const contactsRouter = require("./src/routes/contactsRouter");
 
 /* Middlewares */
 server.use(helmet());
@@ -49,6 +52,11 @@ server.use(express.urlencoded({ extended: false }));
 /* Routes */
 server.use("/", indexRouter);
 server.use("/", usersRouter);
+server.use("/", regionsRouter);
+server.use("/", countriesRouter);
+server.use("/", citiesRouter);
+server.use("/", companiesRouter);
+server.use("/", contactsRouter);
 
 /**
  * Start Server
@@ -56,7 +64,6 @@ server.use("/", usersRouter);
 server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
-
 
 /**
  * Force True: Drop Tables
@@ -70,7 +77,6 @@ sequelize
   .catch((error) => {
     console.log("Something was wrong: ", error);
   });
-
 
 /* Database connection */
 
