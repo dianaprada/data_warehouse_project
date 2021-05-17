@@ -274,4 +274,71 @@ p {
   width: 70%;
   min-width: 70%;
 }
+
+ul, #myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none;
+  /* Safari 3.1+ */
+  -moz-user-select: none;
+  /* Firefox 2+ */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: #1D72C2;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.treeFont {
+  font: "Open Sans", sans-serif;
+}
+
+.treeColor {
+  color: #1D72C2;
+  font-size: small;
+}
+
+.buttonTreeAdd {
+  color: #FFFFFF;
+  font-size: small;
+  background-color: #007bff;
+}
+
+.buttonTreeAdd:hover {
+  color: #FFFFFF;
+  font-size: small;
+  background-color: #1D72C2;
+}
+
+.buttonTreeAdd:active {
+  color: #FFFFFF;
+  font-size: small;
+  background-color: #1D72C2;
+}
 /*# sourceMappingURL=styles.css.map */

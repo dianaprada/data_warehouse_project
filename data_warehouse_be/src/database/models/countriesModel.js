@@ -22,19 +22,6 @@ const { Region } = require("./regionsModel");
         type: DataTypes.INTEGER,
         allowNull: false,
      },
-     countryCod: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: {
-          msg: "This Country Code is already taken.",
-        },
-        validate: {
-          len: [2, 3], // only allow values with length between 3 and 20
-          notNull: {
-            msg: "Please enter the Country Code",
-          },
-        },
-      },
      countryName: {
         type: DataTypes.STRING,
         allowNull: false,

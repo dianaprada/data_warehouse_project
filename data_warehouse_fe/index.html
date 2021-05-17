@@ -49,11 +49,14 @@
                         <input type="text" class="form-control filter-input"
                             aria-label="Text input with dropdown button">
                         <div class="input-group-append">
+                           
                             <!-- Button Carret Down -->
+
                             <button class="btn dropdown-toggle btnFilterSearch" type="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false"></button>
 
                             <!-- Dropdown Filter -->
+
                             <div class="dropdown-form dropdown-menu filter-menu p-3" id="filter-form">
                                 <div class="form-group mt-1 pb-2 row">
                                     <label for="nameFilter" class="col-md-4 col-form-label col-form-label-sm">Nombre del
@@ -125,20 +128,28 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!-- END Dropdown Filter -->
+
                         </div>
                     </div>
+
                     <!-- Button Search -->
+
                     <button type="button" class="btn btn-outline-secondary btn-search"><i class="fa fa-search"
                             aria-hidden="true"></i></button>
 
                 </div>
+
                 <!-- New Contact Button -->
+
                 <div class="d-flex flex-row justify-content-end">
                     <button type="button" class="btn btn-primary btn-size" data-toggle="modal"
                         data-target="#newContactModal">Agregar contacto</button>
                 </div>
+
                 <!-- END New Contact Button -->
+
             </div>
 
             <!-- END Search Bar and Filter -->
@@ -158,18 +169,18 @@
                         <th class="align-middle" scope="col"><input class="ml-3 all-checkbox" type="checkbox"
                                 name="checkAllContacts"></th>
                         <th class="align-middle" scope="col">Contacto <button type="button"
-                                class="btn btn-link asc-sort" data-field="contactName" data-index='0'><i class="fa fa-sort"
-                                    aria-hidden="true"></i></button><button type="button"
+                                class="btn btn-link asc-sort" data-field="contactName" data-index='0'><i
+                                    class="fa fa-sort" aria-hidden="true"></i></button><button type="button"
                                 class="btn btn-link desc-sort d-none" data-field="contactName" data-index='0'><i
                                     class="fa fa-sort" aria-hidden="true"></i></button></th>
                         <th class="align-middle" scope="col">País/Región <button type="button"
-                                class="btn btn-link asc-sort" data-field="contactCountry" data-index='1'><i class="fa fa-sort"
-                                    aria-hidden="true"></i></button><button type="button"
+                                class="btn btn-link asc-sort" data-field="contactCountry" data-index='1'><i
+                                    class="fa fa-sort" aria-hidden="true"></i></button><button type="button"
                                 class="btn btn-link desc-sort d-none" data-field="contactCountry" data-index='1'><i
                                     class="fa fa-sort" aria-hidden="true"></i></button></th>
                         <th class="align-middle" scope="col">Compañía <button type="button"
-                                class="btn btn-link asc-sort" data-field="contactCompany" data-index='2'><i class="fa fa-sort"
-                                    aria-hidden="true"></i></button><button type="button"
+                                class="btn btn-link asc-sort" data-field="contactCompany" data-index='2'><i
+                                    class="fa fa-sort" aria-hidden="true"></i></button><button type="button"
                                 class="btn btn-link desc-sort d-none" data-field="contactCompany" data-index='2'><i
                                     class="fa fa-sort" aria-hidden="true"></i></button></th>
                         <th class="align-middle" scope="col">Cargo <button type="button" class="btn btn-link asc-sort"
@@ -189,6 +200,7 @@
 
                 </tbody>
             </table>
+
             <!-- END Contacts Grid -->
 
         </section>
@@ -245,7 +257,7 @@
                     <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form id="new-contact-form">
+                    <div id="new-contact-form">
                         <div class="form-group form-row border py-4 px-2 borders-new-user-modal bg-white">
                             <div class="col- position-relative ml-2 mr-3">
                                 <button class="imgBtnAddPic">
@@ -451,13 +463,13 @@
                             <label class="col-form-label col-form-label-sm"><span
                                     class="text-danger">*</span>Información requerida</label>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-success btn-lg modal-button create"
-                        data-dismiss="modal">Guardar contacto</button>
+                        data-dismiss="modal" id="saveContactModalBtn">Guardar contacto</button>
                 </div>
             </div>
         </div>

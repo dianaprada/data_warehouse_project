@@ -40,7 +40,7 @@ module.exports = {
           include: [
             {
               model: Country,
-              attributes: ["countryID", "countryCod", "countryName"],
+              attributes: ["countryID", "countryName"],
               include: [
                 {
                   model: Region,
@@ -98,7 +98,7 @@ module.exports = {
           include: [
             {
               model: Country,
-              attributes: ["countryID", "countryCod", "countryName"],
+              attributes: ["countryID", "countryName"],
               include: [
                 {
                   model: Region,

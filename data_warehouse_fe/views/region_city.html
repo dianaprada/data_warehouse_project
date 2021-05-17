@@ -72,10 +72,10 @@
 
             <!-- Regions Tree -->
 
-            <div class="px-4 pt-1">
+            <div>
                 <div>
-                    <ul id="myUL" class="pl-5 list-group list-group-flush regions-body" >
-
+                    <ul id="myUL">
+                        
                     </ul>
                 </div>
             </div>
@@ -94,12 +94,13 @@
                 <div class="modal-body text-center mt-1">
                     <img src="../assets/delete_region.png" alt="Delete Region">
                     <p class="pt-4">¿Seguro que deseas eliminar la región seleccionada?</p>
+                    <input type="hidden" id="deleteRegionID" >
                 </div>
                 <div class="modal-footer border-top-0 justify-content-around">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button"
                         data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-danger btn-lg modal-button delete"
-                        data-dismiss="modal">Eliminar</button>
+                        data-dismiss="modal" id="deleteButtonModal">Eliminar</button>
                 </div>
             </div>
         </div>
@@ -113,6 +114,7 @@
         <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
                 <div class="modal-body text-center mt-1">
+                    <input type="hidden" id="deleteCountryID" name="deleteCountryID">
                     <img src="../assets/delete_country.png" alt="Delete Country">
                     <p class="pt-4">¿Seguro que deseas eliminar el país seleccionado?</p>
                 </div>
@@ -120,7 +122,7 @@
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button"
                         data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-danger btn-lg modal-button delete"
-                        data-dismiss="modal">Eliminar</button>
+                        data-dismiss="modal" id="deleteCountryModalBtn">Eliminar</button>
                 </div>
             </div>
         </div>
@@ -135,13 +137,14 @@
             <div class="modal-content">
                 <div class="modal-body text-center mt-1">
                     <img src="../assets/delete_city.png" alt="Delete Country">
+                    <input type="hidden"  id="deleteCityID" name="deleteCityID">
                     <p class="pt-4">¿Seguro que deseas eliminar la ciudad seleccionada?</p>
                 </div>
                 <div class="modal-footer border-top-0 justify-content-around">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button"
                         data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-danger btn-lg modal-button delete"
-                        data-dismiss="modal">Eliminar</button>
+                        data-dismiss="modal" id="deleteCityModalBtn">Eliminar</button>
                 </div>
             </div>
         </div>
@@ -199,6 +202,7 @@
                 <div class="modal-header bg-primary new-contact-modal-header">
                     <h1 class="title m-0 text-white">Nuevo País</h1>
                     <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                    
                 </div>
                 <div class="modal-body">
                     <div id="new-country-form">
@@ -209,10 +213,10 @@
                             <div class="col">
                                 <label for="selectNewRegionCountry" class="col-form-label col-form-label-sm">Región<span
                                         class="text-danger">*</span></label>
-                                <select type="text" class="form-control form-control-sm" id="selectNewRegionCountry"
-                                    name="selectNewRegionCountry">
-                                    <option selected disabled value="0">Seleccionar Región</option>
-                                </select>
+                                <input type="hidden"  id="newCountry_RegionID"  name="newCountry_RegionID">
+                                <input type="text" disabled class="form-control form-control-sm" id="newCountry_RegionName"
+                                    name="newCountry_RegionName">
+                               
                             </div>
                             <div class="col">
                                 <label for="newCountryName" class="col-form-label col-form-label-sm">País<span
@@ -232,7 +236,7 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success btn-lg modal-button create" id="createCountryBtn"
+                    <button type="button" class="btn btn-success btn-lg modal-button create" id="createCountryModalBtn"
                         data-dismiss="modal">Guardar País</button>
                 </div>
             </div>
@@ -247,7 +251,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary new-contact-modal-header">
-                    <h1 class="title m-0 text-white">Nuevo País</h1>
+                    <h1 class="title m-0 text-white">Nueva Ciudad</h1>
                     <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -256,24 +260,16 @@
                             <div class="col- position-relative ml-2 mr-3">
                                 <img src="../assets/city.png" alt="City Image" class="imgBtnAddPic__userImg" />
                             </div>
+                    
                             <div class="col">
-                                <label for="selectNewRegionCity" class="col-form-label col-form-label-sm">Región<span
+                                <label for="newCity_CountryName" class="col-form-label col-form-label-sm">País<span
                                         class="text-danger">*</span></label>
-                                <select type="text" class="form-control form-control-sm" id="selectNewRegionCity"
-                                    name="selectNewRegionCity">
-                                    <option selected disabled value="0">Seleccionar Región</option>
-                                </select>
+                                <input type="hidden"  id="newCity_CountryID" name="newCity_CountryID">
+                                <input disabled type="text" class="form-control form-control-sm" id="newCity_CountryName"
+                                        name="newCity_CountryName">
                             </div>
                             <div class="col">
-                                <label for="selectNewCountryCity" class="col-form-label col-form-label-sm">País<span
-                                        class="text-danger">*</span></label>
-                                <select type="text" class="form-control form-control-sm" id="selectNewCountryCity"
-                                    name="selectNewCountryCity">
-                                    <option selected disabled value="0">Seleccionar País</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <label for="newCityName" class="col-form-label col-form-label-sm">País<span
+                                <label for="newCityName" class="col-form-label col-form-label-sm">Ciudad<span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control form-control-sm" id="newCityName"
                                     name="newCityName">
@@ -302,7 +298,7 @@
     <!-- Modify Region Modal -->
 
     <div class="modal fade" id="editRegionModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary new-contact-modal-header">
                     <h1 class="title m-0 text-white">Actualizar Región</h1>
@@ -315,8 +311,9 @@
                                 <img src="../assets/region.png" alt="Region Image" class="imgBtnAddPic__userImg" />
                             </div>
                             <div class="col">
-                                <label for="editRegionName" class="col-form-label col-form-label-sm">Ciudad<span
+                                <label for="editRegionName" class="col-form-label col-form-label-sm">Región<span
                                         class="text-danger">*</span></label>
+                                <input type="hidden"  id="editRegionID" name="editRegionID">
                                 <input type="text" class="form-control form-control-sm" id="editRegionName"
                                     name="editRegionName">
                             </div>
@@ -331,7 +328,7 @@
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-success btn-lg modal-button create"
-                        data-dismiss="modal">Guardar Región</button>
+                        data-dismiss="modal" id="editRegionButtonSave">Guardar Región</button>
                 </div>
             </div>
         </div>
@@ -342,7 +339,7 @@
     <!-- Modify Country Modal -->
 
     <div class="modal fade" id="editCountryModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary new-contact-modal-header">
                     <h1 class="title m-0 text-white">Actualizar País</h1>
@@ -353,14 +350,14 @@
                         <div class="form-group form-row border py-4 px-2 borders-new-user-modal bg-white">
                             <div class="col- position-relative ml-2 mr-3">
                                 <img src="../assets/country.png" alt="Country Image" class="imgBtnAddPic__userImg" />
+                                <input type="hidden" id="editCountryID" name="editCountryID">
+                                <input type="hidden" id="editCountry_RegionID" name="editCountry_RegionID">
                             </div>
                             <div class="col">
-                                <label for="editRegionCountry" class="col-form-label col-form-label-sm">Región<span
-                                        class="text-danger">*</span></label>
-                                <select type="text" disabled class="form-control form-control-sm" id="editRegionCountry"
-                                    name="editRegionCountry">
-                                    <option selected disabled>Seleccionar Región</option>
-                                </select>
+                                <label for="editRegionCountry" class="col-form-label col-form-label-sm">Región</label>
+                                <input type="text" disabled class="form-control form-control-sm" id="editCountry_RegionName"
+                                        name="editCountry_RegionName">
+                           
                             </div>
                             <div class="col">
                                 <label for="editCountryName" class="col-form-label col-form-label-sm">País<span
@@ -381,7 +378,7 @@
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-success btn-lg modal-button update-button"
-                        data-dismiss="modal">Actualizar País</button>
+                        data-dismiss="modal" id="editCountryModalBtn">Actualizar País</button>
                 </div>
             </div>
         </div>
@@ -391,8 +388,8 @@
 
     <!-- Modify City Modal -->
 
-    <div class="modal fade" id="editCountryModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal fade" id="editCityModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary new-contact-modal-header">
                     <h1 class="title m-0 text-white">Actualizar Ciudad</h1>
@@ -404,26 +401,19 @@
                             <div class="col- position-relative ml-2 mr-3">
                                 <img src="../assets/city.png" alt="City Image" class="imgBtnAddPic__userImg" />
                             </div>
+
                             <div class="col">
-                                <label for="editRegionCity" class="col-form-label col-form-label-sm">Región<span
+                                <label for="editCity_CountryName" class="col-form-label col-form-label-sm">País<span
                                         class="text-danger">*</span></label>
-                                <select type="text" class="form-control form-control-sm" id="editRegionCity"
-                                    name="editRegionCity">
-                                    <option selected disabled>Seleccionar Región</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <label for="editCountryCity" class="col-form-label col-form-label-sm">País<span
-                                        class="text-danger">*</span></label>
-                                <select type="text" disabled class="form-control form-control-sm" id="editCountryCity"
-                                    name="editCountryCity">
-                                    <option selected disabled>Seleccionar País</option>
-                                </select>
+                                <input type="hidden"  id="editCity_CountryID" name="editCity_CountryID">
+                                <input disabled type="text" class="form-control form-control-sm" id="editCity_CountryName"
+                                                name="editCity_CountryName">
                             </div>
 
                             <div class="col">
                                 <label for="editCityName" class="col-form-label col-form-label-sm">Ciudad<span
                                         class="text-danger">*</span></label>
+                                <input type="hidden"  id="editCityID" name="editCityID">
                                 <input type="text" class="form-control form-control-sm" id="editCityName"
                                     name="editCityName">
                             </div>
@@ -440,7 +430,7 @@
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-success btn-lg modal-button update-button"
-                        data-dismiss="modal">Actualizar Ciudad</button>
+                        data-dismiss="modal" id="editCityBtn" >Actualizar Ciudad</button>
                 </div>
             </div>
         </div>
@@ -464,6 +454,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
   integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
   crossorigin="anonymous"></script>
+
+  <!-- END jQuery, Popper and Bootstrap JS -->
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

@@ -35,7 +35,6 @@ module.exports = {
                   model: Country,
                   attributes: [
                     "countryID",
-                    "countryCod",
                     "countryName"
                   ],
                   include: [
@@ -91,7 +90,6 @@ module.exports = {
                   model: Country,
                   attributes: [
                     "countryID",
-                    "countryCod",
                     "countryName"
                   ],
                   include: [
@@ -135,6 +133,7 @@ module.exports = {
             title: 'Successful request',
             message: 'City Found',
           });
+          
     },
 
     /* Get Cities by country */
@@ -147,7 +146,6 @@ module.exports = {
                   model: Country,
                   attributes: [
                     "countryID",
-                    "countryCod",
                     "countryName"
                   ],
                   include: [
@@ -196,7 +194,7 @@ module.exports = {
             status: 200,
             ok: true,
             title: 'Successful request',
-            message: 'City has been updated.'
+            message: 'City has been updated'
           });
         });
     },
@@ -211,7 +209,7 @@ module.exports = {
             status: 200,
             ok: true,
             title: 'Successful request',
-            message: 'City has been deleted.'
+            message: 'City has been deleted'
           });
         });
     },

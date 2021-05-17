@@ -49,18 +49,6 @@ ul, #myUL {
 .buttonTreeAdd {
     color: $white;
     font-size: small;
-    background-color: $blue;
-}
-
-.buttonTreeAdd:hover {
-  color: $white;
-  font-size: small;
-  background-color: $primary;
-}
-
-.buttonTreeAdd:active {
-  color: $white;
-  font-size: small;
-  background-color: $primary;
+    background-color: $primary;
 }
 

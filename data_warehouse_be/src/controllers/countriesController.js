@@ -91,7 +91,6 @@ module.exports = {
     async createCountry(req, res) {
         let country = await Country.create({
             regionID: req.body.regionID,
-            countryCod: req.body.countryCod,
             countryName: req.body.countryName,
         
         });
@@ -208,7 +207,6 @@ module.exports = {
     async updateCountry(req, res) {
 
         req.country.regionID = req.body.regionID,
-        req.country.countryCod = req.body.countryCod,
         req.country.countryName = req.body.countryName,
 
         req.country.save().then((country) => {
@@ -217,7 +215,7 @@ module.exports = {
             status: 200,
             ok: true,
             title: 'Successful request',
-            message: 'Country has been updated.'
+            message: 'Country has been updated'
           });
         });
     },
@@ -231,7 +229,7 @@ module.exports = {
             status: 200,
             ok: true,
             title: 'Successful request',
-            message: 'Country has been deleted.'
+            message: 'Country has been deleted'
          });
         });
     },

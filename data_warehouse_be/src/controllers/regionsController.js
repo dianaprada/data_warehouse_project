@@ -17,7 +17,6 @@ module.exports = {
                   model: Country,
                   attributes: [
                     "countryID",
-                    "countryCod",
                     "countryName"
                   ],
                   include: [ {

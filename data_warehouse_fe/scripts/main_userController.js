@@ -105,9 +105,6 @@ const htmlUsersRowData = (
   userStatus
 ) => {
   return `<tr>
-        <td class="align-middle pl-5" >
-            <input class="ml-3 all-checkbox" type="checkbox" name="checkUser${userID}" data-id="${userID}">
-        </td>
         <td class="align-middle pl-5">${userName}</td>
         <td class="align-middle">${userLastName}</td>
         <td class="align-middle pl-5">${userEmail}</td>
@@ -151,7 +148,7 @@ const createUser = () => {
       }
     })
     .catch((error) => {
-      swal("", `${error}`, "error");
+      renderMsg(error);
     });
 };
 
@@ -179,7 +176,7 @@ const loadUserData = (id) => {
       }
     })
     .catch((error) => {
-      swal("", `${error}`, "error");
+      renderMsg(error);
     });
 };
 
@@ -222,7 +219,7 @@ const editUserData = () => {
       }
     })
     .catch((error) => {
-      swal("", `${error}`, "error");
+      renderMsg(error);
     });
 };
 
@@ -246,7 +243,7 @@ const deleteUserData = () => {
       }
     })
     .catch((error) => {
-      swal("", `${error}`, "error");
+      renderMsg(error);
     });
 };
 
@@ -282,7 +279,7 @@ const addEventListenerEditButton = (editButtonsList) => {
 };
 
 /**
- * @method addEventListenerEditButton
+ * @method addEventListenerDeleteButton
  * @description: Event Listener Save User
  * @returns {}
  */

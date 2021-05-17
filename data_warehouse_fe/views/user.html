@@ -17,11 +17,9 @@
   <!-- Font Awesome CSS -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <!-- filepond CSS -->
-  <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
 
   <link rel="stylesheet" href="../styles/styles.css">
-  <!-- END Scripts -->
+  <!-- END Styles -->
   <title>Data Warehouse Acámica Project - DianaP3</title>
 
 </head>
@@ -46,25 +44,34 @@
       <h1 class="title mt-5 mb-3">Usuarios</h1>
 
       <!-- Search Bar  -->
+
       <div class="d-flex flex-row justify-content-between">
         <div class="d-flex flex-row">
           <div class="input-group filter mr-2">
             <input type="text" class="form-control" aria-label="Text input with dropdown button">
           </div>
+
           <!-- Button Search -->
+
           <button type="button" class="btn btn-outline-secondary btn-search"><i class="fa fa-search"
               aria-hidden="true"></i></button>
 
         </div>
+
         <!-- New User Button -->
+
         <div class="d-flex flex-row justify-content-end">
-          <button type="button" class="btn btn-primary btn-size" data-toggle="modal"  data-target="#newUserModal">Agregar
+          <button type="button" class="btn btn-primary btn-size" data-toggle="modal" data-target="#newUserModal">Agregar
             Usuarios</button>
         </div>
+
         <!-- END New User Button -->
+
       </div>
 
       <!-- END Search Bar and Filters -->
+
+      <!-- ESTO HAY QUE VALIDARLO NO SE ESTÁ USANDO  -->
 
       <div class="selected-contacts d-flex justify-content-between align-items-center mt-4 mb-1">
         <button type="button" class="btn btn-xsm btn-tag disable contacts-selected d-none"> </button>
@@ -78,9 +85,7 @@
       <table class="table table-borderless table-bordered table-responsive-lg table-hover">
         <thead>
           <tr class="table-bordered">
-            <th class="align-middle pl-5" scope="col">
-              <input class="ml-3 all-checkbox" type="checkbox" name="checkAllUsers">
-            </th>
+
             <th class="align-middle pl-5" scope="col">Nombre(s)
               <button type="button" class="btn btn-link asc-sort" data-field="userName" data-index='0'>
                 <i class="fa fa-sort" aria-hidden="true"></i></button>
@@ -138,7 +143,8 @@
         <div class="modal-footer border-top-0 justify-content-around">
           <button type="button" class="btn btn-outline-primary btn-lg modal-button"
             data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger btn-lg modal-button delete" data-dismiss="modal" id="deleteUserBtn">Eliminar</button>
+          <button type="button" class="btn btn-danger btn-lg modal-button delete" data-dismiss="modal"
+            id="deleteUserBtn">Eliminar</button>
         </div>
       </div>
     </div>
@@ -159,14 +165,15 @@
           <div id="newUserForm">
             <div class="form-group form-row border py-4 px-2 borders-new-user-modal bg-white">
               <div class="col- position-relative ml-2 mr-3">
-                
+
                 <div class="imgBtnAddPic">
                   <!--
                   <img src="../assets/frame_avatar.png" alt="Agregar Imagen" class="imgBtnAddPic__userImg" />  -->
-          
+
                   <img src="../assets/frame.png" alt="User Frame" class="imgBtnAddPic__frame" />
-                  <img src="../assets/avatar_user.png" alt="User Image" class="imgBtnAddPic__frame--img" id="editUserImage"  />
-                  
+                  <img src="../assets/avatar_user.png" alt="User Image" class="imgBtnAddPic__frame--img"
+                    id="editUserImage" />
+
                 </div>
               </div>
               <div class="col">
@@ -184,8 +191,6 @@
                     class="text-danger">*</span></label>
                 <input type="email" class="form-control form-control-sm" id="userEmail" name="userEmail">
               </div>
-
-
             </div>
 
             <div class="form-group form-row border py-4  borders-new-user-modal bg-white">
@@ -223,7 +228,7 @@
           <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
             data-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-success btn-lg modal-button create" data-dismiss="modal"
-          id="createUserBtn">Guardar Usuario</button>
+            id="createUserBtn">Guardar Usuario</button>
         </div>
       </div>
     </div>
@@ -247,7 +252,8 @@
 
                 <div class="imgBtnAddPic">
                   <img src="../assets/frame.png" alt="User Frame" class="imgBtnAddPic__frame" />
-                  <img src="../assets/avatar_user.png" alt="User Image" class="imgBtnAddPic__frame--img" id="editUserImage"  />
+                  <img src="../assets/avatar_user.png" alt="User Image" class="imgBtnAddPic__frame--img"
+                    id="editUserImage" />
                   <input type="hidden" id="userID" name="userID">
                 </div>
 
@@ -264,14 +270,13 @@
                 <label for="editUserEmail" class="col-form-label col-form-label-sm">Email</label>
                 <input type="email" class="form-control form-control-sm" id="editUserEmail" name="editUserEmail">
               </div>
-              
             </div>
 
             <div class="form-group form-row border py-4  borders-new-user-modal bg-white">
               <div class="col- position-relative ml-2 mr-3">
 
               </div>
-              
+
               <div class="col">
                 <label for="editUserProfile" class="col-form-label col-form-label-sm">Perfil del Usuario</label>
                 <select type="text" class="form-control form-control-sm" id="editUserProfile" name="editUserProfile">
@@ -290,9 +295,10 @@
               </div>
               <div class="col">
                 <label for="editUserPassword" class="col-form-label col-form-label-sm">Password</label>
-                <input type="password" class="form-control form-control-sm" id="editUserPassword" name="editUserPassword">
+                <input type="password" class="form-control form-control-sm" id="editUserPassword"
+                  name="editUserPassword">
               </div>
-              
+
             </div>
 
           </div>
@@ -325,25 +331,14 @@
     integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
     crossorigin="anonymous"></script>
 
+  <!-- END jQuery, Popper and Bootstrap JS -->
+
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-  <!-- FilePond library -->
-
-  <!-- include FilePond library -->
-  <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-
-  <!-- include FilePond plugins -->
-  <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
-
-  <!-- include FilePond jQuery adapter -->
-  <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
-
-<!-- END FilePond library -->
 
   <script src="https://kit.fontawesome.com/7396023e43.js" crossorigin="anonymous"></script>
 
   <script type="module" src="../scripts/main_userController.js"></script>
-  
+
   <!-- END Scripts -->
 
 </body>

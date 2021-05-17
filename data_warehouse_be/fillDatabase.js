@@ -88,57 +88,46 @@ const regions = [
 const countries = [
   {
     regionID:  "1",
-    countryCod: "ar",
     countryName: "Argentina",
   },
   {
     regionID:  "1",
-    countryCod: "co",
     countryName: "Colombia",
   },
   {
     regionID:  "1",
-    countryCod: "cl",
     countryName: "Chile",
   },
   {
     regionID:  "1",
-    countryCod: "uy",
     countryName: "Uruguay",
   },
   {
     regionID:  "1",
-    countryCod: "mx",
     countryName: "Mexico",
   },
   {
     regionID:  "2",
-    countryCod: "us",
     countryName: "Estados Unidos",
   },  
   {
     regionID:  "3",
-    countryCod: "fj",
     countryName: "Fiji",
   }, 
   {
     regionID:  "3",
-    countryCod: "mv",
     countryName: "Maldives",
   }, 
   {
     regionID:  "4",
-    countryCod: "de",
     countryName: "Alemania",
   },  
   {
     regionID:  "4",
-    countryCod: "es",
     countryName: "España",
   }, 
   {
     regionID:  "5",
-    countryCod: "jp",
     countryName: "Japón",
   }, 
   
@@ -265,16 +254,29 @@ const contacts = [
     contactName: "Camila Soledad",
     contactLastName: "Pantó",
     contactEmail: "camilapanto123@ecomexperts.com",
-    contactPosition: "3151234567",
+    contactPosition: "UX Designer",
+    contactAddress:  "Calle Falsa 123",
+    contactChanel: "WhatsAPP",
+    contactAccount: "3151234567",
+    contactInterest: "50",
+    contactPreferences: "No molestar",
+    contactImg: "../data_warehouse_be/assets/userimg/jane_doe.png",
+  },
+  {
+    companyID:  "1",
+    contactName: "Agustin Emmanuel",
+    contactLastName: "Soria",
+    contactEmail: "agustionsoria123@acamica.com",
+    contactPosition: "UI Designer",
     contactAddress:  "Humboldt 1967, C1414 CTU",
-    contactChanel: "Acamica",
-    contactAccount: "Humboldt 1967, C1414 CTU",
-    contactInterest: "acamica@acamica.com",
-    contactPreferences: "acamica@acamica.com",
-    contactImg: "acamica@acamica.com",
+    contactChanel: "Email",
+    contactAccount: "agustionsoria123@acamica.com",
+    contactInterest: "75",
+    contactPreferences: "Canal favorito",
+    contactImg: "../data_warehouse_be/assets/userimg/jane_doe.png",
   },
  
-  
+
 ];
 
 sequelize

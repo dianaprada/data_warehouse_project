@@ -52,7 +52,7 @@ router.get(
 );
 
 
-/* Get Country by ID */
+/* Get Country by Region */
 
 router.get(
     "/countries/region/:id", 
