@@ -1,7 +1,7 @@
 /**
  * Imports
  */
-import api from "./main_services.js";
+import api from "./main_servicesUser.js";
 import {
   URL_GETALLUSERS,
   URL_REGISTER,
@@ -39,15 +39,13 @@ let editUserBtn = document.getElementById("editUserBtn");
 let userIDDelete = document.getElementById("userIDDelete");
 let deleteUserBtn = document.getElementById("deleteUserBtn");
 
-//let newUserModal = new bootstrap.Modal(document.getElementById('newUserModal'), options);
-//let newUserBtn = document.getElementById('newUserBtn');
 
 /**
  * @method getAllUsers
  * @description
  */
 
-const getAllUsers = () => {
+const getAllUsers = (() => {
   allHTMLUsersData = "";
   const token = getTokenLocalStorage();
   const { getUsersData } = api;
@@ -58,14 +56,14 @@ const getAllUsers = () => {
     .catch((error) => {
       renderMsg(error);
     });
-};
+});
 
 /**
  * @method getUsersDataJson
  * @description
  */
 
-const getUsersDataJson = (usersList) => {
+const getUsersDataJson = ((usersList) => {
   usersList.users.forEach((userItem) => {
     const {
       userID,
@@ -89,14 +87,14 @@ const getUsersDataJson = (usersList) => {
   tableUsersData.innerHTML = allHTMLUsersData;
   addEventListenerEditButton(tableUsersData.querySelectorAll(".edit"));
   addEventListenerDeleteButton(tableUsersData.querySelectorAll(".delete"));
-};
+});
 
 /**
  * @method htmlUsersRowData
  * @description
  */
 
-const htmlUsersRowData = (
+const htmlUsersRowData = ((
   userID,
   userName,
   userLastName,
@@ -115,7 +113,7 @@ const htmlUsersRowData = (
             <button type="button" class="btn btn-lg text-black-50 edit" data-id="${userID}" data-toggle="modal" data-target="#editUserModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
         </td>
     </tr>`;
-};
+});
 
 /**
  * @method createUser
@@ -123,7 +121,7 @@ const htmlUsersRowData = (
  * @returns {}
  */
 
-const createUser = () => {
+const createUser = (() => {
   const userData = {
     userName: newUserName.value,
     userLastName: userLastName.value,
@@ -150,7 +148,7 @@ const createUser = () => {
     .catch((error) => {
       renderMsg(error);
     });
-};
+});
 
 /**
  * @method loadUserData
@@ -158,7 +156,7 @@ const createUser = () => {
  * @returns {}
  */
 
-const loadUserData = (id) => {
+const loadUserData = ((id) => {
   const { getUserData } = api;
   const token = getTokenLocalStorage();
   getUserData(URL_GETUSERID, token, id)
@@ -178,7 +176,7 @@ const loadUserData = (id) => {
     .catch((error) => {
       renderMsg(error);
     });
-};
+});
 
 /**
  * @method editUserData
@@ -186,7 +184,7 @@ const loadUserData = (id) => {
  * @returns {}
  */
 
-const editUserData = () => {
+const editUserData = (() => {
   const { editUserData } = api;
   const token = getTokenLocalStorage();
   const userID = document.getElementById("userID").value;
@@ -195,7 +193,7 @@ const editUserData = () => {
   if (userPassword.lenght > 0) {
     passwordUpdated = "Updated";
   }
-  const userData = { 
+  const userData = {
     userName: editUserName.value,
     userLastName: editUserLastName.value,
     userEmail: editUserEmail.value,
@@ -221,7 +219,7 @@ const editUserData = () => {
     .catch((error) => {
       renderMsg(error);
     });
-};
+});
 
 /**
  * @method deleteUserData
@@ -229,7 +227,7 @@ const editUserData = () => {
  * @returns {}
  */
 
-const deleteUserData = () => {
+const deleteUserData = (() => {
   const { deleteUserData } = api;
   const token = getTokenLocalStorage();
   const userID = userIDDelete.value;
@@ -245,7 +243,7 @@ const deleteUserData = () => {
     .catch((error) => {
       renderMsg(error);
     });
-};
+});
 
 /**
  * @method matchPassword
@@ -253,7 +251,7 @@ const deleteUserData = () => {
  * @returns {}
  */
 
-const matchPassword = () => {
+const matchPassword = (() => {
   let newPassword = newUserPassword.value;
   let newUserPasswordConfirm = newUserPasswordConfirm.value;
   if (newPassword != newUserPasswordConfirm) {
@@ -261,8 +259,7 @@ const matchPassword = () => {
   } else {
     swal("", `El password se ha creado exitosamente`, "success");
   }
-
-};
+});
 
 /**
  * @method addEventListenerEditButton
@@ -270,13 +267,18 @@ const matchPassword = () => {
  * @returns {}
  */
 
-const addEventListenerEditButton = (editButtonsList) => {
+const addEventListenerEditButton = ((editButtonsList) => {
   editButtonsList.forEach((editBtn) => {
     let userID = editBtn.getAttribute("data-id");
     editBtn.addEventListener(
-      "click", () => { loadUserData(userID); }, false );
+      "click",
+      () => {
+        loadUserData(userID);
+      },
+      false
+    );
   });
-};
+});
 
 /**
  * @method addEventListenerDeleteButton
@@ -284,13 +286,18 @@ const addEventListenerEditButton = (editButtonsList) => {
  * @returns {}
  */
 
-const addEventListenerDeleteButton = (deleteButtonsList) => {
+const addEventListenerDeleteButton = ((deleteButtonsList) => {
   deleteButtonsList.forEach((deleteBtn) => {
     let userID = deleteBtn.getAttribute("data-id");
     deleteBtn.addEventListener(
-      "click", () => { userIDDelete.value = userID; }, false );
+      "click",
+      () => {
+        userIDDelete.value = userID;
+      },
+      false
+    );
   });
-};
+});
 
 /**
  * @method addEventListenerSaveUser
@@ -298,9 +305,9 @@ const addEventListenerDeleteButton = (deleteButtonsList) => {
  * @returns {}
  */
 
-const addEventListenerSaveUser = () => {
+const addEventListenerSaveUser = (() => {
   createUserBtn.addEventListener("click", createUser);
-};
+});
 
 /**
  * @method addEventListenerEditUser
@@ -308,9 +315,9 @@ const addEventListenerSaveUser = () => {
  * @returns {}
  */
 
-const addEventListenerEditUser = () => {
+const addEventListenerEditUser = (() => {
   editUserBtn.addEventListener("click", editUserData);
-};
+});
 
 /**
  * @method addEventListenerDeleteUser
@@ -318,9 +325,9 @@ const addEventListenerEditUser = () => {
  * @returns {}
  */
 
-const addEventListenerDeleteUser = () => {
+const addEventListenerDeleteUser = (() => {
   deleteUserBtn.addEventListener("click", deleteUserData);
-};
+});
 
 /**
  * @method renderMsg
@@ -328,8 +335,8 @@ const addEventListenerDeleteUser = () => {
  * @returns {String}
  */
 
-const renderMsg = (msg) =>
-  (document.querySelector(".error-msg").innerHTML = msg);
+const renderMsg = ((msg) =>
+  (document.querySelector(".error-msg").innerHTML = msg));
 
 /**
  * Run

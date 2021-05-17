@@ -9,7 +9,7 @@ import {
   URL_NEWCOUNTRY,
   URL_GETCOUNTRY,
   URL_NEWCITY,
-  URL_GETCITY
+  URL_GETCITY,
 } from "./global_variables.js";
 import {
   getTokenLocalStorage,
@@ -36,7 +36,7 @@ let newCountry_RegionName = document.getElementById("newCountry_RegionName");
 let newCountryName = document.getElementById("newCountryName");
 let createCountryModalBtn = document.getElementById("createCountryModalBtn");
 let editCountryID = document.getElementById("editCountryID");
-let editCountry_RegionID = document.getElementById("editCountry_RegionID")
+let editCountry_RegionID = document.getElementById("editCountry_RegionID");
 let editCountry_RegionName = document.getElementById("editCountry_RegionName");
 let editCountryName = document.getElementById("editCountryName");
 let editCountryModalBtn = document.getElementById("editCountryModalBtn");
@@ -57,14 +57,13 @@ let editCityBtn = document.getElementById("editCityBtn");
 let deleteCityID = document.getElementById("deleteCityID");
 let deleteCityModalBtn = document.getElementById("deleteCityModalBtn");
 
-
 /**
  * CRUD REGIONS
  */
 
 /**
  * @method createRegion
- * @description:
+ * @description: Create Region Function
  * @returns {}
  */
 
@@ -94,7 +93,8 @@ const createRegion = (() => {
 
 /**
  * @method loadRegionData
- * @description:
+ * @description: Load the region data in the edit modal
+ * @param {string} idRegion
  * @returns {}
  */
 
@@ -117,7 +117,7 @@ const loadRegionData = ((idRegion) => {
 
 /**
  * @method editRegion
- * @description:
+ * @description: Edit Region Function
  * @returns {}
  */
 
@@ -148,7 +148,7 @@ const editRegion = (() => {
 
 /**
  * @method deleteRegion
- * @description:
+ * @description: Delete Region Function
  * @returns {}
  */
 
@@ -180,7 +180,7 @@ const deleteRegion = (() => {
 
 /**
  * @method createCountry
- * @description:
+ * @description: Create Country Function
  * @returns {}
  */
 
@@ -189,8 +189,7 @@ const createCountry = (() => {
   const token = getTokenLocalStorage();
   const countryData = {
     regionID: newCountry_RegionID.value,
-    countryName: newCountryName.value
-
+    countryName: newCountryName.value,
   };
   createCountryData(URL_NEWCOUNTRY, countryData, token)
     .then((response) => {
@@ -212,7 +211,9 @@ const createCountry = (() => {
 
 /**
  * @method loadNewCountryRegionData
- * @description:
+ * @description: Load region data into the create country modal
+ *  @param {string} idRegion
+ * @param {string} regionName
  * @returns {}
  */
 
@@ -224,22 +225,25 @@ const loadNewCountryRegionData = ((regionID, regionName) => {
 
 /**
  * @method loadEditCountryData
- * @description:
+ * @description: Load region and country data into the edit country modal
+ * @param {string} idRegion
+ * @param {string} regionName
+ * @param {string} countryID
+ * @param {string} countryName
  * @returns {}
  */
 
- const  loadEditCountryData = ((regionID, regionName, countryID, countryName ) => {
+const loadEditCountryData = ((regionID, regionName, countryID, countryName) => {
   editCountryName.value = "";
   editCountry_RegionID.value = regionID;
   editCountry_RegionName.value = regionName;
   editCountryID.value = countryID;
   editCountryName.value = countryName;
-
 });
 
 /**
  * @method editCountry
- * @description:
+ * @description: Edit country function
  * @returns {}
  */
 
@@ -250,30 +254,28 @@ const editCountry = (() => {
   const countryData = {
     regionID: editCountry_RegionID.value,
     countryName: editCountryName.value,
-  }
+  };
   editCountryData(URL_GETCOUNTRY, countryData, token, countryID)
     .then((response) => {
-      if(response.message === 'Country has been updated'){
+      if (response.message === "Country has been updated") {
         swal(
           "",
           `El país ${countryData.countryName} fue actualizado exitosamente`,
           "success"
         );
         getRegions();
-
       } else {
         swal("", `${response.message}`, "error");
-      };
-    }).catch((error) => {
-      renderMsg(error);
+      }
     })
-
+    .catch((error) => {
+      renderMsg(error);
+    });
 });
-
 
 /**
  * @method deleteCountry
- * @description:
+ * @description: Delete country function
  * @returns {}
  */
 
@@ -283,19 +285,17 @@ const deleteCountry = (() => {
   const countryID = deleteCountryID.value;
   deleteCountryData(URL_GETCOUNTRY, token, countryID)
     .then((response) => {
-      if (response.message === 'Country has been deleted') {
+      if (response.message === "Country has been deleted") {
         swal("", `El país se ha eliminado exitosamente`, "success");
         getRegions();
       } else {
         swal("", `${response.message}`, "error");
-      };
-    }).catch((error) => {
+      }
+    })
+    .catch((error) => {
       renderMsg(error);
     });
-
 });
-
-
 
 /**
  * END CRUD COUNTRIES
@@ -307,7 +307,7 @@ const deleteCountry = (() => {
 
 /**
  * @method createCity
- * @description:
+ * @description: Create city function
  * @returns {}
  */
 
@@ -316,11 +316,11 @@ const createCity = (() => {
   const token = getTokenLocalStorage();
   const cityData = {
     countryID: newCity_CountryID.value,
-    cityName: newCityName.value
+    cityName: newCityName.value,
   };
   createCityData(URL_NEWCITY, cityData, token)
     .then((response) => {
-      if(response.message === 'Created'){
+      if (response.message === "Created") {
         swal(
           "",
           `La ciudad ${cityData.cityName} fue creada exitosamente`,
@@ -330,28 +330,33 @@ const createCity = (() => {
       } else {
         swal("", `${response.message}`, "error");
       }
-    }).catch((error) => {
-      renderMsg(error);
     })
-
+    .catch((error) => {
+      renderMsg(error);
+    });
 });
 
 /**
  * @method loadNewCityCountryData
- * @description:
+ * @description: Load country data into the create city modal
+ * @param {string} countryID
+ * @param {string} countryName
  * @returns {}
  */
 
- const loadNewCityCountryData = ((countryID, countryName) => {
+const loadNewCityCountryData = ((countryID, countryName) => {
   newCityName.value = "";
   newCity_CountryID.value = countryID;
   newCity_CountryName.value = countryName;
 });
 
-
 /**
  * @method loadEditCityData
- * @description:
+ * @description: Load country and city data into the edit city modal
+ * @param {string} cityID
+ * @param {string} cityName
+ * @param {string} countryID
+ * @param {string} countryName
  * @returns {}
  */
 
@@ -361,16 +366,15 @@ const loadEditCityData = ((cityID, cityName, countryID, countryName) => {
   editCityName.value = cityName;
   editCity_CountryID.value = countryID;
   editCity_CountryName.value = countryName;
-
 });
 
 /**
  * @method editCity
- * @description:
+ * @description: Edit city function
  * @returns {}
  */
 
-const editCity = (( ) => {
+const editCity = (() => {
   const { editCityData } = apiRegions;
   const token = getTokenLocalStorage();
   const cityID = editCityID.value;
@@ -380,7 +384,7 @@ const editCity = (( ) => {
   };
   editCityData(URL_GETCITY, cityData, token, cityID)
     .then((response) => {
-      if(response.message === 'City has been updated'){
+      if (response.message === "City has been updated") {
         swal(
           "",
           `La ciudad ${cityData.cityName} fue actualizada exitosamente`,
@@ -389,16 +393,16 @@ const editCity = (( ) => {
         getRegions();
       } else {
         swal("", `${response.message}`, "error");
-      };
-    }).catch((error) => {
+      }
+    })
+    .catch((error) => {
       renderMsg(error);
     });
-
 });
 
 /**
  * @method deleteCity
- * @description:
+ * @description: Delete city funtion
  * @returns {}
  */
 
@@ -408,18 +412,17 @@ const deleteCity = (() => {
   const cityID = deleteCityID.value;
   deleteCityData(URL_GETCITY, token, cityID)
     .then((response) => {
-      if(response.message === 'City has been deleted'){
+      if (response.message === "City has been deleted") {
         swal("", `La ciudad se ha eliminado exitosamente`, "success");
         getRegions();
       } else {
         swal("", `${response.message}`, "error");
-      };
-    }).catch((error) => {
+      }
+    })
+    .catch((error) => {
       renderMsg(error);
     });
 });
-
-
 
 /**
  * END CRUD CITIES
@@ -431,11 +434,11 @@ const deleteCity = (() => {
 
 /**
  * @method getRegions
- * @description:
+ * @description: Get the regions json from the backend
  * @returns {}
  */
 
-const getRegions = () => {
+const getRegions = (() => {
   allHTMLRegionsData = "";
   const token = getTokenLocalStorage();
   const { getRegionsData } = apiRegions;
@@ -446,18 +449,22 @@ const getRegions = () => {
     .catch((error) => {
       renderMsg(error);
     });
-};
+});
 
 /**
  * @method getRegionsDataJson
- * @description:
+ * @description: Get regions data from the json one by one
  * @returns {}
  */
 
 const getRegionsDataJson = ((regionsList) => {
   regionsList.regions.forEach((regionItem) => {
     const { regionID, regionName, countries } = regionItem;
-    let allHTMLCountriesData = createCountriesTreeData(regionID, regionName, countries);
+    let allHTMLCountriesData = createCountriesTreeData(
+      regionID,
+      regionName,
+      countries
+    );
     allHTMLRegionsData += htmlRegionsTreeData(
       regionID,
       regionName,
@@ -468,18 +475,31 @@ const getRegionsDataJson = ((regionsList) => {
   regionsTree.innerHTML = allHTMLRegionsData;
   buttonsTree();
   addEventListenerEditRegionButton(regionsTree.querySelectorAll(".editRegion"));
-  addEventListenerDeleteRegionButton(regionsTree.querySelectorAll(".deleteRegion"));
-  addEventListenerNewCountryBtnTree(regionsTree.querySelectorAll(".newCountry"));
-  addEventListenerEditCountryBtnTree(regionsTree.querySelectorAll(".editCountry"))
-  addEventListenerdeleteCountryBtnTree(regionsTree.querySelectorAll(".deleteCountry"))
-  addEventListenerNewCityBtnTree(regionsTree.querySelectorAll(".newCity"))
-  addEventListenerEditCityBtnTree(regionsTree.querySelectorAll(".editCity"))
-  addEventListenerDeleteCityBtnTree(regionsTree.querySelectorAll(".deleteCity"))
+  addEventListenerDeleteRegionButton(
+    regionsTree.querySelectorAll(".deleteRegion")
+  );
+  addEventListenerNewCountryBtnTree(
+    regionsTree.querySelectorAll(".newCountry")
+  );
+  addEventListenerEditCountryBtnTree(
+    regionsTree.querySelectorAll(".editCountry")
+  );
+  addEventListenerdeleteCountryBtnTree(
+    regionsTree.querySelectorAll(".deleteCountry")
+  );
+  addEventListenerNewCityBtnTree(regionsTree.querySelectorAll(".newCity"));
+  addEventListenerEditCityBtnTree(regionsTree.querySelectorAll(".editCity"));
+  addEventListenerDeleteCityBtnTree(
+    regionsTree.querySelectorAll(".deleteCity")
+  );
 });
 
 /**
  * @method createCountriesTreeData
- * @description:
+ * @description: 
+ * @param {string} regionID
+ * @param {string} regionName
+ * @param {array} countries
  * @returns {}
  */
 
@@ -487,11 +507,15 @@ const createCountriesTreeData = ((regionID, regionName, countries) => {
   let allHTMLCountriesData = "";
   countries.forEach((countryItem) => {
     const { countryID, countryName, Cities } = countryItem;
-    let allHTMLCitiesData = createCitiesTreeData(countryID, countryName, Cities);
+    let allHTMLCitiesData = createCitiesTreeData(
+      countryID,
+      countryName,
+      Cities
+    );
     allHTMLCountriesData += htmlCountriesTreeData(
       countryID,
       countryName,
-      regionID, 
+      regionID,
       regionName,
       allHTMLCitiesData
     );
@@ -501,23 +525,26 @@ const createCountriesTreeData = ((regionID, regionName, countries) => {
 
 /**
  * @method createCitiesTreeData
- * @description:
+ * @description: Create the city tree in the DOM
+ * @param {string} countryID
+ * @param {string} countryName
+ * @param {array} Cities
  * @returns {}
  */
 
-const createCitiesTreeData = (countryID, countryName, Cities) => {
+const createCitiesTreeData = ((countryID, countryName, Cities) => {
   let allHTMLCitiesData = "";
   Cities.forEach((cityItem) => {
     const { cityID, cityName } = cityItem;
     allHTMLCitiesData += htmlCitiesTreeData(
-      cityID, 
-      cityName, 
+      cityID,
+      cityName,
       countryID,
       countryName
-      );
+    );
   });
   return allHTMLCitiesData;
-};
+});
 
 /**
  * @method htmlRegionsTreeData
@@ -525,7 +552,7 @@ const createCitiesTreeData = (countryID, countryName, Cities) => {
  * @returns {}
  */
 
-const htmlRegionsTreeData = (regionID, regionName, htmlCountry) => {
+const htmlRegionsTreeData = ((regionID, regionName, htmlCountry) => {
   return `
       <li class="list-group-item"><span class="caret treeFont">${regionName}</span>
         <button type="button" class="btn btn-lg text-black-50 editRegion" data-info="regions" data-id="${regionID}" data-toggle="modal" data-target="#editRegionModal"><i class="fa fa-pencil treeColor" aria-hidden="true"></i></button>
@@ -535,7 +562,7 @@ const htmlRegionsTreeData = (regionID, regionName, htmlCountry) => {
             ${htmlCountry}
         </ul>
       </li>`;
-};
+});
 
 /**
  * @method htmlCountriesTreeData
@@ -543,7 +570,13 @@ const htmlRegionsTreeData = (regionID, regionName, htmlCountry) => {
  * @returns {}
  */
 
-const htmlCountriesTreeData = (countryID, countryName, regionID, regionName, htmlCity) => {
+const htmlCountriesTreeData = ((
+  countryID,
+  countryName,
+  regionID,
+  regionName,
+  htmlCity
+) => {
   return `
       <li><span class="caret treeFont">${countryName}</span>
         <button type="button" class="btn btn-lg text-black-50 editCountry" data-info="countries" data-id="${countryID}" data-country="${countryName}" data-idregion="${regionID}" data-region="${regionName}" data-toggle="modal" data-target="#editCountryModal"><i class="fa fa-pencil treeColor" aria-hidden="true"></i></button>
@@ -554,7 +587,7 @@ const htmlCountriesTreeData = (countryID, countryName, regionID, regionName, htm
         </ul>
     </li>
   `;
-};
+});
 
 /**
  * @method htmlCitiesTreeData
@@ -562,13 +595,13 @@ const htmlCountriesTreeData = (countryID, countryName, regionID, regionName, htm
  * @returns {}
  */
 
-const htmlCitiesTreeData = (cityID, cityName, countryID, countryName) => {
+const htmlCitiesTreeData = ((cityID, cityName, countryID, countryName) => {
   return `
       <li class="caret treeFont">${cityName}
         <button type="button" class="btn btn-lg text-black-50 editCity" data-info="cities" data-id="${cityID}" data-city="${cityName}"  data-idcountry="${countryID}" data-country="${countryName}" data-toggle="modal" data-target="#editCityModal"><i class="fa fa-pencil treeColor" aria-hidden="true"></i></button>
         <button type="button" class="btn btn-lg text-black-50 deleteCity" data-info="cities" data-id="${cityID}" data-toggle="modal" data-target="#deleteCityModal"><i class="fa fa-trash treeColor" aria-hidden="true"></i></button>
       </li>`;
-};
+});
 
 /**
  * @method buttonsTree
@@ -602,37 +635,49 @@ const buttonsTree = () => {
  * @returns {}
  */
 
-const addEventListenerSaveRegion = () => {
+const addEventListenerSaveRegion = (() => {
   createRegionBtn.addEventListener("click", createRegion);
-};
+});
 
 /**
  * @method addEventListenerEditRegionButton
  * @description: Event Listener Save User
+ * @param {array} editRegionsButtonsList List of Tree Region Edit Buttons
  * @returns {}
  */
 
-const addEventListenerEditRegionButton = (editRegionsButtonsList) => {
+const addEventListenerEditRegionButton = ((editRegionsButtonsList) => {
   editRegionsButtonsList.forEach((editRegionBtn) => {
     let regionID = editRegionBtn.getAttribute("data-id");
     editRegionBtn.addEventListener(
-      "click",  () => { loadRegionData(regionID); }, false );
+      "click",
+      () => {
+        loadRegionData(regionID);
+      },
+      false
+    );
   });
-};
+});
 
 /**
  * @method addEventListenerDeleteRegionButton
  * @description: Event Listener Save User
+ * @param {array} deleteButtonsList List of Tree Region Delete Buttons
  * @returns {}
  */
 
-const addEventListenerDeleteRegionButton = (deleteButtonsList) => {
+const addEventListenerDeleteRegionButton = ((deleteButtonsList) => {
   deleteButtonsList.forEach((deleteBtn) => {
     let regionID = deleteBtn.getAttribute("data-id");
     deleteBtn.addEventListener(
-      "click", () => { deleteRegionID.value = regionID; }, false );
+      "click",
+      () => {
+        deleteRegionID.value = regionID;
+      },
+      false
+    );
   });
-};
+});
 
 /**
  * @method addEventListenerEditRegion
@@ -640,9 +685,9 @@ const addEventListenerDeleteRegionButton = (deleteButtonsList) => {
  * @returns {}
  */
 
-const addEventListenerEditRegion = () => {
+const addEventListenerEditRegion = (() => {
   editRegionButtonSave.addEventListener("click", editRegion);
-};
+});
 
 /**
  * @method addEventListenerDeleteRegion
@@ -650,31 +695,37 @@ const addEventListenerEditRegion = () => {
  * @returns {}
  */
 
-const addEventListenerDeleteRegion = () => {
+const addEventListenerDeleteRegion = (() => {
   deleteButtonModal.addEventListener("click", deleteRegion);
-};
+});
 
 // COUNTRY LISTENERS
 
 /**
  * @method addEventListenerNewCountryBtnTree
  * @description: Event Listener Save Country
+ * @param {array} newCountryBtnList List of Tree Region new country Buttons
  * @returns {}
  */
 
-const addEventListenerNewCountryBtnTree = (newCountryBtnList) => {
+const addEventListenerNewCountryBtnTree = ((newCountryBtnList) => {
   newCountryBtnList.forEach((newCountryBtn) => {
     let regionID = newCountryBtn.getAttribute("data-idregion");
     let regionName = newCountryBtn.getAttribute("data-region");
     newCountryBtn.addEventListener(
-      "click", () => { loadNewCountryRegionData(regionID, regionName); }, false);
+      "click",
+      () => {
+        loadNewCountryRegionData(regionID, regionName);
+      },
+      false
+    );
   });
-};
-
+});
 
 /**
  * @method addEventListenerEditCountryBtnTree
  * @description: Event Listener Edit Country
+ * @param {array} editCountryBtnList List of Tree Region edit country Buttons
  * @returns {}
  */
 
@@ -684,25 +735,34 @@ const addEventListenerEditCountryBtnTree = ((editCountryBtnList) => {
     let regionName = editCountryBtn.getAttribute("data-region");
     let countryID = editCountryBtn.getAttribute("data-id");
     let countryName = editCountryBtn.getAttribute("data-country");
-    editCountryBtn.addEventListener( "click", () => { loadEditCountryData(regionID, regionName, countryID, countryName) }, false);
-
-
+    editCountryBtn.addEventListener(
+      "click",
+      () => {
+        loadEditCountryData(regionID, regionName, countryID, countryName);
+      },
+      false
+    );
   });
-
 });
 
 /**
  * @method addEventListenerdeleteCountryBtnTree
  * @description: Event Listener Delete Country
+ * @param {array} deleteCountryBtnList List of Tree Region delete country Buttons
  * @returns {}
  */
 
 const addEventListenerdeleteCountryBtnTree = ((deleteCountryBtnList) => {
   deleteCountryBtnList.forEach((deleteCountry) => {
     let countryID = deleteCountry.getAttribute("data-id");
-    deleteCountry.addEventListener( "click", () => { deleteCountryID.value = countryID }, false);
-  })
-
+    deleteCountry.addEventListener(
+      "click",
+      () => {
+        deleteCountryID.value = countryID;
+      },
+      false
+    );
+  });
 });
 
 /**
@@ -711,9 +771,9 @@ const addEventListenerdeleteCountryBtnTree = ((deleteCountryBtnList) => {
  * @returns {}
  */
 
- const addEventListenerCreateCountry = () => {
+const addEventListenerCreateCountry = (() => {
   createCountryModalBtn.addEventListener("click", createCountry);
-};
+});
 
 /**
  * @method addEventListenerEditCountry
@@ -721,9 +781,9 @@ const addEventListenerdeleteCountryBtnTree = ((deleteCountryBtnList) => {
  * @returns {}
  */
 
- const addEventListenerEditCountry = () => {
+const addEventListenerEditCountry = (() => {
   editCountryModalBtn.addEventListener("click", editCountry);
-};
+});
 
 /**
  * @method addEventListenerDeleteCountry
@@ -731,9 +791,9 @@ const addEventListenerdeleteCountryBtnTree = ((deleteCountryBtnList) => {
  * @returns {}
  */
 
- const addEventListenerDeleteCountry = () => {
+const addEventListenerDeleteCountry = (() => {
   deleteCountryModalBtn.addEventListener("click", deleteCountry);
-};
+});
 
 // END COUNTRY LISTENERS
 
@@ -742,50 +802,66 @@ const addEventListenerdeleteCountryBtnTree = ((deleteCountryBtnList) => {
 /**
  * @method addEventListenerNewCityBtnTree
  * @description: Event Listener Save Country
+ * @param {array} newCityBtnList List of Tree Region new city Buttons
  * @returns {}
  */
 
- const addEventListenerNewCityBtnTree = (newCityBtnList) => {
+const addEventListenerNewCityBtnTree = ((newCityBtnList) => {
   newCityBtnList.forEach((newCityBtn) => {
     let countryID = newCityBtn.getAttribute("data-id");
-    let countryName  = newCityBtn.getAttribute("data-country");
+    let countryName = newCityBtn.getAttribute("data-country");
     newCityBtn.addEventListener(
-      "click", () => { loadNewCityCountryData(countryID, countryName); }, false);
+      "click",
+      () => {
+        loadNewCityCountryData(countryID, countryName);
+      },
+      false
+    );
   });
-};
-
+});
 
 /**
  * @method addEventListenerEditCityBtnTree
  * @description: Event Listener Edit City
+ * @param {array} editCityBtnList List of Tree Region edit city Buttons
  * @returns {}
  */
 
- const addEventListenerEditCityBtnTree = ((editCityBtnList) => {
+const addEventListenerEditCityBtnTree = ((editCityBtnList) => {
   editCityBtnList.forEach((editCityBtn) => {
     let cityID = editCityBtn.getAttribute("data-id");
     let cityName = editCityBtn.getAttribute("data-city");
     let countryID = editCityBtn.getAttribute("data-idcountry");
     let countryName = editCityBtn.getAttribute("data-country");
-    
-    editCityBtn.addEventListener( "click", () => { loadEditCityData(cityID, cityName, countryID, countryName) }, false);
 
+    editCityBtn.addEventListener(
+      "click",
+      () => {
+        loadEditCityData(cityID, cityName, countryID, countryName);
+      },
+      false
+    );
   });
-
 });
 
 /**
  * @method addEventListenerDeleteCityBtnTree
  * @description: Event Listener Delete Country
+ * @param {array} deleteCityBtnList List of Tree Region delete city Buttons
  * @returns {}
  */
 
- const addEventListenerDeleteCityBtnTree = ((deleteCityBtnList) => {
+const addEventListenerDeleteCityBtnTree = ((deleteCityBtnList) => {
   deleteCityBtnList.forEach((deleteCity) => {
     let cityID = deleteCity.getAttribute("data-id");
-    deleteCity.addEventListener( "click", () => { deleteCityID.value = cityID }, false);
-  })
-
+    deleteCity.addEventListener(
+      "click",
+      () => {
+        deleteCityID.value = cityID;
+      },
+      false
+    );
+  });
 });
 
 /**
@@ -794,10 +870,9 @@ const addEventListenerdeleteCountryBtnTree = ((deleteCountryBtnList) => {
  * @returns {}
  */
 
- const addEventListenerCreateCity = () => {
+const addEventListenerCreateCity = (() => {
   createCityBtn.addEventListener("click", createCity);
-};
-
+});
 
 /**
  * @method addEventListenerEditCity
@@ -805,9 +880,9 @@ const addEventListenerdeleteCountryBtnTree = ((deleteCountryBtnList) => {
  * @returns {}
  */
 
- const addEventListenerEditCity = () => {
+const addEventListenerEditCity = (() => {
   editCityBtn.addEventListener("click", editCity);
-};
+});
 
 /**
  * @method addEventListenerDeleteCity
@@ -815,12 +890,11 @@ const addEventListenerdeleteCountryBtnTree = ((deleteCountryBtnList) => {
  * @returns {}
  */
 
- const addEventListenerDeleteCity = () => {
+const addEventListenerDeleteCity = (() => {
   deleteCityModalBtn.addEventListener("click", deleteCity);
-};
+});
 
 // END CITY LISTENERS
-
 
 /**
  * @method renderMsg
@@ -828,8 +902,8 @@ const addEventListenerdeleteCountryBtnTree = ((deleteCountryBtnList) => {
  * @returns {String}
  */
 
-const renderMsg = (msg) =>
-  (document.querySelector(".error-msg").innerHTML = msg);
+const renderMsg = ((msg) =>
+  (document.querySelector(".error-msg").innerHTML = msg));
 
 /**
  * END LISTENERS

@@ -156,7 +156,7 @@ module.exports = {
           status: 200,
           ok: true,
           title: "Successful request",
-          message: "Company has been updated.",
+          message: "Company has been updated",
         });
       });
   },
@@ -169,7 +169,7 @@ module.exports = {
         status: 200,
         ok: true,
         title: "Successful request",
-        message: "Company has been deleted.",
+        message: "Company has been deleted",
       });
     });
   },

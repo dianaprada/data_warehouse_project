@@ -19,7 +19,7 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/styles.css">
     <!-- END Scripts -->
-    <title>Data Warehouse Acámica Project - DianaP3</title>
+    <title>Contacts - Data Warehouse Acámica Project</title>
 
 </head>
 
@@ -49,7 +49,7 @@
                         <input type="text" class="form-control filter-input"
                             aria-label="Text input with dropdown button">
                         <div class="input-group-append">
-                           
+
                             <!-- Button Carret Down -->
 
                             <button class="btn dropdown-toggle btnFilterSearch" type="button" data-toggle="dropdown"
@@ -233,13 +233,14 @@
             <div class="modal-content">
                 <div class="modal-body text-center mt-1">
                     <img src="./assets/user_not_found.png" alt="Delete logo">
+                    <input type="hidden" id="deleteContactID" name="deleteCompanyID">
                     <p class="pt-4">¿Seguro que deseas eliminar los contactos seleccionados?</p>
                 </div>
                 <div class="modal-footer border-top-0 justify-content-around">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button"
                         data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-danger btn-lg modal-button delete"
-                        data-dismiss="modal">Eliminar</button>
+                        data-dismiss="modal" id="deleteContactModalBtn">Eliminar</button>
                 </div>
             </div>
         </div>
@@ -266,29 +267,29 @@
                                 </button>
                             </div>
                             <div class="col">
-                                <label for="name" class="col-form-label col-form-label-sm">Nombre<span
+                                <label for="newContactName" class="col-form-label col-form-label-sm">Nombre<span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control form-control-sm" id="name" name="name">
+                                <input type="text" class="form-control form-control-sm" id="newContactName" name="newContactName">
                             </div>
                             <div class="col">
-                                <label for="lastname" class="col-form-label col-form-label-sm">Apellido<span
+                                <label for="newContactLastname" class="col-form-label col-form-label-sm">Apellido<span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control form-control-sm" id="lastname" name="lastname">
+                                <input type="text" class="form-control form-control-sm" id="newContactLastname" name="newContactLastname">
                             </div>
                             <div class="col">
                                 <label for="position" class="col-form-label col-form-label-sm">Cargo<span
                                         class="text-danger">*</span></label>
-                                <input type="text" class="form-control form-control-sm" id="position" name="position">
+                                <input type="text" class="form-control form-control-sm" id="newContactPosition" name="position">
                             </div>
                             <div class="col">
-                                <label for="email" class="col-form-label col-form-label-sm">Email<span
+                                <label for="newContactEmail" class="col-form-label col-form-label-sm">Email<span
                                         class="text-danger">*</span></label>
-                                <input type="email" class="form-control form-control-sm" id="email" name="email">
+                                <input type="email" class="form-control form-control-sm" id="newContactEmail" name="newContactEmail">
                             </div>
                             <div class="col">
-                                <label for="company" class="col-form-label col-form-label-sm">Compañía<span
+                                <label for="newContactCompany" class="col-form-label col-form-label-sm">Compañía<span
                                         class="text-danger">*</span></label>
-                                <select type="text" class="form-control form-control-sm" id="company" name="company">
+                                <select type="text" class="form-control form-control-sm" id="newContactCompany" name="newContactCompany">
                                     <option selected disabled value="0">Seleccionar compañía</option>
                                 </select>
                             </div>
@@ -297,48 +298,48 @@
                             <div class="col">
                                 <label for="region" class="col-form-label col-form-label-sm">Region<span
                                         class="text-danger">*</span></label>
-                                <select class="form-control form-control-sm" name="region" id="region">
+                                <select class="form-control form-control-sm" name="region" id="newContact_regionSelectID">
                                     <option selected selected disabled value="0">Seleccionar región</option>
 
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="country" class="col-form-label col-form-label-sm">País<span
+                                <label for="newContact_countrySelectID" class="col-form-label col-form-label-sm">País<span
                                         class="text-danger">*</span></label>
-                                <select class="form-control form-control-sm" name="country" id="country" disabled>
+                                <select class="form-control form-control-sm" name="newContact_countrySelectID" id="newContact_countrySelectID">
                                     <option selected selected disabled value="0">Seleccionar país</option>
 
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="city" class="col-form-label col-form-label-sm">Ciudad<span
+                                <label for="newContact_citySelectID" class="col-form-label col-form-label-sm">Ciudad<span
                                         class="text-danger">*</span></label>
-                                <select class="form-control form-control-sm" name="city" id="city" disabled>
+                                <select class="form-control form-control-sm" name="newContact_citySelectID" id="newContact_citySelectID" >
                                     <option selected selected disabled value="0">Seleccionar ciudad</option>
 
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="address" class="col-form-label col-form-label-sm">Direccion</label>
-                                <input type="text" class="form-control form-control-sm" id="address" name="address"
-                                    placeholder="Ingresa una dirección" disabled>
+                                <label for="newContactAddress" class="col-form-label col-form-label-sm">Dirección</label>
+                                <input type="text" class="form-control form-control-sm" id="newContactAddress" name="newContactAddress"
+                                    placeholder="Ingresa una dirección">
                             </div>
                             <div class="form-group">
-                                <label for="interest-rage" class="col-form-label col-form-label-sm">Interés</label>
-                                <input type="range" min="0" max="100" step="25" value="0" list="interest-list"
+                                <label for="newContactInterestRage" class="col-form-label col-form-label-sm">Interés</label>
+                                <input type="range" min="0" max="100" step="25" value="0" list="newContactInterestList"
                                     name="interest-rage" class="form-control form-control-sm interest-range mx-3 p-0"
-                                    id="interest-rage">
-                                <datalist id="interest-list">
+                                    id="newContactInterestRage">
+                                <datalist id="newContactInterestList">
                                     <option value="25">
                                     <option value="50">
                                     <option value="75">
                                 </datalist>
                             </div>
                             <div class="col-xs">
-                                <label for="interest-select"
+                                <label for="newContactInterest"
                                     class="col-form-label col-form-label-sm text-white">Interés</label>
-                                <select class="form-control form-control-sm interest-select" name="interest"
-                                    id="interest-select">
+                                <select class="form-control form-control-sm interest-select" name="newContactInterest"
+                                    id="newContactInterest">
                                     <option selected value="0">0%</option>
                                     <option value="25">25%</option>
                                     <option value="50">50%</option>
@@ -349,10 +350,10 @@
                         </div>
                         <div class="form-group form-row contact-channel-info">
                             <div class="col">
-                                <label for="contact-channel" class="col-form-label col-form-label-sm">Canal de
+                                <label for="newContactChannel_1" class="col-form-label col-form-label-sm">Canal de
                                     contacto</label>
-                                <select class="form-control form-control-sm" name="contactChannel"
-                                    id="contact-channel-1">
+                                <select class="form-control form-control-sm" name="newContactChannel_1"
+                                    id="newContactChannel_1">
                                     <option selected>Seleccionar canal</option>
                                     <option value="tel">Teléfono</option>
                                     <option value="email">Email</option>
@@ -361,14 +362,14 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="userAcount" class="col-form-label col-form-label-sm">Cuenta de
+                                <label for="newContactAcount_1" class="col-form-label col-form-label-sm">Cuenta de
                                     usuario</label>
-                                <input type="text" class="form-control form-control-sm" id="userAcount-1"
-                                    name="userAcount" placeholder="@ejemplo">
+                                <input type="text" class="form-control form-control-sm" id="newContactAcount_1"
+                                    name="newContactAcount_1" placeholder="@ejemplo">
                             </div>
                             <div class="col">
-                                <label for="preferences" class="col-form-label col-form-label-sm">Preferencias</label>
-                                <select class="form-control form-control-sm" name="preferences" id="preferences-1">
+                                <label for="newContactPreferences_1" class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="newContactPreferences_1" id="newContactPreferences_1">
                                     <option selected>Sin preferencia</option>
                                     <option value="favorite">Canal favorito</option>
                                     <option value="do not disturb">No molestar</option>
@@ -377,10 +378,10 @@
                         </div>
                         <div class="form-group form-row contact-channel-info">
                             <div class="col">
-                                <label for="contact-channel" class="col-form-label col-form-label-sm">Canal de
+                                <label for="newContactChannel_2" class="col-form-label col-form-label-sm">Canal de
                                     contacto</label>
-                                <select class="form-control form-control-sm" name="contactChannel"
-                                    id="contact-channel-2">
+                                <select class="form-control form-control-sm" name="newContactChannel_2"
+                                    id="newContactChannel_2">
                                     <option selected>Seleccionar canal</option>
                                     <option value="tel">Teléfono</option>
                                     <option value="email">Email</option>
@@ -389,14 +390,14 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="userAcount" class="col-form-label col-form-label-sm">Cuenta de
+                                <label for="newContactAcount_2" class="col-form-label col-form-label-sm">Cuenta de
                                     usuario</label>
-                                <input type="text" class="form-control form-control-sm" id="userAcount-2"
-                                    name="userAcount" placeholder="@ejemplo">
+                                <input type="text" class="form-control form-control-sm" id="newContactAcount_2"
+                                    name="newContactAcount_2" placeholder="@ejemplo">
                             </div>
                             <div class="col">
-                                <label for="preferences" class="col-form-label col-form-label-sm">Preferencias</label>
-                                <select class="form-control form-control-sm" name="preferences" id="preferences-2">
+                                <label for="newContactPreferences_2" class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="newContactPreferences_2" id="newContactPreferences_2">
                                     <option selected>Sin preferencia</option>
                                     <option value="favorite">Canal favorito</option>
                                     <option value="do not disturb">No molestar</option>
@@ -405,10 +406,10 @@
                         </div>
                         <div class="form-group form-row contact-channel-info">
                             <div class="col">
-                                <label for="contact-channel" class="col-form-label col-form-label-sm">Canal de
+                                <label for="newContactChannel_3" class="col-form-label col-form-label-sm">Canal de
                                     contacto</label>
-                                <select class="form-control form-control-sm" name="contactChannel"
-                                    id="contact-channel-3">
+                                <select class="form-control form-control-sm" name="newContactChannel_3"
+                                    id="newContactChannel_3">
                                     <option selected>Seleccionar canal</option>
                                     <option value="tel">Teléfono</option>
                                     <option value="email">Email</option>
@@ -417,14 +418,14 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="userAcount" class="col-form-label col-form-label-sm">Cuenta de
+                                <label for="newContactAcount_3" class="col-form-label col-form-label-sm">Cuenta de
                                     usuario</label>
-                                <input type="text" class="form-control form-control-sm" id="userAcount-3"
-                                    name="userAcount" placeholder="@ejemplo">
+                                <input type="text" class="form-control form-control-sm" id="newContactAcount_3"
+                                    name="newContactAcount_3" placeholder="@ejemplo">
                             </div>
                             <div class="col">
-                                <label for="preferences" class="col-form-label col-form-label-sm">Preferencias</label>
-                                <select class="form-control form-control-sm" name="preferences" id="preferences-3">
+                                <label for="newContactPreferences_3" class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="newContactPreferences_3" id="newContactPreferences_3">
                                     <option selected>Sin preferencia</option>
                                     <option value="favorite">Canal favorito</option>
                                     <option value="do not disturb">No molestar</option>
@@ -433,10 +434,10 @@
                         </div>
                         <div class="form-group form-row contact-channel-info">
                             <div class="col">
-                                <label for="contact-channel" class="col-form-label col-form-label-sm">Canal de
+                                <label for="newContactChannel_4" class="col-form-label col-form-label-sm">Canal de
                                     contacto</label>
-                                <select class="form-control form-control-sm" name="contactChannel"
-                                    id="contact-channel-4">
+                                <select class="form-control form-control-sm" name="newContactChannel_4"
+                                    id="newContactChannel_4">
                                     <option selected>Seleccionar canal</option>
                                     <option value="tel">Teléfono</option>
                                     <option value="email">Email</option>
@@ -445,14 +446,14 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="userAcount" class="col-form-label col-form-label-sm">Cuenta de
+                                <label for="newContactAcount_4" class="col-form-label col-form-label-sm">Cuenta de
                                     usuario</label>
-                                <input type="text" class="form-control form-control-sm" id="userAcount-4"
-                                    name="userAcount" placeholder="@ejemplo">
+                                <input type="text" class="form-control form-control-sm" id="newContactAcount_4"
+                                    name="newContactAcount_4" placeholder="@ejemplo">
                             </div>
                             <div class="col">
-                                <label for="preferences" class="col-form-label col-form-label-sm">Preferencias</label>
-                                <select class="form-control form-control-sm" name="preferences" id="preferences-4">
+                                <label for="newContactPreferences_4" class="col-form-label col-form-label-sm">Preferencias</label>
+                                <select class="form-control form-control-sm" name="newContactPreferences_4" id="newContactPreferences_4">
                                     <option selected>Sin preferencia</option>
                                     <option value="favorite">Canal favorito</option>
                                     <option value="do not disturb">No molestar</option>
@@ -468,8 +469,8 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success btn-lg modal-button create"
-                        data-dismiss="modal" id="saveContactModalBtn">Guardar contacto</button>
+                    <button type="button" class="btn btn-success btn-lg modal-button create" data-dismiss="modal"
+                        id="saveContactModalBtn">Guardar contacto</button>
                 </div>
             </div>
         </div>
@@ -498,85 +499,83 @@
 
                             </div>
                             <div class="col">
-                                <label for="editName" class="col-form-label col-form-label-sm">Nombre<span
+                                <label for="editContactName" class="col-form-label col-form-label-sm">Nombre<span
                                         class="text-danger">*</span></label>
+                                <input type="hidden" id="editContactID">
                                 <input type="text" class="form-control form-control-sm" id="editContactName"
-                                    name="editName">
+                                    name="editContactName">
                             </div>
                             <div class="col">
-                                <label for="editLastname" class="col-form-label col-form-label-sm">Apellido<span
+                                <label for="editContactLastName" class="col-form-label col-form-label-sm">Apellido<span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control form-control-sm" id="editContactLastName"
-                                    name="editLastname">
+                                    name="editContactLastName">
                             </div>
                             <div class="col">
-                                <label for="editPosition" class="col-form-label col-form-label-sm">Cargo<span
+                                <label for="editContactPosition" class="col-form-label col-form-label-sm">Cargo<span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control form-control-sm" id="editContactPosition"
-                                    name="editPosition">
+                                    name="editContactPosition">
                             </div>
                             <div class="col">
-                                <label for="editEmail" class="col-form-label col-form-label-sm">Email<span
+                                <label for="editContactEmail" class="col-form-label col-form-label-sm">Email<span
                                         class="text-danger">*</span></label>
                                 <input type="email" class="form-control form-control-sm" id="editContactEmail"
-                                    name="editEmail">
+                                    name="editContactEmail">
                             </div>
                             <div class="col">
-                                <label for="editCompany" class="col-form-label col-form-label-sm">Compañía<span
+                                <label for="editContactCompany" class="col-form-label col-form-label-sm">Compañía<span
                                         class="text-danger">*</span></label>
                                 <select type="text" class="form-control form-control-sm" id="editContactCompany"
-                                    name="editCompany">
+                                    name="editContactCompany">
                                     <option selected disabled>Seleccionar compañía</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group form-row">
                             <div class="col">
-                                <label for="editRegion" class="col-form-label col-form-label-sm">Region<span
+                                <label for="editContact_regionSelectID" class="col-form-label col-form-label-sm">Región<span
                                         class="text-danger">*</span></label>
-                                <select class="form-control form-control-sm" name="editRegion" id="editContactRegion">
+                                <select class="form-control form-control-sm" name="editContact_regionSelectID" id="editContact_regionSelectID">
                                     <option selected>Seleccionar región</option>
 
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="editCountry" class="col-form-label col-form-label-sm">País<span
+                                <label for="editContact_countrySelectID" class="col-form-label col-form-label-sm">País<span
                                         class="text-danger">*</span></label>
-                                <select class="form-control form-control-sm" name="editCountry" id="editContactCountry"
-                                    disabled>
+                                <select class="form-control form-control-sm" name="editContact_countrySelectID" id="editContact_countrySelectID">
                                     <option selected disabled>Seleccionar país</option>
 
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="editCity" class="col-form-label col-form-label-sm">Ciudad<span
+                                <label for="editContact_citySelectID" class="col-form-label col-form-label-sm">Ciudad<span
                                         class="text-danger">*</span></label>
-                                <select class="form-control form-control-sm" name="editCity" id="editContactCity"
-                                    disabled>
+                                <select class="form-control form-control-sm" name="editContact_citySelectID" id="editContact_citySelectID">
                                     <option selected disabled>Seleccionar ciudad</option>
 
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="editAddress" class="col-form-label col-form-label-sm">Direccion</label>
+                                <label for="editContactAddress" class="col-form-label col-form-label-sm">Direccion</label>
                                 <input type="text" class="form-control form-control-sm" id="editContactAddress"
-                                    name="editAddress" placeholder="Ingresa una dirección" disabled>
+                                    name="editContactAddress" placeholder="Ingresa una dirección" disabled>
                             </div>
                             <div class="form-group">
-                                <label for="editInterestRage" class="col-form-label col-form-label-sm">Interés</label>
-                                <input type="range" min="0" max="100" step="25" value="0" list="interest-list"
+                                <label for="editContactInterestRage" class="col-form-label col-form-label-sm">Interés</label>
+                                <input type="range" min="0" max="100" step="25" value="0" list="editContactInterestList"
                                     name="editInterestRage" class="form-control form-control-sm interest-range mx-3 p-0"
                                     id="editContactInterestRage">
-                                <datalist id="interest-list">
+                                <datalist id="editContactInterestList">
                                     <option value="25">
                                     <option value="50">
                                     <option value="75">
                                 </datalist>
                             </div>
                             <div class="col-xs">
-                                <label for="editInterestSelect"
-                                    class="col-form-label col-form-label-sm text-white">Interés</label>
-                                <select class="form-control form-control-sm interest-select" name="editInterestSelect"
+                                <label for="editContactInterestSelect" class="col-form-label col-form-label-sm text-white">Interés</label>
+                                <select class="form-control form-control-sm interest-select" name="editContactInterestSelect"
                                     id="editContactInterestSelect">
                                     <option selected value="0">0%</option>
                                     <option value="25">25%</option>
@@ -588,10 +587,10 @@
                         </div>
                         <div class="form-group form-row contact-channel-info">
                             <div class="col">
-                                <label for="editContactChannel1" class="col-form-label col-form-label-sm">Canal de
+                                <label for="editContactChannel_1" class="col-form-label col-form-label-sm">Canal de
                                     contacto</label>
-                                <select class="form-control form-control-sm" name="editContactChannel1"
-                                    id="editContactChanel1">
+                                <select class="form-control form-control-sm" name="editContactChannel_1"
+                                    id="editContactChannel_1">
                                     <option selected>Seleccionar canal</option>
                                     <option value="tel">Teléfono</option>
                                     <option value="email">Email</option>
@@ -600,16 +599,16 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="userAcount1" class="col-form-label col-form-label-sm">Cuenta de
+                                <label for="editContactAcount_1" class="col-form-label col-form-label-sm">Cuenta de
                                     usuario</label>
-                                <input type="text" class="form-control form-control-sm" id="editContactAcount1"
-                                    name="userAcount1" placeholder="@ejemplo">
+                                <input type="text" class="form-control form-control-sm" id="editContactAcount_1"
+                                    name="editContactAcount_1" placeholder="@ejemplo">
                             </div>
                             <div class="col">
-                                <label for="editPreferences1"
+                                <label for="editContactPreferences_1"
                                     class="col-form-label col-form-label-sm">Preferencias</label>
-                                <select class="form-control form-control-sm" name="editPreferences1"
-                                    id="editContactPreferences1">
+                                <select class="form-control form-control-sm" name="editContactPreferences_1"
+                                    id="editContactPreferences_1">
                                     <option selected>Sin preferencia</option>
                                     <option value="favorite">Canal favorito</option>
                                     <option value="do not disturb">No molestar</option>
@@ -618,10 +617,10 @@
                         </div>
                         <div class="form-group form-row contact-channel-info">
                             <div class="col">
-                                <label for="editContactChannel2" class="col-form-label col-form-label-sm">Canal de
+                                <label for="editContactChannel_2" class="col-form-label col-form-label-sm">Canal de
                                     contacto</label>
-                                <select class="form-control form-control-sm" name="editContactChannel2"
-                                    id="editContactChanel2">
+                                <select class="form-control form-control-sm" name="editContactChannel_2"
+                                    id="editContactChannel_2">
                                     <option selected>Seleccionar canal</option>
                                     <option value="tel">Teléfono</option>
                                     <option value="email">Email</option>
@@ -630,16 +629,16 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="userAcount2" class="col-form-label col-form-label-sm">Cuenta de
+                                <label for="editContactAcount_2" class="col-form-label col-form-label-sm">Cuenta de
                                     usuario</label>
-                                <input type="text" class="form-control form-control-sm" id="editUserAcount2"
-                                    name="userAcount2" placeholder="@ejemplo">
+                                <input type="text" class="form-control form-control-sm" id="editContactAcount_2"
+                                    name="editContactAcount_2" placeholder="@ejemplo">
                             </div>
                             <div class="col">
-                                <label for="editPreferences2"
+                                <label for="editContactPreferences_2"
                                     class="col-form-label col-form-label-sm">Preferencias</label>
-                                <select class="form-control form-control-sm" name="editPreferences2"
-                                    id="editContactPreferences2">
+                                <select class="form-control form-control-sm" name="editContactPreferences_2"
+                                    id="editContactPreferences_2">
                                     <option selected>Sin preferencia</option>
                                     <option value="favorite">Canal favorito</option>
                                     <option value="do not disturb">No molestar</option>
@@ -648,10 +647,10 @@
                         </div>
                         <div class="form-group form-row contact-channel-info">
                             <div class="col">
-                                <label for="editContactChannel3" class="col-form-label col-form-label-sm">Canal de
+                                <label for="editContactChannel_3" class="col-form-label col-form-label-sm">Canal de
                                     contacto</label>
-                                <select class="form-control form-control-sm" name="editContactChannel3"
-                                    id="editContactChanel3">
+                                <select class="form-control form-control-sm" name="editContactChannel_3"
+                                    id="editContactChannel_3">
                                     <option selected>Seleccionar canal</option>
                                     <option value="tel">Teléfono</option>
                                     <option value="email">Email</option>
@@ -660,16 +659,16 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="userAcount3" class="col-form-label col-form-label-sm">Cuenta de
+                                <label for="editContactAcount_3" class="col-form-label col-form-label-sm">Cuenta de
                                     usuario</label>
-                                <input type="text" class="form-control form-control-sm" id="editUserAcount3"
-                                    name="userAcount3" placeholder="@ejemplo">
+                                <input type="text" class="form-control form-control-sm" id="editContactAcount_3"
+                                    name="editContactAcount_3" placeholder="@ejemplo">
                             </div>
                             <div class="col">
-                                <label for="editPreferences3"
+                                <label for="editContactPreferences_3"
                                     class="col-form-label col-form-label-sm">Preferencias</label>
-                                <select class="form-control form-control-sm" name="editPreferences3"
-                                    id="editContactPreferences3">
+                                <select class="form-control form-control-sm" name="editContactPreferences_3"
+                                    id="editContactPreferences_3">
                                     <option selected>Sin preferencia</option>
                                     <option value="favorite">Canal favorito</option>
                                     <option value="do not disturb">No molestar</option>
@@ -678,10 +677,10 @@
                         </div>
                         <div class="form-group form-row contact-channel-info">
                             <div class="col">
-                                <label for="editContactChannel4" class="col-form-label col-form-label-sm">Canal de
+                                <label for="editContactChannel_4" class="col-form-label col-form-label-sm">Canal de
                                     contacto</label>
-                                <select class="form-control form-control-sm" name="editContactChannel4"
-                                    id="editContactChanel4">
+                                <select class="form-control form-control-sm" name="editContactChannel_4"
+                                    id="editContactChannel_4">
                                     <option selected>Seleccionar canal</option>
                                     <option value="tel">Teléfono</option>
                                     <option value="email">Email</option>
@@ -690,16 +689,16 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="userAcount4" class="col-form-label col-form-label-sm">Cuenta de
+                                <label for="editContactAcount_4" class="col-form-label col-form-label-sm">Cuenta de
                                     usuario</label>
-                                <input type="text" class="form-control form-control-sm" id="editUserAcount4"
-                                    name="userAcount4" placeholder="@ejemplo">
+                                <input type="text" class="form-control form-control-sm" id="editContactAcount_4"
+                                    name="editContactAcount_4" placeholder="@ejemplo">
                             </div>
                             <div class="col">
-                                <label for="editPreferences4"
+                                <label for="editContactPreferences_4"
                                     class="col-form-label col-form-label-sm">Preferencias</label>
-                                <select class="form-control form-control-sm" name="editPreferences4"
-                                    id="editContactPreferences4">
+                                <select class="form-control form-control-sm" name="editContactPreferences_4"
+                                    id="editContactPreferences_4">
                                     <option selected>Sin preferencia</option>
                                     <option value="favorite">Canal favorito</option>
                                     <option value="do not disturb">No molestar</option>
@@ -716,7 +715,7 @@
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-success btn-lg modal-button update-button"
-                        data-dismiss="modal">Actualizar contacto</button>
+                        data-dismiss="modal" id="editContactModalBtn">Actualizar contacto</button>
                 </div>
             </div>
         </div>
@@ -740,7 +739,16 @@
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
         crossorigin="anonymous"></script>
 
+    <!-- END jQuery, Popper and Bootstrap JS -->
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/7396023e43.js" crossorigin="anonymous"></script>
+
+    <script type="module" src="./scripts/main_controllerContact.js"></script>
+
     <!-- END Scripts -->
+
 
 </body>
 

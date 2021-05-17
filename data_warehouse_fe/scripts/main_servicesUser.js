@@ -12,10 +12,9 @@ const api = {
   },
   registerUserData: (URL, data, token) => {
     const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-    myHeaders.append('Authorization', `bearer ${token}`);
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", `bearer ${token}`);
     return new Promise((resolve, reject) => {
-
       fetch(URL, {
         method: "POST",
         body: JSON.stringify(data),
@@ -28,37 +27,36 @@ const api = {
 
   getUsersData: (URL, token) => {
     const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-    myHeaders.append('Authorization', `bearer ${token}`);
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", `bearer ${token}`);
     return new Promise((resolve, reject) => {
       fetch(URL, {
         method: "GET",
         headers: myHeaders,
       })
-      .then((response) => resolve(response.json()))
-      .catch((error) => reject(error))
+        .then((response) => resolve(response.json()))
+        .catch((error) => reject(error));
     });
   },
 
   getUserData: (URL, token, id) => {
     const myHeaders = new Headers();
-    myHeaders.append('Authorization', `bearer ${token}`);
+    myHeaders.append("Authorization", `bearer ${token}`);
     return new Promise((resolve, reject) => {
       fetch(`${URL}${id}`, {
         method: "GET",
         headers: myHeaders,
       })
-      .then((response) => resolve(response.json()))
-      .catch((error) => reject(error))
+        .then((response) => resolve(response.json()))
+        .catch((error) => reject(error));
     });
   },
 
   editUserData: (URL, data, token, id) => {
     const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-    myHeaders.append('Authorization', `bearer ${token}`);
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", `bearer ${token}`);
     return new Promise((resolve, reject) => {
-
       fetch(`${URL}${id}`, {
         method: "PUT",
         body: JSON.stringify(data),
@@ -71,9 +69,8 @@ const api = {
 
   deleteUserData: (URL, token, id) => {
     const myHeaders = new Headers();
-    myHeaders.append('Authorization', `bearer ${token}`);
+    myHeaders.append("Authorization", `bearer ${token}`);
     return new Promise((resolve, reject) => {
-
       fetch(`${URL}${id}`, {
         method: "DELETE",
         headers: myHeaders,
@@ -82,7 +79,6 @@ const api = {
         .catch((error) => reject(error));
     });
   },
-
 };
 
 export default api;
