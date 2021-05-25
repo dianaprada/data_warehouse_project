@@ -19,9 +19,11 @@ import {
 let allHTMLUsersData = "";
 
 let tableUsersData = document.getElementById("users-body-table");
+let navLinkUsers = document.getElementById("navLinkUsers");
 
 let createUserBtn = document.getElementById("createUserBtn");
 
+let addUserBtnModal = document.getElementById("addUserBtnModal");
 let newUserName = document.getElementById("newUserName");
 let userLastName = document.getElementById("userLastName");
 let userEmail = document.getElementById("userEmail");
@@ -132,23 +134,50 @@ const createUser = (() => {
   };
   const { registerUserData } = api;
   const token = getTokenLocalStorage();
-  registerUserData(URL_REGISTER, userData, token)
-    .then((response) => {
-      if (response.message === "Created") {
-        swal(
-          "",
-          `El usuario ${userData.userName} ${userData.userLastName} fue creado exitosamente`,
-          "success"
-        );
-        getAllUsers();
-      } else {
-        swal("", `${response.message}`, "error");
-      }
-    })
-    .catch((error) => {
-      renderMsg(error);
-    });
+  if (newUserName.value === "") {
+    swal("", `Ingrese el nombre del Usuario`, "error");
+  } else if (userLastName.value === "") {
+      swal("", `Ingrese el apellido del Usuario`, "error");
+  } else if (!validateEmail(userEmail.value)) {
+      swal("", `Ingrese un email válido`, "error");
+  } else if (userProfile.value === "0") {
+      swal("", `Por favor seleccione el Perfil del Usuario`, "error");
+  } else if (newUserPassword.value.length < 8){
+      swal("", `La contraseña del Usuario debe tener mínimo 8 caracteres`, "error");
+  } else if (newUserPassword.value !== newUserPasswordConfirm.value) {
+      swal("", `Las contraseñas no coinciden`, "error");
+  } else {
+      registerUserData(URL_REGISTER, userData, token)
+      .then((response) => {
+        if (response.message === "Created") {
+          swal(
+            "",
+            `El usuario ${userData.userName} ${userData.userLastName} fue creado exitosamente`,
+            "success"
+          );
+          $('#newUserModal').modal('hide');
+          getAllUsers();
+        } else {
+          swal("", `${response.message}`, "error");
+        }
+      })
+      .catch((error) => {
+        renderMsg(error);
+      });
+  };  
 });
+
+/**
+ * @method validateEmail
+ * @description: Event Listener Close Modal
+ * @returns {}
+ */
+
+const validateEmail = ((email) => {
+  const regExpr = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regExpr.test(email);
+});
+
 
 /**
  * @method loadUserData
@@ -203,22 +232,35 @@ const editUserData = (() => {
     passwordUpdated: passwordUpdated,
     userImg: "../assets/bono.jpg",
   };
-  editUserData(URL_GETUSERID, userData, token, userID)
-    .then((response) => {
-      if (response.message === "Updated user") {
-        swal(
-          "",
-          `El usuario ${userData.userName} ${userData.userLastName} fue actualizado exitosamente`,
-          "success"
-        );
-        getAllUsers();
-      } else {
-        swal("", `${response.message}`, "error");
-      }
-    })
-    .catch((error) => {
-      renderMsg(error);
-    });
+  if (editUserName.value === "") {
+    swal("", `Ingrese el nombre del Usuario`, "error");
+  } else if (editUserLastName.value === "") {
+      swal("", `Ingrese el apellido del Usuario`, "error");
+  } else if (!validateEmail(editUserEmail.value)) {
+      swal("", `Ingrese un email válido`, "error");
+  } else if (editUserProfile.value === "0") {
+      swal("", `Por favor seleccione el Perfil del Usuario`, "error");
+  } else if (editUserState.value === "0") {
+    swal("", `Por favor seleccione el Perfil del Usuario`, "error");
+  } else {
+    editUserData(URL_GETUSERID, userData, token, userID)
+      .then((response) => {
+        if (response.message === "Updated user") {
+          swal(
+            "",
+            `El usuario ${userData.userName} ${userData.userLastName} fue actualizado exitosamente`,
+            "success"
+          );
+          $('#editUserModal').modal('hide');
+          getAllUsers();
+        } else {
+          swal("", `${response.message}`, "error");
+        }
+      })
+      .catch((error) => {
+        renderMsg(error);
+      });
+  }
 });
 
 /**
@@ -245,21 +287,6 @@ const deleteUserData = (() => {
     });
 });
 
-/**
- * @method matchPassword
- * @description: Confirm Password
- * @returns {}
- */
-
-const matchPassword = (() => {
-  let newPassword = newUserPassword.value;
-  let newUserPasswordConfirm = newUserPasswordConfirm.value;
-  if (newPassword != newUserPasswordConfirm) {
-    swal("", `Los password no coinciden`, "error");
-  } else {
-    swal("", `El password se ha creado exitosamente`, "success");
-  }
-});
 
 /**
  * @method addEventListenerEditButton
@@ -306,8 +333,34 @@ const addEventListenerDeleteButton = ((deleteButtonsList) => {
  */
 
 const addEventListenerSaveUser = (() => {
+    newUserName.value = "";
+    userLastName.value = "";
+    userEmail.value = "";
+    userProfile.value = "";
+    newUserPassword.value = "";
+    newUserPasswordConfirm.value = "";
+    userProfile.value ="0" ;
   createUserBtn.addEventListener("click", createUser);
 });
+
+/**
+ * @method addEventListenerSaveUser
+ * @description: Event Listener Save User
+ * @returns {}
+ */
+
+ const addEventListenerAddUser = (() => {
+  addUserBtnModal.addEventListener("click", () => {
+    newUserName.value = "";
+    userLastName.value = "";
+    userEmail.value = "";
+    userProfile.value = "";
+    newUserPassword.value = "";
+    newUserPasswordConfirm.value = "";
+    userProfile.value ="0" ;
+  }, false);
+});
+
 
 /**
  * @method addEventListenerEditUser
@@ -330,6 +383,22 @@ const addEventListenerDeleteUser = (() => {
 });
 
 /**
+ * @method checkUser
+ * @description 
+ *
+ */
+
+ const checkUser = (() => {
+  let isAdmin = getUserLocalStorage();
+  if( isAdmin === "Admin" ){
+    navLinkUsers.classList.remove("d-none");
+  } else {
+    window.location.replace("../index.html");
+  };
+  
+});
+
+/**
  * @method renderMsg
  * @description Render message on the DOM
  * @returns {String}
@@ -342,10 +411,12 @@ const renderMsg = ((msg) =>
  * Run
  */
 
+checkUser();
 getAllUsers();
 addEventListenerSaveUser();
 addEventListenerEditUser();
 addEventListenerDeleteUser();
+addEventListenerAddUser();
 
 //https://www.javatpoint.com/oprweb/test.jsp?filename=confirm-password-validation-in-javascript3
 

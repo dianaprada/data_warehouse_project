@@ -23,6 +23,8 @@ import {
 let allHTMLRegionsData = "";
 let regionsTree = document.getElementById("myUL");
 
+let navLinkUsers = document.getElementById("navLinkUsers");
+
 let newRegionName = document.getElementById("newRegionName");
 let createRegionBtn = document.getElementById("createRegionBtn");
 let editRegionID = document.getElementById("editRegionID");
@@ -73,22 +75,29 @@ const createRegion = (() => {
   const regionData = {
     regionName: newRegionName.value,
   };
-  createRegionData(URL_NEWREGION, regionData, token)
-    .then((response) => {
-      if (response.message === "Created") {
-        swal(
-          "",
-          `La región ${regionData.regionName} fue creada exitosamente`,
-          "success"
-        );
-        getRegions();
-      } else {
-        swal("", `${response.message}`, "error");
-      }
-    })
-    .catch((error) => {
-      renderMsg(error);
-    });
+  if (newRegionName.value === "") {
+    swal("", `Ingrese el nombre de la Región`, "error");
+  } else if (newRegionName.value.length < 2 ) {
+    swal("", `El nombre de la región debe tener mínimo dos caracteres`, "error");
+  } else {
+      createRegionData(URL_NEWREGION, regionData, token)
+      .then((response) => {
+        if (response.message === "Created") {
+          swal(
+            "",
+            `La región ${regionData.regionName} fue creada exitosamente`,
+            "success"
+          );
+          $('#newRegionModal').modal('hide');
+          getRegions();
+        } else {
+          swal("", `${response.message}`, "error");
+        }
+      })
+      .catch((error) => {
+        renderMsg(error);
+      });
+  } 
 });
 
 /**
@@ -128,22 +137,29 @@ const editRegion = (() => {
   const regionData = {
     regionName: editRegionName.value,
   };
-  editRegionData(URL_GETALLREGIONS, regionData, token, regionID)
-    .then((response) => {
-      if (response.message === "Updated region") {
-        swal(
-          "",
-          `La región ${regionData.regionName} fue actualizada exitosamente`,
-          "success"
-        );
-        getRegions();
-      } else {
-        swal("", `${response.message}`, "error");
-      }
-    })
-    .catch((error) => {
-      renderMsg(error);
-    });
+  if (editRegionName.value === "") {
+    swal("", `Ingrese el nombre de la Región`, "error");
+  } else if (editRegionName.value.length < 2 ) {
+    swal("", `El nombre de la región debe tener mínimo dos caracteres`, "error");
+  } else { 
+      editRegionData(URL_GETALLREGIONS, regionData, token, regionID)
+      .then((response) => {
+        if (response.message === "Updated region") {
+          swal(
+            "",
+            `La región ${regionData.regionName} fue actualizada exitosamente`,
+            "success"
+          );
+          $('#editRegionModal').modal('hide');
+          getRegions();
+        } else {
+          swal("", `${response.message}`, "error");
+        }
+      })
+      .catch((error) => {
+        renderMsg(error);
+      });
+  };
 });
 
 /**
@@ -191,22 +207,29 @@ const createCountry = (() => {
     regionID: newCountry_RegionID.value,
     countryName: newCountryName.value,
   };
-  createCountryData(URL_NEWCOUNTRY, countryData, token)
-    .then((response) => {
-      if (response.message === "Created") {
-        swal(
-          "",
-          `El país ${countryData.countryName} fue creado exitosamente`,
-          "success"
-        );
-        getRegions();
-      } else {
-        swal("", `${response.message}`, "error");
-      }
-    })
-    .catch((error) => {
-      renderMsg(error);
-    });
+  if (newCountryName.value === "") {
+    swal("", `Ingrese el nombre del País`, "error");
+  } else if (newCountryName.value.length < 2 ) {
+    swal("", `El nombre del País debe tener mínimo dos caracteres`, "error");
+  } else { 
+      createCountryData(URL_NEWCOUNTRY, countryData, token)
+      .then((response) => {
+        if (response.message === "Created") {
+          swal(
+            "",
+            `El país ${countryData.countryName} fue creado exitosamente`,
+            "success"
+          );
+          $('#newCountryModal').modal('hide');
+          getRegions();
+        } else {
+          swal("", `${response.message}`, "error");
+        }
+      })
+      .catch((error) => {
+        renderMsg(error);
+      });
+  };  
 });
 
 /**
@@ -255,22 +278,29 @@ const editCountry = (() => {
     regionID: editCountry_RegionID.value,
     countryName: editCountryName.value,
   };
-  editCountryData(URL_GETCOUNTRY, countryData, token, countryID)
-    .then((response) => {
-      if (response.message === "Country has been updated") {
-        swal(
-          "",
-          `El país ${countryData.countryName} fue actualizado exitosamente`,
-          "success"
-        );
-        getRegions();
-      } else {
-        swal("", `${response.message}`, "error");
-      }
-    })
-    .catch((error) => {
-      renderMsg(error);
-    });
+  if (editCountryName.value === "") {
+    swal("", `Ingrese el nombre del País`, "error");
+  } else if (editCountryName.value.length < 2 ) {
+    swal("", `El nombre del País debe tener mínimo dos caracteres`, "error");
+  } else { 
+      editCountryData(URL_GETCOUNTRY, countryData, token, countryID)
+      .then((response) => {
+        if (response.message === "Country has been updated") {
+          swal(
+            "",
+            `El país ${countryData.countryName} fue actualizado exitosamente`,
+            "success"
+          );
+          $('#editCountryModal').modal('hide');
+          getRegions();
+        } else {
+          swal("", `${response.message}`, "error");
+        }
+      })
+      .catch((error) => {
+        renderMsg(error);
+      });
+  };
 });
 
 /**
@@ -318,22 +348,30 @@ const createCity = (() => {
     countryID: newCity_CountryID.value,
     cityName: newCityName.value,
   };
-  createCityData(URL_NEWCITY, cityData, token)
-    .then((response) => {
-      if (response.message === "Created") {
-        swal(
-          "",
-          `La ciudad ${cityData.cityName} fue creada exitosamente`,
-          "success"
-        );
-        getRegions();
-      } else {
-        swal("", `${response.message}`, "error");
-      }
-    })
-    .catch((error) => {
-      renderMsg(error);
-    });
+  if (newCityName.value === "") {
+    swal("", `Ingrese el nombre de la ciudad`, "error");
+  } else if (newCityName.value.length < 2 ) {
+    swal("", `El nombre de la ciudad debe tener mínimo dos caracteres`, "error");
+  } else { 
+      createCityData(URL_NEWCITY, cityData, token)
+      .then((response) => {
+        if (response.message === "Created") {
+          swal(
+            "",
+            `La ciudad ${cityData.cityName} fue creada exitosamente`,
+            "success"
+          );
+          $('#newCityModal').modal('hide');
+          getRegions();
+        } else {
+          swal("", `${response.message}`, "error");
+        }
+      })
+      .catch((error) => {
+        renderMsg(error);
+      });
+  }; 
+  
 });
 
 /**
@@ -382,22 +420,29 @@ const editCity = (() => {
     cityName: editCityName.value,
     countryID: editCity_CountryID.value,
   };
-  editCityData(URL_GETCITY, cityData, token, cityID)
-    .then((response) => {
-      if (response.message === "City has been updated") {
-        swal(
-          "",
-          `La ciudad ${cityData.cityName} fue actualizada exitosamente`,
-          "success"
-        );
-        getRegions();
-      } else {
-        swal("", `${response.message}`, "error");
-      }
-    })
-    .catch((error) => {
-      renderMsg(error);
-    });
+  if (editCityName.value === "") {
+    swal("", `Ingrese el nombre de la ciudad`, "error");
+  } else if (editCityName.value.length < 2 ) {
+    swal("", `El nombre de la ciudad debe tener mínimo dos caracteres`, "error");
+  } else { 
+      editCityData(URL_GETCITY, cityData, token, cityID)
+      .then((response) => {
+        if (response.message === "City has been updated") {
+          swal(
+            "",
+            `La ciudad ${cityData.cityName} fue actualizada exitosamente`,
+            "success"
+          );
+          $('#editCityModal').modal('hide');
+          getRegions();
+        } else {
+          swal("", `${response.message}`, "error");
+        }
+      })
+      .catch((error) => {
+        renderMsg(error);
+      }); 
+  };
 });
 
 /**
@@ -557,7 +602,7 @@ const htmlRegionsTreeData = ((regionID, regionName, htmlCountry) => {
       <li class="list-group-item"><span class="caret treeFont">${regionName}</span>
         <button type="button" class="btn btn-lg text-black-50 editRegion" data-info="regions" data-id="${regionID}" data-toggle="modal" data-target="#editRegionModal"><i class="fa fa-pencil treeColor" aria-hidden="true"></i></button>
         <button type="button" class="btn btn-lg text-black-50 deleteRegion" data-info="regions" data-id="${regionID}" data-toggle="modal" data-target="#deleteRegionModal"><i class="fa fa-trash treeColor" aria-hidden="true"></i></button>
-        <button type="button" class="btn btn-secondary text-black btn-sm ml-3 buttonTreeAdd newCountry" data-info="countries" data-id="${regionID}" data-region="${regionName}" data-toggle="modal" data-target="#newCountryModal">Añadir país</button>
+        <button type="button" class="btn btn-secondary text-black btn-sm ml-3 buttonTreeAdd newCountry" data-info="countries" data-idregion="${regionID}" data-region="${regionName}" data-toggle="modal" data-target="#newCountryModal">Añadir país</button>
         <ul class="nested pl-5 list-group list-group-flush treeFont countries-Body">
             ${htmlCountry}
         </ul>
@@ -896,6 +941,27 @@ const addEventListenerDeleteCity = (() => {
 
 // END CITY LISTENERS
 
+
+/**
+ * END LISTENERS
+ */
+
+
+/**
+ * @method checkUser
+ * @description 
+ *
+ */
+
+
+ const checkUser = (() => {
+  let isAdmin = getUserLocalStorage();
+  if( isAdmin === "Admin" ){
+    navLinkUsers.classList.remove("d-none");
+  };
+  
+});
+
 /**
  * @method renderMsg
  * @description Render message on the DOM
@@ -903,16 +969,12 @@ const addEventListenerDeleteCity = (() => {
  */
 
 const renderMsg = ((msg) =>
-  (document.querySelector(".error-msg").innerHTML = msg));
-
-/**
- * END LISTENERS
- */
-
+  (document.querySelector(".error-msg").innerHTML = msg)); 
 /**
  * Run
  */
 
+checkUser();
 getRegions();
 addEventListenerSaveRegion();
 addEventListenerEditRegion();

@@ -71,7 +71,7 @@ const { City } = require("./citiesModel");
         validate: {
           isNumeric: true, // will only allow numbers
           len: {
-            args: [7, 10],
+            args: [7, 20],
             msg: "Phone number must be between 7 and 10 characters in length.",
           },
           notNull: {

@@ -47,7 +47,7 @@ router.get("/users", auth, profilePolicy.isAdmin, usersController.getEnabledUser
 
 /* Get All Users - Only admin users consults all users */
 
-router.get("/allusers", auth, profilePolicy.isAdmin, usersController.getAllUsers);
+router.get("/allusers", auth, profilePolicy.isAdmin, usersController.getEnabledUsers);
 
 /* Getting User by ID - Only admin users consults users by ID */
 

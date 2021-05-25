@@ -71,5 +71,14 @@ router.delete(
     contactsController.deleteContact
 );
 
+/* Filter Contact */
+
+router.post(
+    "/contacts/filter",
+    jsonParser,
+    auth,
+    contactsController.filterContact
+);
+
 module.exports = router;
 

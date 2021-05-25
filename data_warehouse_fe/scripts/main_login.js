@@ -1,7 +1,7 @@
 /**
  * Imports
  */
-import api from "./main_servicesUser";
+import api from "./main_servicesUser.js";
 import {
   URL_LOGIN,
   LOCAL_STORAGE_TOKEN,
@@ -38,14 +38,14 @@ const loginHandler = (() => {
     .then((response) => {
       if (response.message === "") {
         getDataLogin(response.user, response.token);
-        window.location.replace("../views/user.html");
+        window.location.replace("../index.html");
       } else {
         showErrorMessage();
         //swal("Usuario o contraseña incorrectos!", "error");
       }
     })
     .catch((error) => {
-      console.log("Status: %d\n\n", res.statusCode);
+      console.log("Status: %d\n\n", res.statusCode, error);
     });
 });
 

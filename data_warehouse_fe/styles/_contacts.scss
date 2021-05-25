@@ -10,9 +10,7 @@
         color: black;
         background-color: white !important;
     }
-    &-input {
-        border-right: none;
-    }
+   
     &-menu {
         width: vw(502, 1366);
         transform: translate3d(0px, 34px, 0px) !important;
@@ -232,5 +230,10 @@ p {
 .add-channel {
     width: 70%;
     min-width: 70%;
+}
+
+
+.orange { 
+    background-color: orange; 
 }
 

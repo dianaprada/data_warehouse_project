@@ -205,7 +205,8 @@ module.exports = {
 /* Update Country */
 
     async updateCountry(req, res) {
-
+      console.log("REGIONID", req.country.regionID);
+      console.log("REGIONID BODY", req.body.regionID);
         req.country.regionID = req.body.regionID,
         req.country.countryName = req.body.countryName,
 

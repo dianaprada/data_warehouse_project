@@ -38,6 +38,7 @@ const countriesRouter = require("./src/routes/countriesRouter");
 const citiesRouter = require("./src/routes/citiesRouter");
 const companiesRouter = require("./src/routes/companiesRouter");
 const contactsRouter = require("./src/routes/contactsRouter");
+const chanelsRouter = require("./src/routes/chanelsRouter");
 
 /* Middlewares */
 server.use(helmet());
@@ -57,6 +58,7 @@ server.use("/", countriesRouter);
 server.use("/", citiesRouter);
 server.use("/", companiesRouter);
 server.use("/", contactsRouter);
+server.use("/", chanelsRouter);
 
 /**
  * Start Server
@@ -73,10 +75,11 @@ sequelize
   .sync({ force: false })
   .then(() => {
     console.log("Tables have been created");
+
   })
   .catch((error) => {
     console.log("Something was wrong: ", error);
-  });
+  }); 
 
 /* Database connection */
 

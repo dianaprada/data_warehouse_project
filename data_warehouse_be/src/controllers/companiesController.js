@@ -145,11 +145,11 @@ module.exports = {
   /* Update Company */
 
   async updateCompany(req, res) {
-    (req.company.cityID = req.body.cityID),
-      (req.company.companyName = req.body.companyName),
-      (req.company.companyAddress = req.body.companyAddress),
-      (req.company.companyEmail = req.body.companyEmail),
-      (req.company.companyPhone = req.body.companyPhone),
+      req.company.cityID = req.body.cityID,
+      req.company.companyName = req.body.companyName,
+      req.company.companyAddress = req.body.companyAddress,
+      req.company.companyEmail = req.body.companyEmail,
+      req.company.companyPhone = req.body.companyPhone,
       req.company.save().then((company) => {
         res.status(200).json({
           company,

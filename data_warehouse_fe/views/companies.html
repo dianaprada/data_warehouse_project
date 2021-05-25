@@ -32,8 +32,8 @@
             <div class="navbar-nav">
                 <a class="nav-link mx-1" href="../index.html">Contactos</a>
                 <a class="nav-link mx-1 active" href="#">Compañías<span class="sr-only">(current)</span></a>
-                <a class="nav-link mx-1 d-none users-tab" href="./users.html">Usuarios</a>
-                <a class="nav-link mx-1" href="./region-city.html">Región / Ciudad</a>
+                <a class="nav-link mx-1 d-none users-tab" href="./user.html" id="navLinkUsers">Usuarios</a>
+                <a class="nav-link mx-1" href="./region_city.html">Región / Ciudad</a>
             </div>
         </div>
     </nav>
@@ -45,19 +45,10 @@
             <!-- Search Bar -->
 
             <div class="d-flex flex-row justify-content-between">
-                <div class="d-flex flex-row">
-                    <div class="input-group filter mr-2">
-                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                    </div>
-                    <!-- Button Search -->
-                    <button type="button" class="btn btn-outline-secondary btn-search"><i class="fa fa-search"
-                            aria-hidden="true"></i></button>
-
-                </div>
-
+                
                 <!-- New Company Button -->
-                <div class="d-flex flex-row justify-content-end">
-                    <button type="button" class="btn btn-primary btn-size" data-toggle="modal"
+                <div class="col">
+                    <button type="button" class="btn btn-primary btn-size float-right" data-toggle="modal"
                         data-target="#newCompanyModal" id="addCompanyBtn">Agregar Compañía</button>
                 </div>
                 <!-- END New Company Button -->
@@ -78,43 +69,11 @@
             <table class="table table-borderless table-bordered table-responsive-lg table-hover">
                 <thead>
                     <tr class="table-bordered">
-                        <th class="align-middle" scope="col">Compañía
-                            <button type="button" class="btn btn-link asc-sort" data-field="companyName" data-index='0'>
-                                <i class="fa fa-sort" aria-hidden="true"></i></button>
-                            <button type="button" class="btn btn-link desc-sort d-none" data-field="companyName"
-                                data-index='0'>
-                                <i class="fa fa-sort" aria-hidden="true"></i></button>
-                        </th>
-                        <th class="align-middle" scope="col">Dirección
-                            <button type="button" class="btn btn-link asc-sort" data-field="companyAddress"
-                                data-index='1'>
-                                <i class="fa fa-sort" aria-hidden="true"></i></button>
-                            <button type="button" class="btn btn-link desc-sort d-none" data-field="companyAddress"
-                                data-index='1'>
-                                <i class="fa fa-sort" aria-hidden="true"></i></button>
-                        </th>
-                        <th class="align-middle" scope="col">Email
-                            <button type="button" class="btn btn-link asc-sort" data-field="companyEmail"
-                                data-index='2'>
-                                <i class="fa fa-sort" aria-hidden="true"></i></button>
-                            <button type="button" class="btn btn-link desc-sort d-none" data-field="companyEmail"
-                                data-index='2'><i class="fa fa-sort" aria-hidden="true"></i></button>
-                        </th>
-                        <th class="align-middle" scope="col">Teléfono
-                            <button type="button" class="btn btn-link asc-sort" data-field="contactPhone"
-                                data-index='3'>
-                                <i class="fa fa-sort" aria-hidden="true"></i></button>
-                            <button type="button" class="btn btn-link desc-sort d-none" data-field="contactPhone"
-                                data-index='3'>
-                                <i class="fa fa-sort" aria-hidden="true"></i></button>
-                        </th>
-                        <th class="align-middle" scope="col">Ciudad
-                            <button type="button" class="btn btn-link asc-sort" data-field="contactCity" data-index='4'>
-                                <i class="fa fa-sort" aria-hidden="true"></i></button>
-                            <button type="button" class="btn btn-link desc-sort d-none" data-field="contactCity"
-                                data-index='4'>
-                                <i class="fa fa-sort" aria-hidden="true"></i></button>
-                        </th>
+                        <th class="align-middle" scope="col">Compañía</th>
+                        <th class="align-middle" scope="col">Dirección</th>
+                        <th class="align-middle" scope="col">Email</th>
+                        <th class="align-middle" scope="col">Teléfono</th>
+                        <th class="align-middle" scope="col">Ciudad</th>
                         <th class="align-middle text-center" scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -234,7 +193,7 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success btn-lg modal-button create" data-dismiss="modal"
+                    <button type="button" class="btn btn-success btn-lg modal-button create"
                         id="saveCompanyModalBtn">Guardar Compañía</button>
                 </div>
             </div>
@@ -337,7 +296,7 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success btn-lg modal-button update-button" data-dismiss="modal"
+                    <button type="button" class="btn btn-success btn-lg modal-button update-button" 
                         id="editCompanyModalBtn">Actualizar compañía</button>
                 </div>
             </div>
@@ -363,7 +322,7 @@
 
     <!-- END jQuery, Popper and Bootstrap JS -->
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
     <script src="https://kit.fontawesome.com/7396023e43.js" crossorigin="anonymous"></script>
 

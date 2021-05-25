@@ -29,6 +29,7 @@ let allHTMLRegionsDataEdit = "";
 let allHTMLCountriesDataEdit = "";
 let allHTMLCitiesDataEdit = "";
 
+let navLinkUsers = document.getElementById("navLinkUsers");
 const companiesBodyTable = document.getElementById("companiesBodyTable");
 let addCompanyBtn = document.getElementById("addCompanyBtn");
 let newCompanyName = document.getElementById("newCompanyName");
@@ -175,23 +176,56 @@ const createCompany = (() => {
     companyEmail: newCompanyEmail.value,
     companyPhone: newCompanyPhone.value,
   };
-  createCompanyData(URL_NEWCOMPANY, companyData, token)
-    .then((response) => {
-      if (response.message === "Created") {
-        swal(
-          "",
-          `La compañía ${companyData.companyName} fue creada exitosamente`,
-          "success"
-        );
-        getCompanies();
-      } else {
-        swal("", `${response.message}`, "error");
-      }
-    })
-    .catch((error) => {
-      renderMsg(error);
-    });
+  if (newCompanyName.value === "" || newCompanyName.value.length < 2) {
+    swal("", `El nombre de la compañía debe tener mínimo dos caracteres`, "error");
+  } else if (newCompanyAddress.value === "" || newCompanyAddress.value.length < 10 ) {
+    swal("", `La dirección de la compañía debe tener mínimo 10 caracteres`, "error");
+  } else if (!validateEmail(newCompanyEmail.value)) {
+    swal("", `Ingrese un email válido`, "error");
+  } else if (newCompanyPhone.value < 10) {
+    swal("", `Ingrese un Número de teléfono válido`, "error");
+  } else if(newCompany_regionSelectID.value === "0"){
+    swal("", `Seleccione una región`, "error");
+  } else if(newCompany_countrySelectID.value === "0"){
+    swal("", `Seleccione un país`, "error");
+  } else if(newCompany_citySelectID.value === "0"){
+    swal("", `Seleccione una ciudad`, "error");
+  } else { 
+      createCompanyData(URL_NEWCOMPANY, companyData, token)
+      .then((response) => {
+        if (response.message === "Created") {
+          swal(
+            "",
+            `La compañía ${companyData.companyName} fue creada exitosamente`,
+            "success"
+          );
+          $('#newCompanyModal').modal('hide');
+          getCompanies();
+        } else {
+          swal("", `${response.message}`, "error");
+        }
+      })
+      .catch((error) => {
+        renderMsg(error);
+      });
+  };
+  
 });
+
+
+/**
+ * @method validateEmail
+ * @description: Event Listener Close Modal
+ * @returns {}
+ */
+
+ const validateEmail = ((email) => {
+  const regExpr = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regExpr.test(email);
+});
+
+
+// EDIT CONTACT
 
 /**
  * @method loadEditCompanyData
@@ -225,7 +259,7 @@ const loadEditCompanyData = ((companyID) => {
           response.company.cityID
         );
       } else {
-        swal("", `${response.message}`, "error");
+          swal("", `${response.message}`, "error");
       }
     })
     .catch((error) => {
@@ -250,23 +284,42 @@ const editCompany = (() => {
     companyEmail: editCompanyEmail.value,
     companyPhone: editCompanyPhone.value,
   };
-  editCompanyData(URL_GETCOMPANY, companyData, token, companyID)
-    .then((response) => {
-      if (response.message === "Company has been updated") {
-        swal(
-          "",
-          `La compañía ${companyData.companyName} fue actualizada exitosamente`,
-          "success"
-        );
-        getCompanies();
-      } else {
-        swal("", `${response.message}`, "error");
-      }
-    })
-    .catch((error) => {
-      renderMsg(error);
-    });
+  if (editCompanyName.value === "" || editCompanyName.value.length < 2) {
+    swal("", `El nombre de la compañía debe tener mínimo dos caracteres`, "error");
+  } else if (editCompanyAddress.value === "" || editCompanyAddress.value.length < 10 ) {
+    swal("", `La dirección de la compañía debe tener mínimo 10 caracteres`, "error");
+  } else if (!validateEmail(editCompanyEmail.value)) {
+    swal("", `Ingrese un email válido`, "error");
+  } else if (editCompanyPhone.value.length < 10) {
+    swal("", `Ingrese un Número de teléfono válido`, "error");
+  } else if(editCompany_regionSelectID.value === "0"){
+    swal("", `Seleccione una región`, "error");
+  } else if(editCompany_countrySelectID.value === "0"){
+    swal("", `Seleccione un país`, "error");
+  } else if(editCompany_citySelectID.value === "0"){
+    swal("", `Seleccione una ciudad`, "error");
+  } else { 
+      editCompanyData(URL_GETCOMPANY, companyData, token, companyID)
+      .then((response) => {
+        if (response.message === "Company has been updated") {
+          swal(
+            "",
+            `La compañía ${companyData.companyName} fue actualizada exitosamente`,
+            "success"
+          );
+          $('#editCompanyModal').modal('hide');
+          getCompanies();
+        } else {
+          swal("", `${response.message}`, "error");
+        }
+      })
+      .catch((error) => {
+        renderMsg(error);
+      });
+    };
 });
+
+// END EDIT COMPANY
 
 /**
  * @method deleteCompany
@@ -847,6 +900,22 @@ const addEventListenerDeleteCompany = (() => {
  */
 
 /**
+ * @method checkUser
+ * @description 
+ *
+ */
+
+
+ const checkUser = (() => {
+  let isAdmin = getUserLocalStorage();
+  if( isAdmin === "Admin" ){
+    navLinkUsers.classList.remove("d-none");
+  };
+  
+});
+
+
+/**
  * @method renderMsg
  * @description Render message on the DOM
  * @returns {String}
@@ -859,6 +928,7 @@ const renderMsg = ((msg) =>
  * Run
  */
 
+checkUser();
 getCompanies();
 getRegions();
 getRegionsEditCompany();

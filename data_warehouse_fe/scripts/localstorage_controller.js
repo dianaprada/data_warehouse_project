@@ -40,7 +40,7 @@ const saveTokenLocalStorage = ((token) => {
 
  const saveUserLocalStorage = ((user) => {
     
-    localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(user));
+    localStorage.setItem(LOCAL_STORAGE_USER, user);
 
 });
 

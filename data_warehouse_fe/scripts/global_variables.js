@@ -48,7 +48,16 @@ const URL_GETCOMPANY = "http://localhost:8080/companies/";
 const URL_NEWCONTACT = "http://localhost:8080/contact/new";
 
 /* Get Contact */
-const URL_GETCONTACT = "http://localhost:8080/contacts";
+const URL_GETCONTACT = "http://localhost:8080/contacts/";
+
+/* Filter Contact */
+const URL_FILTERCONTACT = "http://localhost:8080/contacts/filter/";
+
+/* Create Chanel */
+const URL_NEWCHANEL = "http://localhost:8080/chanel/new";
+
+/* Get Chanel */
+const URL_GETCHANEL = "http://localhost:8080/chanels/";
 
 /* Token - Localstorage */
 const LOCAL_STORAGE_TOKEN = "userToken";
@@ -75,4 +84,8 @@ export {
   URL_GETCOMPANY,
   URL_NEWCONTACT,
   URL_GETCONTACT,
+  URL_FILTERCONTACT,
+  URL_NEWCHANEL,
+  URL_GETCHANEL
+
 };

@@ -1,5 +1,5 @@
-const apiContacts = {
-    createContactData: (URL, data, token) => {
+const apiChanels = {
+    createChanelData: (URL, data, token) => {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `bearer ${token}`);
@@ -14,12 +14,12 @@ const apiContacts = {
       });
     },
   
-    getContactsData: (URL, token, orderBy = 'contactName', orderByDirection = 'ASC') => {
+    getChanelsData: (URL, token) => {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `bearer ${token}`);
       return new Promise((resolve, reject) => {
-        fetch(`${URL}?orderBy=${orderBy}&orderByDirection=${orderByDirection}`, {
+        fetch(URL, {
           method: "GET",
           headers: myHeaders,
         })
@@ -28,7 +28,7 @@ const apiContacts = {
       });
     },
   
-    getContactData: (URL, token, id) => {
+    getChanelData: (URL, token, id) => {
       const myHeaders = new Headers();
       myHeaders.append("Authorization", `bearer ${token}`);
       return new Promise((resolve, reject) => {
@@ -41,7 +41,7 @@ const apiContacts = {
       });
     },
   
-    editContactData: (URL, data, token, id) => {
+    editChanelData: (URL, data, token, id) => {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `bearer ${token}`);
@@ -56,7 +56,7 @@ const apiContacts = {
       });
     },
   
-    deleteContactData: (URL, token, id) => {
+    deleteChanelData: (URL, token, id) => {
       const myHeaders = new Headers();
       myHeaders.append("Authorization", `bearer ${token}`);
       return new Promise((resolve, reject) => {
@@ -68,21 +68,7 @@ const apiContacts = {
           .catch((error) => reject(error));
       });
     },
-    filterContactData: (URL, data, token) => {
-      const myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("Authorization", `bearer ${token}`);
-      return new Promise((resolve, reject) => {
-        fetch(URL, {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: myHeaders,
-        })
-          .then((response) => resolve(response.json()))
-          .catch((error) => reject(error));
-      });
-    },
   };
   
-  export default apiContacts;
+  export default apiChanels;
   

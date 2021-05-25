@@ -13,8 +13,8 @@ body {
 }
 
 /* HIDE */
-.hidden {
-  display: none;
+.hiddenControl {
+  display: none !important;
 }
 
 .title {
@@ -35,10 +35,6 @@ body {
   border-left: none;
   color: black;
   background-color: white !important;
-}
-
-.filter-input {
-  border-right: none;
 }
 
 .filter-menu {
@@ -275,6 +271,10 @@ p {
   min-width: 70%;
 }
 
+.orange {
+  background-color: orange;
+}
+
 ul, #myUL {
   list-style-type: none;
 }
@@ -340,5 +340,9 @@ ul, #myUL {
   color: #FFFFFF;
   font-size: small;
   background-color: #1D72C2;
+}
+
+.newChanelBtn {
+  margin-top: 26px;
 }
 /*# sourceMappingURL=styles.css.map */

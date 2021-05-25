@@ -71,11 +71,10 @@ module.exports = {
       passwordLen === null ||
       passwordLen === "null" ||
       passwordLen.length < 8 ||
-      passwordLen.length > 20
+      passwordLen.length > 200
     ) {
       res.status(400).json({
         status: 400,
-        detail:err.message,
         ok: false,
         title: 'Bad Request',
         message: "Password must be between 8 and 20 characters in length.",
@@ -88,7 +87,7 @@ module.exports = {
       );
 
       /* Create a user */
-           
+      console.log("UserEmail:", req.body.userEmail);     
       User.create({
         userName: req.body.userName,
         userLastName: req.body.userLastName,

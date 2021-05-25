@@ -6,6 +6,7 @@ const { Country } = require("./src/database/models/countriesModel");
 const { City } = require("./src/database/models/citiesModel");
 const { Company } = require("./src/database/models/companyModels");
 const { Contact } = require("./src/database/models/contactsModel");
+const { Chanel } = require("./src/database/models/chanelsModel");
 
 const bcrypt = require("bcrypt");
 const authConfig = require("./config/auth");
@@ -107,7 +108,7 @@ const countries = [
     countryName: "Mexico",
   },
   {
-    regionID:  "2",
+    regionID:  "4",
     countryName: "Estados Unidos",
   },  
   {
@@ -119,11 +120,11 @@ const countries = [
     countryName: "Maldives",
   }, 
   {
-    regionID:  "4",
+    regionID:  "2",
     countryName: "Alemania",
   },  
   {
-    regionID:  "4",
+    regionID:  "2",
     countryName: "España",
   }, 
   {
@@ -210,7 +211,7 @@ const companies = [
   {
     cityID:  "6",
     companyName: "Netflix",
-    companyAddress: "Calle Falsa 123",
+    companyAddress: "Whitehaven Mansions Apt 56B",
     companyEmail: "netflix@netflix.com",
     companyPhone: "8007550114",
   },
@@ -222,23 +223,23 @@ const companies = [
     companyPhone: "8007550114",
   },
   {
-    cityID:  "8",
+    cityID:  "12",
     companyName: "Mercado Libre",
-    companyAddress: "Calle del Mercado Libre 123",
+    companyAddress: "Privet Drive 4",
     companyEmail: "mercado.libre@mercadolibre.com",
     companyPhone: "8007550114",
   },
   {
     cityID:  "4",
     companyName: "Globant",
-    companyAddress: "Carrera 43A #5A-113 Torre norte pisos 16-21. One Plaza Business Center",
+    companyAddress: "Carrera 43A #5A-113",
     companyEmail: "globant@globant.com",
     companyPhone: "3157550114",
   },
   {
-    cityID:  "4",
+    cityID:  "10",
     companyName: "Ecom Experts",
-    companyAddress: "Carrera 43A #5A-113 Torre norte pisos 16-21. One Plaza Business Center",
+    companyAddress: "742 Evergreen Terrace",
     companyEmail: "ecomexperts@ecomexperts.com",
     companyPhone: "3157550114",
   },
@@ -250,33 +251,127 @@ const companies = [
 
 const contacts = [
   {
-    companyID:  "6",
+    companyID:  "1",
+    cityID:  "1",
     contactName: "Camila Soledad",
-    contactLastName: "Pantó",
-    contactEmail: "camilapanto123@ecomexperts.com",
+    contactLastName: "Panto",
+    contactEmail: "camila@panto.com",
     contactPosition: "UX Designer",
-    contactAddress:  "Calle Falsa 123",
-    contactChanel: "WhatsAPP",
-    contactAccount: "3151234567",
-    contactInterest: "50",
-    contactPreferences: "No molestar",
+    contactAddress:  "Whitehaven Mansions Apt 56B",
+    contactInterest: "0",
     contactImg: "../data_warehouse_be/assets/userimg/jane_doe.png",
   },
   {
-    companyID:  "1",
+    companyID:  "2",
+    cityID:  "3",
     contactName: "Agustin Emmanuel",
     contactLastName: "Soria",
-    contactEmail: "agustionsoria123@acamica.com",
+    contactEmail: "agustin@soria.com",
     contactPosition: "UI Designer",
     contactAddress:  "Humboldt 1967, C1414 CTU",
-    contactChanel: "Email",
-    contactAccount: "agustionsoria123@acamica.com",
-    contactInterest: "75",
-    contactPreferences: "Canal favorito",
+    contactInterest: "25",
     contactImg: "../data_warehouse_be/assets/userimg/jane_doe.png",
   },
- 
+  {
+    companyID:  "3",
+    cityID:  "5",
+    contactName: "Denver Steven",
+    contactLastName: "Soria",
+    contactEmail: "denver@soria.com",
+    contactPosition: "Developer",
+    contactAddress:  "Privet Drive 4",
+    contactInterest: "50",
+    contactImg: "../data_warehouse_be/assets/userimg/jane_doe.png",
+  }, 
+  {
+    companyID:  "4",
+    cityID:  "7",
+    contactName: "Sebastian Agustin",
+    contactLastName: "Panto",
+    contactEmail: "sebas@panto.com",
+    contactPosition: "Scrum Master",
+    contactAddress:  "221B Baker Street",
+    contactInterest: "75",
+    contactImg: "../data_warehouse_be/assets/userimg/jane_doe.png",
+  },
 
+  {
+    companyID:  "5",
+    cityID:  "9",
+    contactName: "Valentino",
+    contactLastName: "Boetto",
+    contactEmail: "valentino@boetto.com",
+    contactPosition: "Product Owner",
+    contactAddress:  "Número 3 de Abbey Road",
+    contactInterest: "75",
+    contactImg: "../data_warehouse_be/assets/userimg/jane_doe.png",
+  },
+
+  {
+    companyID:  "1",
+    cityID:  "11",
+    contactName: "Guillermina",
+    contactLastName: "Budano",
+    contactEmail: "guillermina@budano.com",
+    contactPosition: "Sales",
+    contactAddress:  "742 Evergreen Terrace",
+    contactInterest: "75",
+    contactImg: "../data_warehouse_be/assets/userimg/jane_doe.png",
+  },
+
+  {
+    companyID:  "2",
+    cityID:  "10",
+    contactName: "Laura",
+    contactLastName: "Errante",
+    contactEmail: "laura@errante.com",
+    contactPosition: "Sales Manager",
+    contactAddress:  "Calle falsa 123",
+    contactInterest: "75",
+    contactImg: "../data_warehouse_be/assets/userimg/jane_doe.png",
+  },
+
+
+];
+
+// Chanels
+
+const chanels = [
+  {
+    contactID:  "1",
+    contactChanel: "Telefono",
+    contactAccount: "3151234567",
+    contactPreferences: "Sin preferencia",
+    
+  },
+  {
+    contactID:  "1",
+    contactChanel: "Email",
+    contactAccount: "contact1@contact.com",
+    contactPreferences: "Canal favorito",
+    
+  },
+  {
+    contactID:  "2",
+    contactChanel: "WhatsAPP",
+    contactAccount: "3012806263",
+    contactPreferences: "No molestar",
+    
+  },
+  {
+    contactID:  "1",
+    contactChanel: "LinkedIn",
+    contactAccount: "@Quebobis",
+    contactPreferences: "Sin preferencia",
+    
+  },
+  {
+    contactID:  "2",
+    contactChanel: "LinkedIn",
+    contactAccount: "@bobis",
+    contactPreferences: "Sin preferencia",
+    
+  },
 ];
 
 sequelize
@@ -307,6 +402,9 @@ sequelize
   
   }).then(() => {
     contacts.forEach((singleContact) => Contact.create(singleContact));
+  
+  }).then(() => {
+    chanels.forEach((singleChanel) => Chanel.create(singleChanel));
   
   }).catch((exp)=> {
     console.log("User creation" + exp);

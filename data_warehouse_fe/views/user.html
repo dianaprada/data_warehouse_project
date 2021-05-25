@@ -33,7 +33,7 @@
       <div class="navbar-nav">
         <a class="nav-link mx-1" href="../index.html">Contactos</a>
         <a class="nav-link mx-1" href="./companies.html">Compañías</a>
-        <a class="nav-link mx-1 active" href="#">Usuarios<span class="sr-only">(current)</span></a>
+        <a class="nav-link mx-1 active" href="#" id="navLinkUsers">Usuarios<span class="sr-only">(current)</span></a>
         <a class="nav-link mx-1" href="./region_city.html">Región / Ciudad</a>
       </div>
     </div>
@@ -45,8 +45,8 @@
 
       <!-- Search Bar  -->
 
-      <div class="d-flex flex-row justify-content-between">
-        <div class="d-flex flex-row">
+      <div class="d-flex flex-row justify-content-between " >
+        <div class="d-flex flex-row hiddenControl">
           <div class="input-group filter mr-2">
             <input type="text" class="form-control" aria-label="Text input with dropdown button">
           </div>
@@ -60,8 +60,8 @@
 
         <!-- New User Button -->
 
-        <div class="d-flex flex-row justify-content-end">
-          <button type="button" class="btn btn-primary btn-size" data-toggle="modal" data-target="#newUserModal">Agregar
+        <div class="col">
+          <button type="button" class="btn btn-primary btn-size float-right" data-toggle="modal" data-target="#newUserModal" id="addUserBtnModal">Agregar
             Usuarios</button>
         </div>
 
@@ -86,37 +86,11 @@
         <thead>
           <tr class="table-bordered">
 
-            <th class="align-middle pl-5" scope="col">Nombre(s)
-              <button type="button" class="btn btn-link asc-sort" data-field="userName" data-index='0'>
-                <i class="fa fa-sort" aria-hidden="true"></i></button>
-              <button type="button" class="btn btn-link desc-sort d-none" data-field="userName" data-index='0'>
-                <i class="fa fa-sort" aria-hidden="true"></i></button>
-            </th>
-            <th class="align-middle" scope="col">Apellido(s)
-              <button type="button" class="btn btn-link asc-sort" data-field="userLastname" data-index='1'>
-                <i class="fa fa-sort" aria-hidden="true"></i></button>
-              <button type="button" class="btn btn-link desc-sort d-none" data-field="userLastname" data-index='1'>
-                <i class="fa fa-sort" aria-hidden="true"></i></button>
-            </th>
-            <th class="align-middle pl-5" scope="col">Email
-              <button type="button" class="btn btn-link asc-sort" data-field="userEmail" data-index='2'>
-                <i class="fa fa-sort" aria-hidden="true"></i></button>
-              <button type="button" class="btn btn-link desc-sort d-none" data-field="userEmail" data-index='2'><i
-                  class="fa fa-sort" aria-hidden="true"></i></button>
-            </th>
-            <th class="align-middle" scope="col">Perfil
-              <button type="button" class="btn btn-link asc-sort" data-field="userProfile" data-index='3'>
-                <i class="fa fa-sort" aria-hidden="true"></i></button>
-              <button type="button" class="btn btn-link desc-sort d-none" data-field="userProfile" data-index='3'>
-                <i class="fa fa-sort" aria-hidden="true"></i></button>
-            </th>
-            <th class="align-middle" scope="col">Estado
-              <button type="button" class="btn btn-link asc-sort" data-field="userState" data-index='4'>
-                <i class="fa fa-sort" aria-hidden="true"></i></button>
-              <button type="button" class="btn btn-link desc-sort d-none" data-field="userState" data-index='4'>
-                <i class="fa fa-sort" aria-hidden="true"></i></button>
-            </th>
-
+            <th class="align-middle pl-5" scope="col">Nombre(s)</th>
+            <th class="align-middle" scope="col">Apellido(s)</th>
+            <th class="align-middle pl-5" scope="col">Email</th>
+            <th class="align-middle" scope="col">Perfil</th>
+            <th class="align-middle" scope="col">Estado</th>
             <th class="align-middle" scope="col">Acciones</th>
           </tr>
         </thead>
@@ -189,7 +163,8 @@
               <div class="col">
                 <label for="userEmail" class="col-form-label col-form-label-sm">Email<span
                     class="text-danger">*</span></label>
-                <input type="email" class="form-control form-control-sm" id="userEmail" name="userEmail">
+                <input type="email" class="form-control form-control-sm" id="userEmail" name="userEmail" placeholder="chofy@ejemplo.com" title="Por favor, especifique una dirección de correo válida." pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}
+                [a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/">
               </div>
             </div>
 
@@ -227,7 +202,7 @@
         <div class="modal-footer border-top-0">
           <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
             data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-success btn-lg modal-button create" data-dismiss="modal"
+          <button type="button" class="btn btn-success btn-lg modal-button create"
             id="createUserBtn">Guardar Usuario</button>
         </div>
       </div>
@@ -268,7 +243,8 @@
               </div>
               <div class="col">
                 <label for="editUserEmail" class="col-form-label col-form-label-sm">Email</label>
-                <input type="email" class="form-control form-control-sm" id="editUserEmail" name="editUserEmail">
+                <input type="email" class="form-control form-control-sm" id="editUserEmail" name="editUserEmail" placeholder="chofy@ejemplo.com" title="Por favor, especifique una dirección de correo válida." pattern="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}
+                [a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/">
               </div>
             </div>
 
@@ -307,7 +283,7 @@
           <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
             data-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-success btn-lg modal-button update-button" id="editUserBtn"
-            data-dismiss="modal">Actualizar contacto</button>
+            >Actualizar contacto</button>
         </div>
       </div>
     </div>
@@ -333,7 +309,7 @@
 
   <!-- END jQuery, Popper and Bootstrap JS -->
 
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
   <script src="https://kit.fontawesome.com/7396023e43.js" crossorigin="anonymous"></script>
 

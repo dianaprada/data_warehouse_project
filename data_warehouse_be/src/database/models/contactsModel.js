@@ -2,6 +2,7 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../db");
 
 const { Company } = require("./companyModels");
+const { City } = require("./citiesModel");
 
 /**
  * Contacts Model
@@ -22,15 +23,15 @@ Contact.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    cityID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     contactName: {
       type: DataTypes.STRING,
       allowNull: false,
       required: true,
-      validate: {
-        is: {
-          args: [/^[a-zA-Z\s-, ]+$/i],
-          msg: "Contact Name only allow alphabetic characters",
-        },
+      validate: {      
         len: {
           args: [2, 100],
           msg: "User Name must be between 2 and 100 characters in length.",
@@ -98,34 +99,10 @@ Contact.init(
         },
       },
     },
-    contactChanel: {
-      type: DataTypes.ENUM("Teléfono", "Email","WhatsAPP", "Facebook","Twitter"),
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Please enter the Contact Chanel",
-        },
-      },
-    },
-    contactAccount: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [5, 200], // only allow values with length between 3 and 100
-        notNull: {
-          msg: "Please enter the Contact Account",
-        },
-      },
-    },
     contactInterest: {
       type: DataTypes.ENUM("0", "25","50", "75","100"),
       allowNull: false,
       defaultValue: "0",
-    },
-    contactPreferences: {
-      type: DataTypes.ENUM("Sin preferencia", "Canal favorito","No molestar"),
-      allowNull: false,
-      defaultValue: "Sin preferencia",
     },
     contactImg: {
       type: DataTypes.STRING,
@@ -144,11 +121,21 @@ Contact.init(
  */
 
 Company.hasMany(Contact, {
-  foreignKey: { name: "companyID", allowNull: false },
+  foreignKey: { name: "companyID", allowNull: false, },
 });
 
 Contact.belongsTo(Company, {
   foreignKey: { name: "companyID", allowNull: false },
 });
+
+
+City.hasMany(Contact, {
+  foreignKey: { name: "cityID", allowNull: false,  },
+});
+
+Contact.belongsTo(City, {
+  foreignKey: { name: "cityID", allowNull: false },
+});
+
 
 module.exports = { Contact };

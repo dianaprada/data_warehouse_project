@@ -32,7 +32,7 @@
             <div class="navbar-nav">
                 <a class="nav-link mx-1" href="../index.html">Contactos</a>
                 <a class="nav-link mx-1" href="./companies.html">Compañías</a>
-                <a class="nav-link mx-1 d-none users-tab" href="./user.html">Usuarios</a>
+                <a class="nav-link mx-1 d-none users-tab" href="./user.html" id="navLinkUsers">Usuarios</a>
                 <a class="nav-link mx-1 active" href="#">Región / Ciudad<span class="sr-only">(current)</span></a>
             </div>
         </div>
@@ -44,18 +44,9 @@
 
             <!-- Search Bar -->
             <div class="d-flex flex-row justify-content-between">
-                <div class="d-flex flex-row">
-                    <div class="input-group filter mr-2">
-                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                    </div>
-                    <!-- Button Search -->
-                    <button type="button" class="btn btn-outline-secondary btn-search"><i class="fa fa-search"
-                            aria-hidden="true"></i></button>
-
-                </div>
                 <!-- New Button -->
-                <div class="d-flex flex-row justify-content-end">
-                    <button type="button" class="btn btn-primary btn-size" data-toggle="modal"
+                <div class="col">
+                    <button type="button" class="btn btn-primary btn-size float-right" data-toggle="modal"
                         data-target="#newRegionModal">Agregar Región</button>
                 </div>
                 <!-- END New Button -->
@@ -185,8 +176,8 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success btn-lg modal-button create" id="createRegionBtn"
-                        data-dismiss="modal">Guardar Región</button>
+                    <button type="button" class="btn btn-success btn-lg modal-button create" id="createRegionBtn">
+                        Guardar Región</button>
                 </div>
             </div>
         </div>
@@ -236,8 +227,8 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success btn-lg modal-button create" id="createCountryModalBtn"
-                        data-dismiss="modal">Guardar País</button>
+                    <button type="button" class="btn btn-success btn-lg modal-button create" id="createCountryModalBtn">
+                        Guardar País</button>
                 </div>
             </div>
         </div>
@@ -286,8 +277,8 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success btn-lg modal-button create" id="createCityBtn"
-                        data-dismiss="modal">Guardar Ciudad</button>
+                    <button type="button" class="btn btn-success btn-lg modal-button create" id="createCityBtn">
+                        Guardar Ciudad</button>
                 </div>
             </div>
         </div>
@@ -327,7 +318,7 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success btn-lg modal-button create" data-dismiss="modal"
+                    <button type="button" class="btn btn-success btn-lg modal-button create" 
                         id="editRegionButtonSave">Guardar Región</button>
                 </div>
             </div>
@@ -377,7 +368,7 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success btn-lg modal-button update-button" data-dismiss="modal"
+                    <button type="button" class="btn btn-success btn-lg modal-button update-button" 
                         id="editCountryModalBtn">Actualizar País</button>
                 </div>
             </div>
@@ -429,8 +420,8 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn btn-outline-primary btn-lg modal-button border-0"
                         data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success btn-lg modal-button update-button" data-dismiss="modal"
-                        id="editCityBtn">Actualizar Ciudad</button>
+                    <button type="button" class="btn btn-success btn-lg modal-button update-button" id="editCityBtn">
+                        Actualizar Ciudad</button>
                 </div>
             </div>
         </div>
@@ -456,7 +447,7 @@
 
     <!-- END jQuery, Popper and Bootstrap JS -->
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
     <script src="https://kit.fontawesome.com/7396023e43.js" crossorigin="anonymous"></script>
 
